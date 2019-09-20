@@ -49,7 +49,6 @@ class WebAuth extends Controller
 
 
     public function login(Request $request){
-        
 
          if(Auth::attempt([
             'email' => $request->email,

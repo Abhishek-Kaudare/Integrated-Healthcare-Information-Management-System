@@ -12,6 +12,9 @@
 */
 
 Route::get('/', 'WebAuth@home');
+Route::view('/index', 'admin_pages.dashboard');
+Route::view('/l', 'admin_pages.auth.login');
+Route::view('/r', 'admin_pages.auth.register');
 
 
 Route::get('/register', 'WebAuth@registerpage');
@@ -23,4 +26,3 @@ Route::post('/login', [
     'uses'=>'WebAuth@login',
     'as'=>'login.custom'
 ]);
-
