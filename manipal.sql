@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 19, 2019 at 08:09 PM
+-- Generation Time: Sep 23, 2019 at 07:34 PM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.3
 
@@ -21,6 +21,101 @@ SET time_zone = "+00:00";
 --
 -- Database: `manipal`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `blood_bank`
+--
+
+CREATE TABLE `blood_bank` (
+  `blood_bank_id` int(11) NOT NULL,
+  `blood_bank_name` varchar(255) NOT NULL,
+  `manager_id` int(11) NOT NULL,
+  `license_no` varchar(255) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `lattitude` float NOT NULL,
+  `longitude` float NOT NULL,
+  `verified` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `clinic`
+--
+
+CREATE TABLE `clinic` (
+  `clinic_id` int(11) NOT NULL,
+  `doctor_id` int(11) NOT NULL,
+  `manager_id` int(11) NOT NULL,
+  `license_no` varchar(255) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `lattitude` float NOT NULL,
+  `longitude` float NOT NULL,
+  `verified` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `doctor`
+--
+
+CREATE TABLE `doctor` (
+  `doctor_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `doctor_name` varchar(255) NOT NULL,
+  `doc_license_no` varchar(255) NOT NULL,
+  `medical_speciality_id` int(11) NOT NULL,
+  `gender` varchar(15) NOT NULL,
+  `Degree` varchar(15) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `government_policies`
+--
+
+CREATE TABLE `government_policies` (
+  `policy_id` int(11) NOT NULL,
+  `policy_name` varchar(255) NOT NULL,
+  `documents_required` text NOT NULL,
+  `issue_authority` varchar(255) NOT NULL,
+  `manager_id` int(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `hospital`
+--
+
+CREATE TABLE `hospital` (
+  `hospital_id` int(11) NOT NULL,
+  `manager_id` int(11) NOT NULL,
+  `hospital_name` varchar(255) DEFAULT NULL,
+  `city` varchar(255) DEFAULT NULL,
+  `state` varchar(255) DEFAULT NULL,
+  `pincode` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `address` varchar(255) DEFAULT NULL,
+  `phone` varchar(255) DEFAULT NULL,
+  `verified` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `medical_speciality`
+--
+
+CREATE TABLE `medical_speciality` (
+  `medical_speciality_id` int(11) NOT NULL,
+  `medical_speciality_name` varchar(255) NOT NULL,
+  `dr_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -185,47 +280,118 @@ CREATE TABLE `password_resets` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `pharmacy`
+--
+
+CREATE TABLE `pharmacy` (
+  `pharamacy_id` int(11) NOT NULL,
+  `manager_id` int(11) NOT NULL,
+  `pharmacy_name` varchar(255) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `lattitude` float NOT NULL,
+  `longitude` float NOT NULL,
+  `verified` float NOT NULL,
+  `license_no` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `role`
+--
+
+CREATE TABLE `role` (
+  `role_id` int(11) NOT NULL,
+  `role_name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `rooms`
+--
+
+CREATE TABLE `rooms` (
+  `room_no` int(11) NOT NULL,
+  `hospital_id` int(11) NOT NULL,
+  `occupancy_status_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `password` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `role` int(11) NOT NULL,
-  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`id`, `name`, `email`, `password`, `role`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'r', 'r@123.com', '$2y$10$8DrHXcYUK18a9YXQUylHzu.fs72PbAY1ji/8Bl2/Dn7jO9jsdpV/.', 1, NULL, '2019-09-19 05:02:06', '2019-09-19 05:02:06'),
-(2, 'R', 'r@1.com', '$2y$10$9mnBb9Ly7qd0UAZDl.DfQ.JGS7ZmJ7xfN4AXnNVdcRLAc5w1SuF5K', 1, NULL, '2019-09-19 09:44:40', '2019-09-19 09:44:40'),
-(3, 'a', 'a@a.com', '$2y$10$RihwmC0M37xve9uW6Mauk.tvh0HvmfJNNbprndxX6O4ZPYZti4u2q', 1, NULL, '2019-09-19 10:15:36', '2019-09-19 10:15:36'),
-(5, 'a', 'a@b.com', '$2y$10$rq69i9VSkGC.jIuCUSbTwOWwQ962UFPDD.7Z.dEiVbucn10nv1vWe', 1, NULL, '2019-09-19 10:23:41', '2019-09-19 10:23:41'),
-(6, 'r', 'g@g.com', '$2y$10$GmuSLfNJHOt5xqe7L1h4k.TBWDEKnM0U3UewRyghW9cJquVlQfmjW', 1, NULL, '2019-09-19 10:25:42', '2019-09-19 10:25:42'),
-(8, 'r', 'g@fg.com', '$2y$10$iE4gby05i2tGKEyxeOtSVO408FYF0a3okkuo5Rex3MFeZc46tUD6.', 1, NULL, '2019-09-19 10:26:28', '2019-09-19 10:26:28'),
-(9, 'h', 'h@g.com', '$2y$10$ZaulWxVB9Pm6T.cWWS0xHuizrOVjGxfaH4LS53CAbuNXKIuB.Mj0G', 1, NULL, '2019-09-19 10:27:28', '2019-09-19 10:27:28'),
-(10, 'b', 'h@j.com', '$2y$10$p15XXC0HGGyEfAF5/8xsoOUrWX3movaV2aTVypQmTGoASwZ6FZtSG', 1, NULL, '2019-09-19 10:30:32', '2019-09-19 10:30:32'),
-(11, 'f', 'h@m.com', '$2y$10$NnrHw9ouAxIaIKFNZt7JsuP9bKaxVJ1z/LwwS6Cctrz6diSJdgzG.', 1, NULL, '2019-09-19 10:42:45', '2019-09-19 10:42:45'),
-(12, 'j', 'j@g.com', '$2y$10$q4F7GrSoopMzF7LsemNDHuJloclTEBChRV6VVlP9oKL0i6jhTOAvG', 1, NULL, '2019-09-19 10:46:27', '2019-09-19 10:46:27'),
-(13, 'q', 'q@s.com', '$2y$10$QDeYHvryrhDAV0ypIpacTuHf.Gluud/RVfO4kiHAJJPPhwHVdLLRC', 1, NULL, '2019-09-19 11:16:31', '2019-09-19 11:16:31'),
-(14, 'h', 'g@r.com', '$2y$10$3rYi4srpLO8ifsrboceN7ez6CBIUSqAIKsaVE6ss09EylEFwzq5ru', 1, NULL, '2019-09-19 11:21:29', '2019-09-19 11:21:29'),
-(15, 'y', 'h@o.com', '$2y$10$TYlePIABAcgOTZef4WWN9uQPV0jrfE4e16fsJl2hd1/CQN3K9UhIm', 1, NULL, '2019-09-19 11:22:07', '2019-09-19 11:22:07'),
-(16, 'b', 't@2.com', '$2y$10$Yqy6jBEjVy.qWzD5xGEOW.m.JhQsp7YEilAx4No528uhpmF1WMfje', 1, NULL, '2019-09-19 11:22:58', '2019-09-19 11:22:58'),
-(17, 'h', 'p@e.com', '$2y$10$JLThrYbv2W18Z5LhcACqCeNTallcx54vOUbRMiSS5zcr.JhPbTTvW', 1, NULL, '2019-09-19 11:28:31', '2019-09-19 11:28:31'),
-(18, 'b', 'hg@r.com', '$2y$10$6RXjWLYwLQrfLlUJJu0azu3GqS/6CVVB5iihL/q5R12hCdR/z31mO', 1, NULL, '2019-09-19 11:30:23', '2019-09-19 11:30:23'),
-(20, 'b', 'jkl@f.com', '$2y$10$MA5kydJwPuoTkxojE7T2DO/bLbtIghdAr0gDoVGr9tIxF/sxNmvTO', 1, NULL, '2019-09-19 11:31:36', '2019-09-19 11:31:36'),
-(21, 'h', 'iy@r.com', '$2y$10$ZoGkX7n6.ZHZgd5DoP70.uPveysFBXk2Hjfp.xKy0Qw8QnzfgNN3.', 1, NULL, '2019-09-19 11:36:04', '2019-09-19 11:36:04');
+  `user_id` int(11) NOT NULL,
+  `role_id` int(11) DEFAULT NULL,
+  `first_name` varchar(255) DEFAULT NULL,
+  `middle_name` varchar(255) DEFAULT NULL,
+  `last_name` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `address` varchar(255) DEFAULT NULL,
+  `phone` varchar(255) DEFAULT NULL,
+  `gmail_user` int(11) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `city` varchar(255) DEFAULT NULL,
+  `state` varchar(255) DEFAULT NULL,
+  `pincode` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `blood_bank`
+--
+ALTER TABLE `blood_bank`
+  ADD PRIMARY KEY (`blood_bank_id`),
+  ADD UNIQUE KEY `license_no` (`license_no`),
+  ADD UNIQUE KEY `address` (`address`),
+  ADD KEY `Blood_Bank_fk0` (`manager_id`);
+
+--
+-- Indexes for table `clinic`
+--
+ALTER TABLE `clinic`
+  ADD PRIMARY KEY (`clinic_id`),
+  ADD UNIQUE KEY `license_no` (`license_no`),
+  ADD KEY `Clinic_fk0` (`manager_id`);
+
+--
+-- Indexes for table `doctor`
+--
+ALTER TABLE `doctor`
+  ADD PRIMARY KEY (`doctor_id`),
+  ADD UNIQUE KEY `doc_license_no` (`doc_license_no`),
+  ADD KEY `Doctor_fk0` (`medical_speciality_id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
+-- Indexes for table `government_policies`
+--
+ALTER TABLE `government_policies`
+  ADD PRIMARY KEY (`policy_id`),
+  ADD UNIQUE KEY `policy_name` (`policy_name`),
+  ADD KEY `Government_Policies_fk0` (`manager_id`);
+
+--
+-- Indexes for table `hospital`
+--
+ALTER TABLE `hospital`
+  ADD PRIMARY KEY (`hospital_id`),
+  ADD KEY `Hospital_fk0` (`manager_id`);
+
+--
+-- Indexes for table `medical_speciality`
+--
+ALTER TABLE `medical_speciality`
+  ADD PRIMARY KEY (`medical_speciality_id`),
+  ADD UNIQUE KEY `medical_speciality_name` (`medical_speciality_name`),
+  ADD KEY `Medical_Speciality_fk0` (`dr_id`);
 
 --
 -- Indexes for table `migrations`
@@ -274,15 +440,72 @@ ALTER TABLE `password_resets`
   ADD KEY `password_resets_email_index` (`email`);
 
 --
+-- Indexes for table `pharmacy`
+--
+ALTER TABLE `pharmacy`
+  ADD PRIMARY KEY (`pharamacy_id`),
+  ADD UNIQUE KEY `license_no` (`license_no`),
+  ADD KEY `Pharmacy_fk0` (`manager_id`);
+
+--
+-- Indexes for table `role`
+--
+ALTER TABLE `role`
+  ADD PRIMARY KEY (`role_id`);
+
+--
+-- Indexes for table `rooms`
+--
+ALTER TABLE `rooms`
+  ADD PRIMARY KEY (`room_no`,`hospital_id`),
+  ADD KEY `Rooms_fk0` (`hospital_id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `users_email_unique` (`email`);
+  ADD PRIMARY KEY (`user_id`),
+  ADD KEY `Users_fk0` (`role_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `blood_bank`
+--
+ALTER TABLE `blood_bank`
+  MODIFY `blood_bank_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `clinic`
+--
+ALTER TABLE `clinic`
+  MODIFY `clinic_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `doctor`
+--
+ALTER TABLE `doctor`
+  MODIFY `doctor_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `government_policies`
+--
+ALTER TABLE `government_policies`
+  MODIFY `policy_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `hospital`
+--
+ALTER TABLE `hospital`
+  MODIFY `hospital_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `medical_speciality`
+--
+ALTER TABLE `medical_speciality`
+  MODIFY `medical_speciality_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -303,10 +526,87 @@ ALTER TABLE `oauth_personal_access_clients`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT for table `pharmacy`
+--
+ALTER TABLE `pharmacy`
+  MODIFY `pharamacy_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `role`
+--
+ALTER TABLE `role`
+  MODIFY `role_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `rooms`
+--
+ALTER TABLE `rooms`
+  MODIFY `room_no` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `blood_bank`
+--
+ALTER TABLE `blood_bank`
+  ADD CONSTRAINT `Blood_Bank_fk0` FOREIGN KEY (`manager_id`) REFERENCES `users` (`user_id`);
+
+--
+-- Constraints for table `clinic`
+--
+ALTER TABLE `clinic`
+  ADD CONSTRAINT `Clinic_fk0` FOREIGN KEY (`manager_id`) REFERENCES `users` (`user_id`);
+
+--
+-- Constraints for table `doctor`
+--
+ALTER TABLE `doctor`
+  ADD CONSTRAINT `Doctor_fk0` FOREIGN KEY (`medical_speciality_id`) REFERENCES `medical_speciality` (`medical_speciality_id`),
+  ADD CONSTRAINT `doctor_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`);
+
+--
+-- Constraints for table `government_policies`
+--
+ALTER TABLE `government_policies`
+  ADD CONSTRAINT `Government_Policies_fk0` FOREIGN KEY (`manager_id`) REFERENCES `users` (`user_id`);
+
+--
+-- Constraints for table `hospital`
+--
+ALTER TABLE `hospital`
+  ADD CONSTRAINT `Hospital_fk0` FOREIGN KEY (`manager_id`) REFERENCES `users` (`user_id`);
+
+--
+-- Constraints for table `medical_speciality`
+--
+ALTER TABLE `medical_speciality`
+  ADD CONSTRAINT `Medical_Speciality_fk0` FOREIGN KEY (`dr_id`) REFERENCES `doctor` (`doctor_id`);
+
+--
+-- Constraints for table `pharmacy`
+--
+ALTER TABLE `pharmacy`
+  ADD CONSTRAINT `Pharmacy_fk0` FOREIGN KEY (`manager_id`) REFERENCES `users` (`user_id`);
+
+--
+-- Constraints for table `rooms`
+--
+ALTER TABLE `rooms`
+  ADD CONSTRAINT `Rooms_fk0` FOREIGN KEY (`hospital_id`) REFERENCES `hospital` (`hospital_id`);
+
+--
+-- Constraints for table `users`
+--
+ALTER TABLE `users`
+  ADD CONSTRAINT `Users_fk0` FOREIGN KEY (`role_id`) REFERENCES `role` (`role_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
