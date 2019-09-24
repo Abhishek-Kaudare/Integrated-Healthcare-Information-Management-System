@@ -10,19 +10,35 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::group(['middleware' => 'web'], function () {
+Auth::routes();
+Route::auth();
+Route::get('/',[
+    'uses' => 'WebAuth@home',
+    'as' => 'home',
+    'middleware' => 'guest'
+]);
 
-Route::get('/', 'WebAuth@home');
 Route::view('/index', 'admin_pages.dashboard');
 Route::view('/l', 'admin_pages.auth.login');
 Route::view('/r', 'admin_pages.auth.register');
 
+Route::get('/register',[
+    'uses' => 'WebAuth@registerpage',
+    'as' => 'register',
+    'middleware' => 'guest'
+]);
 
-Route::get('/register', 'WebAuth@registerpage');
 Route::post('/register', 'WebAuth@register');
 
-Route::get('/login', 'WebAuth@loginpage');
 
+Route::get('/login', [
+    'uses'=>'WebAuth@loginpage',
+    'as'=>'login'
+]);
 Route::post('/login', [
     'uses'=>'WebAuth@login',
     'as'=>'login.custom'
 ]);
+
+});

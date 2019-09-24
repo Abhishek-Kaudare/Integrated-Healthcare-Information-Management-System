@@ -28,16 +28,16 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-
+    public $timestamps = false;
 
     public function is_student(){
-        if($this->role === 1 ){
+        if($this->role_id === 1 ){
             return true;
         }
         return false;
     }
     public function is_admin(){
-        if($this->role === 2 ){
+        if($this->role_id === 2 ){
             return true;
         }
         return false;

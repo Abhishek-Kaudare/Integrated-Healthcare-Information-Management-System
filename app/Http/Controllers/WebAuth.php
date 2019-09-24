@@ -16,7 +16,7 @@ use Auth;
 use Cookie;
 use Tracker;
 use Session;
-
+use Redirect;
 class WebAuth extends Controller
 {
     public function getAccessToken($request){
@@ -38,10 +38,31 @@ class WebAuth extends Controller
 
 
     public function loginpage(){
+
+    session_start();
+    if((session()->has('access'))){
+
+    return Redirect::route('home');
+    }
+    else{
         return view('login');
     }
+}
+
+
+    
     public function registerpage(){
+
+        session_start();
+    if((session()->has('access'))){
+        
+    return Redirect::route('home');
+    }
+    else{
         return view('register');
+    }
+
+        
     }
     public function home(){
         return view('home');
@@ -49,28 +70,36 @@ class WebAuth extends Controller
 
 
     public function login(Request $request){
-
          if(Auth::attempt([
             'email' => $request->email,
             'password'=> $request->password,]))
         {
 
             $user = User::where('email', $request->email)->first();
-
+            
             if($user->is_student()){
-                Session::put('access', 'YES');
-                return view('home');
-                return WebAuth::getAccessToken($request);
+                
+                $data = WebAuth::getAccessToken($request);
+                $data1[] =  (array) $data;
+                $access_token = ($data1[0]['original']['data']['data']['access_token']);
+                $refresh_token = ($data1[0]['original']['data']['data']['refresh_token']);
+                Session::put('access', $access_token);
+                Session::put('refresh', $refresh_token);
+                return redirect()->route('home');
+                
 
             }
             if($user->is_admin()){
-                Session::put('access', 'YES');
-                $_SESSION['access'] = 'yes';
-                return view('home');
-                return WebAuth::getAccessToken($request);
+                $data = WebAuth::getAccessToken($request);
+                $data1[] =  (array) $data;
+                $access_token = ($data1[0]['original']['data']['data']['access_token']);
+                $refresh_token = ($data1[0]['original']['data']['data']['refresh_token']);
+                Session::put('access', $access_token);
+                Session::put('refresh', $refresh_token);
+                return redirect()->route('home');
+                
             }
         }
-
     }
 
 
@@ -89,7 +118,37 @@ class WebAuth extends Controller
 
                 ]);
                 
-        return view('login');
+             
+            $data = json_decode($response->getBody());
+            $data1[] =  (array) $data;
+            $data2[] =  (array) $data1[0][0];
+            $message = $data2[0]['message'];
+            
+            if($message === 'SUCCESS'){
+                return redirect()->route('login');
+            }
+            else if($message === 'User Exists'){
+                return redirect()->route('register');
+            }
+            
+        
 
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

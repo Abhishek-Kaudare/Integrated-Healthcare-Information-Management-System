@@ -13,23 +13,46 @@ use GuzzleHttp\Subscriber\Oauth\Oauth1;
 use GuzzleHttp\Psr7\Request as GuzzleRequest;
 use Config;
 use Response;
+use Carbon;
 
 class AuthController extends Controller
 {
     public function register(Request $request){
+        
+        if (User::where('email', '=', $request->email)->count() > 0) {
+                        $data = [[
+            "message"=> "User Exists",            
+        ]]; 
+        
+        return Response::json($data,200);           
+        }
+        
+        
+
+        $mytime = Carbon\Carbon::now();
+        $current_date_time = $mytime->toDateTimeString();
+
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = bcrypt($request->password);
-        $user->role = 1;
+        $user->role_id = 1;
+        $user->first_name = "";
+        $user->middle_name = "";
+        $user->last_name = "";
+        $user->created_at = $current_date_time;
+        $user->address = "";
+        $user->phone = "";
+        $user->gmail_user = 0;
+        $user->city = "";
+        $user->state = "";
+        $user->pincode = "";
         $user->save();
         $data = [[
             "message"=> "SUCCESS",            
         ]
     ];
 
-
-// return response()->json($data);
         return Response::json($data, 200);
     }
     public function hello(Request $request){
