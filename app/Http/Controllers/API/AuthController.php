@@ -36,7 +36,7 @@ class AuthController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = bcrypt($request->password);
-        $user->role_id = 1;
+        $user->role_id = $request->role_id;
         $user->first_name = "";
         $user->middle_name = "";
         $user->last_name = "";
@@ -47,6 +47,7 @@ class AuthController extends Controller
         $user->city = "";
         $user->state = "";
         $user->pincode = "";
+        $user->auth = 0;
         $user->save();
         $data = [[
             "message"=> "SUCCESS",            

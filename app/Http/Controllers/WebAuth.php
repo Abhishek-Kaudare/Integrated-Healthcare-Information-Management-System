@@ -45,7 +45,7 @@ class WebAuth extends Controller
     return Redirect::route('home');
     }
     else{
-        return view('login');
+        return view('admin_pages.auth.login');
     }
 }
 
@@ -59,7 +59,7 @@ class WebAuth extends Controller
     return Redirect::route('home');
     }
     else{
-        return view('register');
+        return view('admin_pages.auth.register');
     }
 
         
@@ -104,12 +104,15 @@ class WebAuth extends Controller
 
 
     public function register(Request $request){
+        
          $client = new Client();
                 $response = $client->request('POST', 'http://manipal.com/api/register', [
                     'form_params' => [
                         'email' => $request->email,
                         'password' => $request->password,
                         'name' => $request->name,
+                        'role_id' => $_POST["radioBlock"],
+                        'auth' => 0
                     ],
                     'headers' =>[
                 'Accept' => 'application/json',
