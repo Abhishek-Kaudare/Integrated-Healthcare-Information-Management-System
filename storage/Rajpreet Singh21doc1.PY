@@ -1,0 +1,100 @@
+BPAD,D,A,B,D,NA,1000MG ,84,29.06,11.9,C,A,AB ,A,B,A,AD,N,      -,N,AB,N
+BPAD,C,A,B,D,NA,1250 MG,65,24.76,19.23,E,A,A,A,A,A,B,N,      -,N,N,N
+BPAD,B,A,B,A,NA,1000 MG ,64,22.37,15.62,B,A,B,A,A,B,      -,N,      -,N,N,N
+BPAD,B,A,B,D,NA,1000 MG ,61,20.14,16.39,D,A,A,A,B,B,      -,N,      -,N,N,N
+BPAD,A,A,B,D,NA,1000 MG ,65,21.71,15.38,B,A,B,A,A,B,      -,N,      -,N,N,N
+BPAD,E,A,B,D,NA,1000 MG ,42,22,23.8,D,A,A,A,A,B,      -,N,      -,N,AB,N
+BPAD,A,A,B,A,NA,1000 MG ,64,20.42,15.62,B,A,A,A,B,A,D,N,      -,N,N,N
+BPAD,B,A,B,D,NA,1000 MG ,55,20.7,18.1,C,A,A,B,A,B,      -,N,      -,N,N,N
+BPAD,E,A,A,A,1000 MG,NA,52,21,19.2,E,A,C,A,A,B,      -,N,      -,N,N,N
+BPAD,A,A,B,D,NA,1250 MG,87,28.13,14.36,D,A,G,A,B,A,C,N,      -,N,N,N
+BPAD,A,B,B,D,NA,1000 MG ,55,22.6,18.1,B,A,A,A,B,B,      -,N,      -,N,N,N
+BPAD,B,B,B,D,NA,750 MG,58,26.8,12.9,C,A,A,A,B,A,C,N,      -,N,N,N
+BPAD,B,A,B,D,NA,1000 MG ,48,17.2,20.83,C,A,B,A,B,B,      -,N,      -,N,N,N
+BPAD,D,A,B,D,NA,1000 MG ,46,18.6,21.7,E,A,A,A,A,A,A,N,      -,N,AB,N
+BPAD,B,A,B,D,NA,1000 MG ,87,31.2,11.49,B,B,B,A,A,B,      -,N,      -,N,N,N
+BPAD,B,A,B,A,NA,1500 MG,63,25.9,23.8,D,A,AE,A,B,B,      -,N,      -,N,N,N
+BPAD,C,B,B,D,NA,1000 MG ,65,25.39,15.38,B,A,C,B,B,A,      -,N,      -,N,N,N
+BPAD,C,A,B,D,NA,1000 MG ,62,23.91,16.12,D,A,B,A,A,A,A,N,      -,N,AB,N
+BPAD,B,A,B,D,NA,1500 MG,95,29.32,15.17,E,A,B,A,A,A,D,N,      -,N,N,N
+BPAD,C,A,B,A,NA,1250 MG,66,23.1,18.9,E,A,A,A,A,B,       -,N,      -,N,N,N
+BPAD,D,A,B,D,NA,1250 MG,63,23.5,19.8,E,B,     -,A,A,A,AB,N,      -,N,AB,N
+BPAD,B,A,B,A,NA,1000 MG ,44,15.77,22.7,E,A,AB ,A,B,B,       -,N,      -,N,N,N
+BPAD,B,B,B,A,NA,500 MG,45,18.97,11.1,E,A,AB ,A,B,B,       -,N,      -,N,N,N
+BPAD,E,B,B,A,NA,750  MG,54,24.4,13.8,E,A,AE,A,B,B,       -,N,      -,N,N,N
+BPAD,C,B,B,D,NA,600 MG,62,25.8,9.67,E,A,AB ,A,B,A,B,N,      -,N,N,N
+BPAD,B,B,B,A,NA,1000 MG ,60,24.09,16.6,B,A,A,A,B,B,       -,N,      -,N,N,N
+BPAD,D,B,B,A,NA,1000 MG ,60,27,16.6,B,A,B,A,B,B,       -,N,      -,N,N,N
+BPAD,C,A,B,A,NA,1250 MG,57,20.4,21.9,E,A,AB ,A,A,A,D,N,      -,N,N,N
+BPAD,E,A,B,A,NA,1000 MG ,71,24.5,14.08,D,A,AB ,A,A,A,B,N,      -,N,N,N
+BPAD,A,A,B,D,NA,1200 MG,80,29.36,15,D,A,A,A,B,B,      -,N,     -,N,N,N
+BPAD,A,A,B,A,NA,1250 MG,66,22.37,18.9,C,A,A,A,B,B,     -,N,     -,N,N,N
+BPAD,C,A,B,A,NA,1000 MG ,57,19.03,17.5,C,A,B,A,A,A,A,N,     -,N,N,N
+BPAD,A,B,B,D,NA,1250 MG,70,25.1,17.8,C,A,B,A,B,B,     -,N,     -,N,N,N
+BPAD,B,A,B,A,NA,1250 MG,68,26.2,18.3,B,A,B,A,B,B,     -,N,     -,N,N,N
+BPAD,A,A,B,D,NA,1000 MG ,59,22.76,16.9,E,A,B,A,A,B,     -,N ,     -,N,N,N
+BPAD,C,B,B,D,NA,1000 MG ,59,22.5,16.9,E,A,B,A,B,A,AD,N,     -,N,AB,N
+BPAD,D,A,B,A,NA,1500 MG,75,23.75,20,C,A,BC,A,B,A,BCD,N,     -,N,N,N
+BPAD,D,A,B,A,NA,750 MG,54,18.8,38.8,E,A,AB ,A,A,B,     -,N,     - ,N,N,N
+BPAD,D,A,B,A,NA,1000 MG ,38,13.47,26.31,D,A,A,A,A,B,    -,N,     -,N,N,N
+BPAD,E,B,B,A,NA,800 MG,42,21.1,19.4,E,A,B,A,B,A,AB,N,     -,N,AB,AB
+BPAD,E,A,B,D,NA,1000 MG ,44,15.22,22.7,C,A,B,A,B,B,    -,N,     -,N,N,N
+BPAD,B,B,B,D,NA,1250 MG,69,25.5,18.1,B,A,A,A,B,B,    -,N,     -,N,N,N
+BPAD,A,A,B,D,NA,1000 MG ,56,19.84,17.85,E,A,B,A,B,B,    -,N,     -,N,N,N
+BPAD,A,A,B,D,NA,1000 MG ,50,15.59,20,C,A,AB ,A,A,B,     -,N,     -,N,N,N
+BPAD,C,A,B,D,NA,750 MG,70,23.06,10.71,C,A,AB ,A,A,B,     -,AB,AST-88IUL,N,N,N
+BPAD,E,A,B,A,NA,750 MG,60,20,12.5,B,A,A,A,A,B,     -,N,     -,N,N,N
+BPAD,A,A,B,D,NA,1000 MG ,82,28,12.19,A,A,A,B,B,B,     -,N,     -,N,N,N
+BPAD,C,B,B,D,NA,1000 MG ,49,19.6,20.4,E,A,B,A,B,A,A,N,     -,N,N,N
+BPAD,B,A,B,A,NA,1500 MG,68,21,22.05,E,A,A,A,B,A,C,N,     -,N,N,N
+BPAD,A,A,B,D,NA,1000MG ,57,21.9,17.5,D,A,AB ,A,B,B,     - ,N,     -,N,N,N
+BPAD,B,A,B,D,NA,1250 MG,71,24.9,17.6,D,A,B,A,B,B,     - ,N,     -,N,N,N
+BPAD,A,A,B,A,NA,1500 MG,65,23.03,23.07,A,A,AC,A,B,B,    -,N,     -,N,N,N
+BPAD,C,B,B,A,NA,750 MG,45,21.4,16.6,C,A,B,A,B,A,A,N,     -,N,N,N
+BPAD,A,B,B,A,NA,1000MG ,46,21,21.7,E,A,A,A,B,B,    -,N,     -,N,N,AB
+BPAD,B,A,B,D,NA,1000 MG ,73,20,13.69,B,A,BC,A,B,B,    -,N,     -,N,N,N
+BPAD,C,A,B,D,NA,1000 MG ,56,23.2,17.85,E,A,B,A,B,A,A,N,     -,N,N,N
+BPAD,B,A,B,D,NA,1000 MG ,70,22.87,14.28,A,A,A,A,B,B,    -,N,     -,N,N,N
+BPAD,A,B,B,D,NA,1000 MG ,49,18.7,20.4,A,A,AC,B,B,A,D,N,     -,N,N,N
+BPAD,D,A,B,D,NA,1000 MG ,39,16.02,25.64,D,A,A,A,A,B,    -,N,     -,N,N,N
+BPAD,D,A,B,D,NA,1000 MG ,58,21.56,17.24,E,A,A,A,A,B,    -,N,     -,N,N,N
+BPAD,A,A,B,D,NA,1000 MG ,65,23.8,15.38,C,A,A,A,B,B,    -,N,     -,N,N,N
+BPAD,D,B,B,D,NA,1000 MG ,50,21.36,20,C,A,C,A,B,B,    -,N,     -,N,N,N
+BPAD,A,A,B,A,NA,1250 MG,60,20.06,20.83,E,A,AB ,A,B,B,    -,N,     -,N,N,N
+BPAD,B,A,B,D,NA,1000 MG ,63,23.14,15.87,B,A,A,A,B,B,    -,N,     -,N,N,N
+BPAD,B,A,B,D,NA,1000 MG ,63,21.8,15.87,B,A,B,A,B,B,    -,N ,     -,N,N,N
+BPAD,A,A,B,D,NA,1250 MG,54,19.8,23.14,C,A,AB ,A,A,B,    -,N,     -,N,N,N
+BPAD,A,B,B,D,NA,1000 MG ,60,24,16.6,B,A,A,A,B,B,    -,N,     -,N,N,N
+BPAD,E,B,B,D,NA,1000 MG ,55,22.6,18.18,B,A,B,A,B,A,A,N,     -,N,AB,AB
+BPAD,B,A,B,D,NA,1000 MG ,65,22.22,15.38,E,A,AB ,A,B,A,B,N,     -,N,N,N
+BPAD,D,A,B,A,NA,1500 MG,68,22.9,22.05,D,A,B,A,B,A,AB,N,     -,N,AB,N
+BPAD,A,A,B,D,NA,1000 MG ,71,18,14.08,C,A,C,B,B,B,    -,N,     -,N,N,N
+BPAD,C,A,B,D,NA,750 MG,84,26.5,8.92,C,A,B,A,B,B,    -  ,N,     -,N,N,N
+BPAD,A,B,B,A,NA,1250 MG,40,16,31.25,E,A,C,A,B,B,    -,N,     -,N,N,N
+BPAD,C,B,B,D,NA,1000MG ,56,21.38,17.85,B,A,C,A,B,A,AC,N,     -,N,N,AB
+BPAD,D,A,B,A,NA,1000 MG ,57,19.4,17.5,C,A,A,A,A,B,    -,N,     -,N,N,N
+BPAD,A,A,B,D,NA,1000 MG ,80,26.42,12.5,D,A,B,A,A,B,     -,N,     -,N,N,N
+BPAD,B,C,B,A,NA,1000 MG ,63,30.8,15.87,E,A,B,A,B,A,AB,N,     -,N,AB,AB
+BPAD,A,A,B,D,NA,1000 MG ,66,22.6,15.15,E,A,A,A,B,A,D,N,     -,N,N,N
+BPAD,C,B,B,D,NA,1000 MG ,49,22.07,20.4,D,B,C,A,A,A,C,N,     -,N,N,N
+BPAD,C,B,B,D,NA,1000 MG ,50,24.15,20,E,A,B,A,B,A,ABD,N,     -,N,AB,AB
+BPAD,A,A,B,D,NA,1500 MG,78,17.8,19.23,C,A,A,A,B,B,     -,N,     -,N,N,N
+BPAD,A,A,B,A,NA,1500 MG,53,18.64,28.3,D,A,AB ,A,B,B,     -,N,     -,N,N,N
+BPAD,E,A,B,A,NA,750 MG,55,20.2,13.6,E,A,B,A,B,A,AB,N,     -,N,AB,N
+BPAD,B,A,B,A,NA,1000 MG ,53,19.77,18.86,E,A,A,A,B,B,     -,N,     -,N,N,N
+BPAD,B,A,B,A,NA,1000 MG ,52,20.8,19.2,D,A,A,A,A,B,     -,N,     -,N,N,N
+BPAD,C,B,A,C,1250 MG,NA,34,15.31,36.76,B,A,AB ,A,B,B,     -,N,     -,N,N,N
+BPAD,B,B,B,A,NA,1000 MG ,38,17.5,26.31,B,A,B,B,B,A,D,N,     -,N,N,N
+BPAD,B,A,B,D,NA,1000 MG ,69,25.34,14.49,B,A,A,A,B,B,      -,N,     -,N,N,N
+BPAD,A,A,B,A,NA,1000 MG ,57,22.83,17.54,C,A,B,A,B,A,D,N,     -,N,N,N
+BPAD,A,A,A,B,1500 MG,NA,73,24.39,20.5,C,A,AB ,A,A,B,      -,N,     -,N,N,N
+BPAD,D,A,B,A,NA,1000 MG ,55,20.2,18.18,E,B,     -,A,B,B,D,N,     -,N,N,N
+BPAD,C,A,B,A,NA,1000 MG ,65,23.38,15.38,E,A,A,A,B,A,D,N,     -,N,N,N
+BPAD,D,B,A,C,1000 MG,NA,40,20.4,25,D,A,A,A,B,A,B,N,     -,N,N,N
+BPAD,C,B,B,D,NA,500 MG,30,15.3,16.66,D,A,A,A,B,B,     -,N,     -,N,N,AB
+BPAD,B,A,A,B,1250 MG,NA,83,29.43,15.06,D,A,A,A,B,A,D,N,     -,N,N,N
+BPAD,C,A,B,A,NA,1000 MG ,61,22.4,16.39,C,A,A,A,B,B,     -,N,     -,N,N,N
+BPAD,A,A,A,C,1500 MG,NA,54,17.83,27.77,B,A,A,A,B,B,     -,N,     -,N,N,N
+BPAD,B,A,A,B,1000 MG,NA,83,28.1,12.04,E,A,AB ,A,A,B,     -,AB,ALT-167+IUL+AST-103+IUL,N,N,N
+BPAD,B,A,A,A,1500 MG,NA,54,19.6,13.88,B,A,A,A,A,B,     -,N,      -,N,N,N
+BPAD,D,A,A,B,1000 MG,NA,45,15.37,22.2,D,A,C,B,B,A,A,N,      -,N,AB,N

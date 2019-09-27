@@ -63,6 +63,12 @@ class User extends Authenticatable
         }
         return false;
     }
+    public function admin(){
+        if($this->role_id === 6 ){
+            return true;
+        }
+        return false;
+    }
 
 
 }

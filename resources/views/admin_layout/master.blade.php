@@ -43,6 +43,8 @@
   <!-- All Jquery -->
   @include('admin_layout.inc.foot')
 
+
+  
 </body>
 
 </html>

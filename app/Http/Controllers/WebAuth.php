@@ -90,6 +90,8 @@ class WebAuth extends Controller
                         Session::put('access', $access_token);
                         Session::put('refresh', $refresh_token);
                         Session::put('role', $user->role_id);
+                        Session::put('id', $user->user_id);
+
                         // return redirect()->route('hospital.index');
                     }
 
@@ -101,11 +103,23 @@ class WebAuth extends Controller
                         Session::put('access', $access_token);
                         Session::put('refresh', $refresh_token);
                         Session::put('role', $user->role_id);
-                        Session::put('id', $user->id);
+                        Session::put('id', $user->user_id);
                         return redirect()->route('hospital.index');
-                        // return view('Hospital.index');
-                        // return View::make('Hospital.index');
                     }
+
+                    if($user->admin()){
+                        $data = WebAuth::getAccessToken($request);
+                        $data1[] =  (array) $data;
+                        $access_token = ($data1[0]['original']['data']['data']['access_token']);
+                        $refresh_token = ($data1[0]['original']['data']['data']['refresh_token']);
+                        Session::put('access', $access_token);
+                        Session::put('refresh', $refresh_token);
+                        Session::put('role', $user->role_id);
+                        Session::put('id', $user->user_id);
+                        return redirect()->route('admin.index');
+                    }
+
+
 
 
                     // if($user->is_admin()){

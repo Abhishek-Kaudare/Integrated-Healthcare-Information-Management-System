@@ -14,6 +14,7 @@ use GuzzleHttp\Psr7\Request as GuzzleRequest;
 use Config;
 use Response;
 use Carbon;
+use Illuminate\Support\Facades\Input;
 
 class AuthController extends Controller
 {

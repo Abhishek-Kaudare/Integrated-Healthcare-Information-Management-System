@@ -41,12 +41,47 @@ Route::post('/login', [
     'as'=>'login.custom'
 ]);
 
-
+// HOSPITAL
 
 Route::get('/hospital', [
     'uses'=>'Hospital@index',
     'as'=>'hospital.index'
 ]);
+
+
+Route::get('/HospitalCompleteRegistration', [
+    'uses'=>'Hospital@HospitalCompleteRegistration',
+    'as'=>'Hospital.HospitalCompleteRegistration'
+]);
+
+Route::post('/HospitalCompleteRegistration', [
+    'uses'=>'Hospital@addRegisterDetials',
+    'as'=>'Hospital.HospitalCompleteRegistrationPOST'
+]);
+
+
+
+// ADMIN
+
+Route::get('/ad', [
+    'uses'=>'ADMIN@index',
+    'as'=>'admin.index'
+]);
+
+
+
+Route::get('/verifyh', [
+    'uses'=>'ADMIN@verifyhospital',
+    'as'=>' admin.verifyhospital'
+]);
+
+// Route::post('/verifyhospital', [
+//     'uses'=>'ADMIN@verifyhospitalPOST',
+//     'as'=>'admin.verifyhospitalPOST'
+// ]);
+
+Route::get('/Doc1/{A}','ADMIN@viewDoc1');
+Route::get('/Doc2/{B}','ADMIN@viewDoc2');
 
 
 });
