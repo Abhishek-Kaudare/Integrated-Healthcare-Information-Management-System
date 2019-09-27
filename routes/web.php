@@ -41,4 +41,12 @@ Route::post('/login', [
     'as'=>'login.custom'
 ]);
 
+
+
+Route::get('/hospital', [
+    'uses'=>'Hospital@index',
+    'as'=>'hospital.index'
+]);
+
+
 });

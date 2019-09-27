@@ -70,36 +70,61 @@ class WebAuth extends Controller
 
 
     public function login(Request $request){
-         if(Auth::attempt([
-            'email' => $request->email,
-            'password'=> $request->password,]))
-        {
+        // var_dump(Hash::check('test', $hash));
+        //  $password = bcrypt($request->password);
 
-            $user = User::where('email', $request->email)->first();
-            
-            if($user->is_student()){
-                
-                $data = WebAuth::getAccessToken($request);
-                $data1[] =  (array) $data;
-                $access_token = ($data1[0]['original']['data']['data']['access_token']);
-                $refresh_token = ($data1[0]['original']['data']['data']['refresh_token']);
-                Session::put('access', $access_token);
-                Session::put('refresh', $refresh_token);
-                return redirect()->route('home');
-                
+        
+        // Auth::attempt([
+        //     'email' => $request->email,
+        //     'password'=> $request->password,])
+        
+         if(User::where('email', '=', $request->email)->count() > 0)
+            {   
+                $user = User::where('email', $request->email)->first();                
+                if(Hash::check($request->password, $user->password)){                    
+                    if($user->generaluser()){
+                        $data = WebAuth::getAccessToken($request);
+                        $data1[] =  (array) $data;
+                        $access_token = ($data1[0]['original']['data']['data']['access_token']);
+                        $refresh_token = ($data1[0]['original']['data']['data']['refresh_token']);
+                        Session::put('access', $access_token);
+                        Session::put('refresh', $refresh_token);
+                        Session::put('role', $user->role_id);
+                        // return redirect()->route('hospital.index');
+                    }
 
+                    if($user->hospital()){
+                        $data = WebAuth::getAccessToken($request);
+                        $data1[] =  (array) $data;
+                        $access_token = ($data1[0]['original']['data']['data']['access_token']);
+                        $refresh_token = ($data1[0]['original']['data']['data']['refresh_token']);
+                        Session::put('access', $access_token);
+                        Session::put('refresh', $refresh_token);
+                        Session::put('role', $user->role_id);
+                        Session::put('id', $user->id);
+                        return redirect()->route('hospital.index');
+                        // return view('Hospital.index');
+                        // return View::make('Hospital.index');
+                    }
+
+
+                    // if($user->is_admin()){
+                    //     $data = WebAuth::getAccessToken($request);
+                    //     $data1[] =  (array) $data;
+                    //     $access_token = ($data1[0]['original']['data']['data']['access_token']);
+                    //     $refresh_token = ($data1[0]['original']['data']['data']['refresh_token']);
+                    //     Session::put('access', $access_token);
+                    //     Session::put('refresh', $refresh_token);
+                    //     return redirect()->route('home');
+                    // }
+                }
+                else{
+                    return "Wrong Password";
+                }
             }
-            if($user->is_admin()){
-                $data = WebAuth::getAccessToken($request);
-                $data1[] =  (array) $data;
-                $access_token = ($data1[0]['original']['data']['data']['access_token']);
-                $refresh_token = ($data1[0]['original']['data']['data']['refresh_token']);
-                Session::put('access', $access_token);
-                Session::put('refresh', $refresh_token);
-                return redirect()->route('home');
-                
+            else{
+                return "User does not exist";
             }
-        }
     }
 
 

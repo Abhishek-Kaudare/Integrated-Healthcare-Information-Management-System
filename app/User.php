@@ -30,14 +30,35 @@ class User extends Authenticatable
 
     public $timestamps = false;
 
-    public function is_student(){
+    public function generaluser(){
         if($this->role_id === 1 ){
             return true;
         }
         return false;
     }
-    public function is_admin(){
+    public function doctor(){
         if($this->role_id === 2 ){
+            return true;
+        }
+        return false;
+    }
+
+    public function hospital(){
+        if($this->role_id === 3 ){
+            return true;
+        }
+        return false;
+    }
+
+    public function pharmacy(){
+        if($this->role_id === 4 ){
+            return true;
+        }
+        return false;
+    }
+
+    public function blood(){
+        if($this->role_id === 5 ){
             return true;
         }
         return false;
