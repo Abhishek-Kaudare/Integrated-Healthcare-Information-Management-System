@@ -59,6 +59,38 @@ Route::post('/HospitalCompleteRegistration', [
     'as'=>'Hospital.HospitalCompleteRegistrationPOST'
 ]);
 
+Route::get('/beds', [
+    'uses'=>'HOSPITAL@beds',
+    'as'=>'Hospital.beds'
+]);
+
+Route::post('/addBedDetials', [
+    'uses'=>'Hospital@addBedDetials',
+    'as'=>'Hospital.addBedDetialsPOST'
+]);
+
+Route::get('/AddSpecialization', [
+    'uses'=>'Hospital@AddSpecialization',
+    'as'=>'Hospital.AddSpecialization'
+]);
+
+Route::post('/addSpecializationDetials', [
+    'uses'=>'Hospital@addSpecializationDetials',
+    'as'=>'Hospital.addSpecializationDetialsPOST'
+]);
+
+Route::get('/addDoctor', [
+    'uses'=>'Hospital@addDoctor',
+    'as'=>'Hospital.addDoctor'
+]);
+
+Route::get('/AllDoctor/{docid}/{userid}', [
+    'uses'=>'Hospital@AllDoctor',
+    'as'=>'Hospital.AllDoctor'
+]);
+
+Route::get('/acceptHospital/{id}/{hosid}','ADMIN@acceptHospital');
+
 
 
 // ADMIN
@@ -69,19 +101,23 @@ Route::get('/ad', [
 ]);
 
 
-
 Route::get('/verifyh', [
     'uses'=>'ADMIN@verifyhospital',
-    'as'=>' admin.verifyhospital'
+    'as'=>'verifyhospital'
 ]);
 
-// Route::post('/verifyhospital', [
-//     'uses'=>'ADMIN@verifyhospitalPOST',
-//     'as'=>'admin.verifyhospitalPOST'
-// ]);
+Route::post('/verifyhospital', [
+    'uses'=>'ADMIN@verifyhospitalPOST',
+    'as'=>'admin.verifyhospitalPOST'
+]);
 
 Route::get('/Doc1/{A}','ADMIN@viewDoc1');
 Route::get('/Doc2/{B}','ADMIN@viewDoc2');
+
+Route::get('/acceptHospital/{id}/{hosid}','ADMIN@acceptHospital');
+Route::get('/rejectHospital/{id}/{hosid}','ADMIN@rejectHospital');
+
+
 
 
 });

@@ -73,10 +73,10 @@
                                         <td>{{$item->phone}}</td>
                                         <td>{{$item->lat}}</td>
                                         <td>{{$item->longitude}}</td>
-                                        <td id=""><a class="btn btn-primary" href="Doc1/{{$item->doc1}}">Doc 1</a></td>
-                                        <td id=""><a class="btn btn-primary" href="Doc2/{{$item->doc2}}">Doc 2</a></td>
-                                        <td id=""><a class="btn btn-success" href="accept-application/{{$item->hospital_id}}">Accept User</a></td>
-                                        <td id=""><a class="btn btn-danger" href="reject-application/{{$item->hospital_id}}">Reject User</a></td>
+                                    <td id=""><a class="btn btn-primary" href="Doc1/{{$item->doc1}}">Doc 1</a></td>
+                                        <td id=""><a class="btn btn-primary" href="Doc2//{{$item->doc2}}">Doc 2</a></td>
+                                        <td id=""><a class="btn btn-success" href="acceptHospital/{{$item->manager_id}}/{{$item->hospital_id}}">Accept User</a></td>
+                                        <td id=""><a class="btn btn-danger" href="rejectHospital/{{$item->manager_id}}/{{$item->hospital_id}}">Reject User</a></td>
                                             
                                         
                                     </tr>  

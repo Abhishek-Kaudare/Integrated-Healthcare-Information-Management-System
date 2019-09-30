@@ -15,9 +15,44 @@
 @endsection
     @endif
 
-    @if($item->auth==1)
+    @if($item->verified==0 and $item->auth==0)
      @section('content')
     WAIT FOR AUTHORIZATION
+@endsection
+    @endif
+
+    @if($item->verified==1 and $item->auth==1)
+     @section('content')
+    @section('sidebarOptions')
+    <nav class="sidebar-nav">
+      <ul id="sidebarnav" class="p-t-30">    
+        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark" href="{{ url('') }}"
+            aria-expanded="false"><i class="mdi mdi-receipt"></i><span class="hide-menu">ADD PATIENT</span></a>
+        </li>       
+        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark" href="{{ url('') }}"
+            aria-expanded="false"><i class="mdi mdi-receipt"></i><span class="hide-menu">UPDATE PATIENT</span></a>
+        </li>
+        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark" href="{{ url('') }}"
+            aria-expanded="false"><i class="mdi mdi-receipt"></i><span class="hide-menu">SHIFT PATIENT</span></a>
+        </li>
+        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark" href="{{ url('') }}"
+            aria-expanded="false"><i class="mdi mdi-receipt"></i><span class="hide-menu">DISCHARGE PATIENT</span></a>
+        </li>
+        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark" href="{{ url('AddSpecialization') }}"
+            aria-expanded="false"><i class="mdi mdi-receipt"></i><span class="hide-menu">SPECIALIZATION</span></a>
+        </li>
+        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark" href="{{ url('beds') }}"
+            aria-expanded="false"><i class="mdi mdi-receipt"></i><span class="hide-menu">BEDS</span></a>
+        </li>
+        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark" href="{{ url('') }}"
+            aria-expanded="false"><i class="mdi mdi-receipt"></i><span class="hide-menu">DOCTORS ATTENDANCE</span></a>
+        </li>
+        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark" href="{{ url('addDoctor') }}"
+            aria-expanded="false"><i class="mdi mdi-receipt"></i><span class="hide-menu">ADD DOCTOR</span></a>
+        </li>
+      </ul>
+    </nav>
+@endsection
 @endsection
     @endif
 
