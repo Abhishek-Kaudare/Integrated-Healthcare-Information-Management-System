@@ -11,7 +11,7 @@ class Pharmacy extends Controller
 {
      public function index(){
         $role = session()->get('id');
-        $requests = DB::select("SELECT * FROM users  WHERE user_id=$role AND role_id=4");
+        $requests = DB::select("SELECT * FROM users WHERE user_id=$role AND role_id=4");
         return view('Pharmacy.index')->with('data',$requests);
     }
 
@@ -66,4 +66,197 @@ class Pharmacy extends Controller
     DB::select($query2);            
     return redirect()->route('Pharmacy.index');
     }
+
+
+
+
+    public function addnewmed(){
+
+        session_start();
+        $id = session()->get('id');
+
+        $query = "SELECT pharmacy_id from pharmacy WHERE manager_id=$id";
+        $requests = DB::select($query);
+        $pharmacy_id = $requests[0]->pharmacy_id;
+
+        $msdm ="SELECT p.*,mpm.* FROM  pharmacy p JOIN med_map mpm  ON p.pharmacy_id=mpm.pharmacy_id AND  p.pharmacy_id=$pharmacy_id";
+        $msdm1 ="SELECT * FROM  medicines";
+        $data = DB::select($msdm);
+        $data1 = DB::select($msdm1);
+        
+        $already_there = array();
+        $final = array();
+        $dis = array();
+        foreach($data as $item1){
+            array_push($already_there, $item1->medicine_id);
+
+        }
+
+        foreach($data1 as $item){
+            
+            if(in_array( $item->id ,$already_there )){
+                array_push($dis, $item);
+            }
+            else{
+                
+                array_push($final, $item);
+            }
+        }
+        return view('Pharmacy.addnewmed')->with('dat',array('dis'=>$dis,'final'=>$final));
+
+    }
+
+    public function checkoutmed(){
+
+        session_start();
+        $id = session()->get('id');
+
+        $query = "SELECT pharmacy_id from pharmacy WHERE manager_id=$id";
+        $requests = DB::select($query);
+        $pharmacy_id = $requests[0]->pharmacy_id;
+
+        $q ="SELECT p.*,mpm.*,m.* FROM  pharmacy p JOIN med_map mpm JOIN medicines m ON p.pharmacy_id=mpm.pharmacy_id AND m.id=mpm.medicine_id AND  p.pharmacy_id=$pharmacy_id";
+        
+        $data = DB::select($q);
+        
+        $final = array();
+        $dis = array();
+       
+
+        foreach($data as $item){
+            
+            if($item->ccount <=0 ){
+                array_push($dis, $item);
+            }
+            else{
+                
+                array_push($final, $item);
+            }
+        }
+        return view('Pharmacy.checkoutmed')->with('dat',array('dis'=>$dis,'final'=>$final));
+        
+
+        
+    }
+
+
+    public function addmed(){
+
+        session_start();
+        $id = session()->get('id');
+
+        $query = "SELECT pharmacy_id from pharmacy WHERE manager_id=$id";
+        $requests = DB::select($query);
+        $pharmacy_id = $requests[0]->pharmacy_id;
+
+        $msdm ="SELECT p.*,mpm.* FROM  pharmacy p JOIN med_map mpm  ON p.pharmacy_id=mpm.pharmacy_id AND  p.pharmacy_id=$pharmacy_id";
+        $msdm1 ="SELECT * FROM  medicines";
+        $q ="SELECT p.*,mpm.*,m.* FROM  pharmacy p JOIN med_map mpm JOIN medicines m ON p.pharmacy_id=mpm.pharmacy_id AND m.id=mpm.medicine_id AND  p.pharmacy_id=$pharmacy_id";
+        $data = DB::select($msdm);
+        $data1 = DB::select($msdm1);
+        $data2 = DB::select($q);
+        
+        $already_there = array();
+        $final = array();
+        $dis = array();
+        foreach($data as $item1){
+            array_push($already_there, $item1->medicine_id);
+
+        }
+
+        foreach($data1 as $item){
+            
+            if(in_array( $item->id ,$already_there )){
+                array_push($final, $item);
+            }
+            else{
+                
+                array_push($final, $item);
+            }
+        }
+        return view('Pharmacy.addmed')->with('dat',array('dis'=>$dis,'final'=>$final,'count'=>$data2));
+
+
+        
+    }
+
+
+
+
+    public function addnewmedPOST(Request $request){
+        session_start();
+        $id = session()->get('id');
+
+        $query = "SELECT pharmacy_id from pharmacy WHERE manager_id=$id";
+        $requests = DB::select($query);
+        $pharmacy_id = $requests[0]->pharmacy_id;
+
+
+        
+        $medid = $request->med;
+
+        $query = "INSERT INTO `med_map`(`id`, `medicine_id`, `pharmacy_id`, `ccount`) 
+        VALUES (null,$medid,$pharmacy_id,0)";
+        DB::select($query);
+        return redirect()->route('Pharmacy.addnewmed');
+
+    }
+
+    
+
+    public function addmedPOST(Request $request){
+        session_start();
+        $id = session()->get('id');
+
+        $query = "SELECT pharmacy_id from pharmacy WHERE manager_id=$id";
+        $requests = DB::select($query);
+        $pharmacy_id = $requests[0]->pharmacy_id;
+
+
+        $count =  $request->count;
+        $medid = $request->med;
+
+        $query1 = "SELECT ccount from med_map WHERE pharmacy_id=$pharmacy_id AND medicine_id=$medid";
+        $requests2 = DB::select($query1);
+        $c = $requests2[0]->ccount;
+
+        $total = $c + $count;
+
+        $query2 = "UPDATE med_map SET ccount = $total WHERE pharmacy_id=$pharmacy_id AND medicine_id=$medid";
+        DB::select($query2);            
+        return redirect()->route('Pharmacy.addmed');
+
+    }
+
+    public function checkoutmedPOST(Request $request){
+        
+         session_start();
+        $id = session()->get('id');
+
+        $query = "SELECT pharmacy_id from pharmacy WHERE manager_id=$id";
+        $requests = DB::select($query);
+        $pharmacy_id = $requests[0]->pharmacy_id;
+
+
+        $count =  $request->count;
+        $medid = $request->med;
+
+        $query1 = "SELECT ccount from med_map WHERE pharmacy_id=$pharmacy_id AND medicine_id=$medid";
+        $requests2 = DB::select($query1);
+        $c = $requests2[0]->ccount;
+        
+        if($c <$count){
+            return redirect()->route('Pharmacy.index');
+        }
+        else{   
+
+            $total = $c - $count;
+            $query2 = "UPDATE med_map SET ccount = $total WHERE pharmacy_id=$pharmacy_id AND medicine_id=$medid";
+            DB::select($query2);            
+            return redirect()->route('Pharmacy.checkoutmed');
+        }
+        return redirect()->route('Pharmacy.checkoutmed');
+    }
+
+
 }

@@ -256,6 +256,43 @@ Route::post('/PharmacyCompleteRegistration', [
     'as'=>'Pharmacy.PharmacyCompleteRegistrationPOST'
 ]);
 
+Route::get('/checkoutmed', [
+    'uses'=>'Pharmacy@checkoutmed',
+    'as'=>'Pharmacy.checkoutmed'
+]);
+Route::get('/addmed', [
+    'uses'=>'Pharmacy@addmed',
+    'as'=>'Pharmacy.addmed'
+]);
+
+Route::get('/addnewmed', [
+    'uses'=>'Pharmacy@addnewmed',
+    'as'=>'Pharmacy.addnewmed'
+]);
+
+Route::post('/addnewmed', [
+    'uses'=>'Pharmacy@addnewmedPOST',
+    'as'=>'Pharmacy.addnewmedPOST'
+]);
+
+Route::post('/addmedPOST', [
+    'uses'=>'Pharmacy@addmedPOST',
+    'as'=>'Pharmacy.addmedPOST'
+]);
+
+Route::post('/checkoutmedPOST', [
+    'uses'=>'Pharmacy@checkoutmedPOST',
+    'as'=>'Pharmacy.checkoutmedPOST'
+]);
+
+
+
+
+
+
+
+
+
 
 // ADMIN
 
@@ -289,6 +326,17 @@ Route::get('/verifyd', [
 
 Route::get('/acceptDoctor/{docid}/{userid}','ADMIN@acceptDoctor');
 Route::get('/rejectDoctor/{docid}/{userid}','ADMIN@rejectDoctor');
+
+
+Route::get('/verifyp', [
+    'uses'=>'ADMIN@verifypharmacy',
+    'as'=>'verifypharmacy'
+]);
+
+Route::get('/acceptPharmacy/{docid}/{userid}','ADMIN@acceptPharmacy');
+Route::get('/rejectPharmacy/{docid}/{userid}','ADMIN@rejectPharmacy');
+
+
 
 
 

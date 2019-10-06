@@ -108,4 +108,32 @@ class ADMIN extends Controller
         DB::select($query2);            
         return redirect()->route('verifydoctor');
     }
+
+    public function verifypharmacy(){
+        
+        $query="SELECT u.*,d.* FROM users u JOIN pharmacy d  ON u.user_id = d.manager_id AND u.auth=2 ";
+        $requests = DB::select($query);
+        return view('admin.verifypharmacy')->with('values',$requests); 
+    }
+    
+
+    public function acceptPharmacy($pharmacyid,$userid){
+        $query2 = "UPDATE users SET auth = 1 WHERE user_id = $userid";
+        DB::select($query2);      
+        DB::statement("UPDATE pharmacy SET verified=1 WHERE pharmacy_id=$pharmacyid");
+        
+
+        return redirect()->route('verifypharmacy');      
+    }
+    
+    public function rejectPharmacy($pharmacyid,$userid){
+        $query2 = "UPDATE users SET auth = 3 WHERE user_id = $userid";
+        DB::select($query2);            
+        return redirect()->route('verifypharmacy');      
+    }
+
+
+
+    
+
 }
