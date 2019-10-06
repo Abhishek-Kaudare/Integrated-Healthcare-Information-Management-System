@@ -12,7 +12,7 @@
             aria-expanded="false"><i class="mdi mdi-receipt"></i><span class="hide-menu">VERIFY CLINIC</span></a>
         </li>       
 
-            <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark" href="{{ url('HospitalCompleteRegistration') }}"
+            <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark" href="{{ url('verifyd') }}"
             aria-expanded="false"><i class="mdi mdi-receipt"></i><span class="hide-menu">VERIFY DOCTOR</span></a>
         </li>       
 

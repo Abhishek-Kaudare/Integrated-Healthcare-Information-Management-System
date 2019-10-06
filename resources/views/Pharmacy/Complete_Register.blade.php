@@ -4,7 +4,7 @@
     <nav class="sidebar-nav">
       <ul id="sidebarnav" class="p-t-30">
         
-    <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark" href="{{ url('HospitalCompleteRegistration') }}"
+    <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark" href="{{ url('PharmacyCompleteRegistration') }}"
             aria-expanded="false"><i class="mdi mdi-receipt"></i><span class="hide-menu">Complete Registration</span></a>
         </li>       
       </ul>
@@ -16,12 +16,12 @@
 <div class="login-page">
   <div class="form">
 
-            <form class="" method="POST"  action="{{ action('Hospital@addRegisterDetials') }}"  accept-charset="UTF-8" enctype="multipart/form-data">
+            <form class="" method="POST"  action="{{ action('Pharmacy@addRegisterDetials') }}"  accept-charset="UTF-8" enctype="multipart/form-data">
                     {{ csrf_field() }}
             <input name="_token" type="hidden" value="{{ csrf_token() }}"/> 
 
 
-      Name<input type="text" placeholder="Hospital Name" id="name" name="name" required/>
+      Name<input type="text" placeholder="Pharmacy Name" id="name" name="name" required/>
       <br>  
         
       Pincode<input type="text" placeholder="Pincode" id="pincode" name="pincode" required/>
@@ -94,7 +94,7 @@
       <input class="" id="" name="doc2" required type="file"><br>
     
 
-      <button>Register</button>
+      <button class="btn btn-success">Register</button>
       
     </form>
   </div>

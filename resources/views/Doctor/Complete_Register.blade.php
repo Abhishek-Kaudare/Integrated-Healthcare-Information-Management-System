@@ -16,14 +16,15 @@
 <div class="login-page">
   <div class="form">
 
-            <form class="" method="POST"  action="{{ action('Hospital@addRegisterDetials') }}"  accept-charset="UTF-8" enctype="multipart/form-data">
+            <form class="" method="POST"  action="{{ action('Doctor@addRegisterDetials') }}"  accept-charset="UTF-8" enctype="multipart/form-data">
                     {{ csrf_field() }}
             <input name="_token" type="hidden" value="{{ csrf_token() }}"/> 
 
 
-      Name<input type="text" placeholder="Hospital Name" id="name" name="name" required/>
+      
+      License Number<input type="text" placeholder="License Number" id="license" name="license" required/>
       <br>  
-        
+
       Pincode<input type="text" placeholder="Pincode" id="pincode" name="pincode" required/>
       <br>  
       
@@ -82,19 +83,19 @@
       Contact 3<input type="text" placeholder="Contact 3" id="cont3" name="con3"/>
       <br>  
 
-      Latitude<input type="text" placeholder="Latitude" id="lat" name="lat"/>
+      {{-- Latitude<input type="text" placeholder="Latitude" id="lat" name="lat"/>
       <br>  
 
       Longitude<input type="text" placeholder="Longitude" id="long" name="long"/>
-      <br>  
+      <br>   --}}
         <label class="" for="">Choose file...</label>
       <input class="" id="" name="doc1" required type="file"><br>
 
       <label class="" for="">Choose file...</label>
-      <input class="" id="" name="doc2" required type="file"><br>
+      <input class="" id="" name="doc2" required type="file"><br><br>
     
 
-      <button>Register</button>
+      <button type="submit" class="btn btn-primary">Complete Registration</button>
       
     </form>
   </div>

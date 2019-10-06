@@ -10,9 +10,6 @@ use Illuminate\Support\Facades\Input;
 class Hospital extends Controller
 {
     public function index(){
-        
-        
-
         $role = session()->get('id');
         $requests = DB::select("SELECT u.*, h.* FROM users u JOIN hospital h ON u.user_id = h.manager_id WHERE u.user_id=$role");
         return view('Hospital.index')->with('data',$requests);
@@ -73,16 +70,14 @@ class Hospital extends Controller
         $role = session()->get('id');
         $query = "SELECT u.*, h.*, r.*,rt.* FROM users u JOIN hospital h JOIN roomcount r JOIN room_type rt ON u.user_id = h.manager_id WHERE u.user_id=$role AND r.hospital_id=h.hospital_id AND rt.typeid=room_type";
         $requests = DB::select($query);
-        // $requests = DB::select("SELECT  u.*, h.* FROM users u JOIN hospital h ON u.user_id = h.manager_id WHERE u.user_id=$role ");
         if($requests == null){
             $mydata = array('count'=>'0');
             $data = array_merge($mydata,$requests);
             return view('Hospital.beds')->with('data',$data);
         }
         else{
-            // $mydata = array('count'=>'0');
+            // $mydata = array('count'=>'1');
             // $data = array_merge($mydata,$requests);
-            
             return view('Hospital.beds')->with('data',$requests);
         }        
     }
@@ -122,10 +117,19 @@ class Hospital extends Controller
             $total = $count + ${"a".$i};
             $query2 = "UPDATE roomcount SET ccount = $total WHERE hospital_id = $hosid AND room_type=$i";
             $requests2 = DB::statement($query2);
-            // echo $query2;
-            // echo " ";
-             
+
+            $query2 = "SELECT Available FROM roomcount WHERE room_type=$i AND hospital_id=$hosid";
+            $requests2 = DB::select($query2);
+            $Available = $requests2[0]->Available;
+
+            $total1 = $Available + ${"a".$i};
+            $query3 = "UPDATE roomcount SET Available = $total1 WHERE hospital_id = $hosid AND room_type=$i";
+            $requests3 = DB::statement($query3);
+
+
         }
+
+        
 
         for($i=1;$i<9;$i++){
             $query = "SELECT hospital_id from hospital WHERE manager_id=$user_id";
@@ -150,7 +154,6 @@ class Hospital extends Controller
     public function AddSpecialization(){
         $role = session()->get('id');
         $query = "SELECT u.*, h.*,soh.*,sohm.* FROM users u JOIN hospital h JOIN specialization_of_hospital soh JOIN specialization_of_hospital_mapped sohm ON u.user_id = h.manager_id WHERE u.user_id=$role  AND h.hospital_id=sohm.hospital_id AND sohm.specialization_of_hospital_id=soh.idd";
-        
         $requests = DB::select($query);
         if($requests == null){
             $mydata = array('count'=>'0');
@@ -194,20 +197,85 @@ class Hospital extends Controller
         // FROM users u  JOIN doctor d JOIN medical_speciality ms JOIN medical_speciality_doctor_mapped msdm  
         // ON u.user_id = d.user_id  
         // AND d.doctor_id=msdm.doctor_id AND msdm.medical_speciality_id=ms.medical_speciality_idd";
-        
-        $query = "SELECT u.*,d.* 
-        FROM users u  JOIN doctor d   
-        ON u.user_id = d.user_id  
-        ";
-        
+        $query10 = "SELECT hospital_id from hospital WHERE manager_id=$role";
+        $requests10 = DB::select($query10);
+        $hosid = $requests10[0]->hospital_id;
+
+        $query = "SELECT u.*,d.*
+        FROM users u  JOIN doctor d 
+        ON u.user_id = d.user_id
+        " ;
+
+        $query2 = "SELECT * FROM dr_request WHERE hospital_id=$hosid";
+
+
         $requests = DB::select($query);
-        if($requests == null){
+        $requests2 = DB::select($query2);
+
+        $already_there = array();
+        $final = array();
+        foreach($requests2 as $item1){
+            array_push($already_there, $item1->doctor_id);
+
+        }
+
+        foreach($requests as $item){
+            if(in_array( $item->doctor_id ,$already_there )){
+                // echo "YES";
+            }
+            else{
+                // dd($item);
+                array_push($final, $item);
+            }
+        }
+
+        
+        // dd($final);
+
+
+
+//             foreach($requests as $item)
+//             print_r($item);
+// echo "                                                                                           ";
+
+//             foreach($requests2 as $item1)
+// print_r($item1);
+        // $data1 = array();
+        // if($requests2 == null ){
+        //     $data1 = $requests;
+        // }
+        // else{
+        //     foreach($requests as $item){
+        //         foreach($requests2 as $item1){
+        //             if($item->doctor_id==$item1->doctor_id){
+        //                     // array_push($data1, $item);
+        //                 // break;
+        //             }
+        //             else{
+        //                 // if( in_array( $item ,$data1 ) ){
+        //                 //     break;
+        //                 // }
+        //                 // else{
+        //                     // array_push($data1, $item);
+        //                 // }
+                        
+        //             }
+        //         }
+        //     }
+
+
+        // }
+
+        // dd($data1);
+        
+        
+        if($final == null){
             $mydata = array('count'=>'0');
-            $data = array_merge($mydata,$requests);
-            return view('Hospital.addDoctor')->with('data',$data);
+            $data2 = array_merge($mydata,$final);
+            return view('Hospital.addDoctor')->with('data',$final);
         }
         else{
-            return view('Hospital.addDoctor')->with('data',$requests);
+            return view('Hospital.addDoctor')->with('data',$final);
         }
     }
 
@@ -217,15 +285,22 @@ class Hospital extends Controller
         $requests10 = DB::select($query10);
         $hosid = $requests10[0]->hospital_id;
 
-        $query="SELECT u.*,d.*,ms.*,msdm.* FROM users u JOIN doctor d JOIN medical_speciality ms JOIN medical_speciality_doctor_mapped msdm  ON u.user_id = d.user_id AND d.doctor_id=msdm.doctor_id AND msdm.medical_speciality_id=ms.medical_speciality_idd AND u.user_id=15 AND d.doctor_id=1";
-        $query1 = "SELECT * FROM research_and_publication WHERE doctor_id=$docid";
-        $query2 = "SELECT * FROM awards_and_achievement WHERE doctor_id=$docid";
-
-        $requests = DB::select($query);
-        $requests1 = DB::select($query1);
-        $requests2 = DB::select($query2);
-    
-        return view('Hospital.AllDoctor')->with('data',array('doctor'=>$requests,'rap'=>$requests1,'aaa'=>$requests2,'hosid'=>$hosid));
+        // $query="SELECT u.*,d.*,ms.*,msdm.* FROM users u JOIN doctor d JOIN medical_speciality ms JOIN medical_speciality_doctor_mapped msdm  ON u.user_id = d.user_id AND d.doctor_id=msdm.doctor_id AND msdm.medical_speciality_id=ms.medical_speciality_idd AND u.user_id=$userid AND d.doctor_id=$docid";
+        $userdata = "SELECT u.*,d.* FROM users u JOIN doctor d  ON u.user_id = d.user_id AND u.user_id=$userid AND d.doctor_id=$docid";
+        $rap = "SELECT * FROM research_and_publication WHERE doctor_id=$docid";
+        $aaa = "SELECT * FROM awards_and_achievement WHERE doctor_id=$docid";
+        $msdm ="SELECT ms.*,msdm.* FROM  medical_speciality ms JOIN medical_speciality_doctor_mapped msdm  ON msdm.medical_speciality_id=ms.medical_speciality_id AND  msdm.doctor_id=$docid";
+        $lan = "SELECT l.*,lm.* FROM languages l JOIN languages_dr_mapped lm ON l.id=lm.languageid WHERE lm.doctor_id=$docid";
+        // $query4 = "SELECT * FROM awards_and_achievement WHERE doctor_id=$docid";
+        
+        $requests1 = DB::select($userdata);
+        $requests2 = DB::select($rap);
+        $requests3 = DB::select($aaa);
+        $requests4 = DB::select($msdm);
+        $requests5 = DB::select($lan);
+        
+        
+        return view('Hospital.AllDoctor')->with('data',array('doctor'=>$requests1,'rap'=>$requests2,'aaa'=>$requests3,'hosid'=>$hosid,'msdm'=>$requests4,'languages'=>$requests5));
         if($requests == null){
         }
         else{
@@ -236,7 +311,141 @@ class Hospital extends Controller
 
 
     
-    
+    public function requestDoctor($hosid,$userid,$docid){
 
+        $query = "INSERT INTO `dr_request`(`id`, `doctor_id`, `hospital_id`, `initiated_by`, `stat`)
+         VALUES (null,$docid,$hosid,0,0)";
+        $requests = DB::select($query);
+
+        return redirect()->route('Hospital.addDoctor');
+
+    }
+
+    public function doctorAttendance (){
+
+        return view('Hospital.doctorAttendance');
+
+
+    }
+
+ public function drAttendance(Request $request){
+        $role = session()->get('id');
+        $query10 = "SELECT hospital_id from hospital WHERE manager_id=$role";
+        $requests10 = DB::select($query10);
+        $hosid = $requests10[0]->hospital_id;
+        $mytime = Carbon\Carbon::now();
+        $current_date_time = $mytime->toDateTimeString();
+        $docid = $request->docid;
+        $query = "INSERT INTO `attendance`(`id`, `doctor_id`, `hospital_id`, `date_time`) 
+        VALUES (null,$docid,$hosid,'$current_date_time')";
+        $requests = DB::select($query);
+
+        return redirect()->route('Hospital.doctorAttendance');
+        
+
+    }
     
+    public function addpatient(){
+        $role = session()->get('id');
+        $query10 = "SELECT hospital_id from hospital WHERE manager_id=$role";
+        $requests10 = DB::select($query10);
+        $hosid = $requests10[0]->hospital_id;        
+        $query="SELECT rt.*,rc.* FROM roomcount rc JOIN room_type rt  ON rt.id = rc.room_type AND rc.hospital_id=$hosid";
+        $requests = DB::select($query);
+        return view('Hospital.addpatient')->with('data',$requests);
+    }
+ 
+
+    public function addpatientPOST(Request $request){
+        $role = session()->get('id');
+        $query10 = "SELECT hospital_id from hospital WHERE manager_id=$role";
+        $requests10 = DB::select($query10);
+        $hosid = $requests10[0]->hospital_id;      
+
+        $room =  $request->room;
+        $query2 = "SELECT Available FROM roomcount WHERE room_type=$room AND hospital_id=$hosid";
+        $requests2 = DB::select($query2);
+        $Available = $requests2[0]->Available;
+
+        $total1 = $Available - 1;
+        $query3 = "UPDATE roomcount SET Available = $total1 WHERE hospital_id = $hosid AND room_type=$room";
+        $requests3 = DB::statement($query3);
+
+        return redirect()->route('Hospital.addpatient');
+    }
+
+
+    public function shiftpatient(){
+        $role = session()->get('id');
+        $query10 = "SELECT hospital_id from hospital WHERE manager_id=$role";
+        $requests10 = DB::select($query10);
+        $hosid = $requests10[0]->hospital_id;        
+        $query="SELECT rt.*,rc.* FROM roomcount rc JOIN room_type rt  ON rt.id = rc.room_type AND rc.hospital_id=$hosid";
+        $requests = DB::select($query);
+        return view('Hospital.shiftpatient')->with('data',$requests);
+        
+    }
+    
+    public function shiftpatientPOST(Request $request){
+        $role = session()->get('id');
+        $query10 = "SELECT hospital_id from hospital WHERE manager_id=$role";
+        $requests10 = DB::select($query10);
+        $hosid = $requests10[0]->hospital_id;      
+
+        $room =  $request->room;
+        $query2 = "SELECT Available FROM roomcount WHERE room_type=$room AND hospital_id=$hosid";
+        $requests2 = DB::select($query2);
+        $Available = $requests2[0]->Available;
+
+        $total1 = $Available + 1;
+        $query3 = "UPDATE roomcount SET Available = $total1 WHERE hospital_id = $hosid AND room_type=$room";
+        $requests3 = DB::statement($query3);
+
+        $room =  $request->roomshift;
+        $query2 = "SELECT Available FROM roomcount WHERE room_type=$room AND hospital_id=$hosid";
+        $requests2 = DB::select($query2);
+        $Available = $requests2[0]->Available;
+
+        $total1 = $Available - 1;
+        $query3 = "UPDATE roomcount SET Available = $total1 WHERE hospital_id = $hosid AND room_type=$room";
+        $requests3 = DB::statement($query3);
+
+        
+
+        return redirect()->route('Hospital.shiftpatient');
+    }
+
+
+
+
+        public function dischargepatient(){
+            $role = session()->get('id');
+            $query10 = "SELECT hospital_id from hospital WHERE manager_id=$role";
+            $requests10 = DB::select($query10);
+            $hosid = $requests10[0]->hospital_id;        
+            $query="SELECT rt.*,rc.* FROM roomcount rc JOIN room_type rt  ON rt.id = rc.room_type AND rc.hospital_id=$hosid";
+            $requests = DB::select($query);
+            return view('Hospital.dischargepatient')->with('data',$requests);
+        }
+
+        public function dischargepatientPOST(Request $request){
+            $role = session()->get('id');
+            $query10 = "SELECT hospital_id from hospital WHERE manager_id=$role";
+            $requests10 = DB::select($query10);
+            $hosid = $requests10[0]->hospital_id;      
+
+            $room =  $request->room;
+            $query2 = "SELECT Available FROM roomcount WHERE room_type=$room AND hospital_id=$hosid";
+            $requests2 = DB::select($query2);
+            $Available = $requests2[0]->Available;
+
+            $total1 = $Available + 1;
+            $query3 = "UPDATE roomcount SET Available = $total1 WHERE hospital_id = $hosid AND room_type=$room";
+            $requests3 = DB::statement($query3);
+
+            return redirect()->route('Hospital.dischargepatient');
+        }
+        
+        
+
 }

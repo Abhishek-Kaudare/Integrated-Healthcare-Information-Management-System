@@ -89,8 +89,172 @@ Route::get('/AllDoctor/{docid}/{userid}', [
     'as'=>'Hospital.AllDoctor'
 ]);
 
-Route::get('/acceptHospital/{id}/{hosid}','ADMIN@acceptHospital');
+Route::get('/requestDoctor/{hosid}/{userid}/{docid}', [
+    'uses'=>'Hospital@requestDoctor',
+    'as'=>'Hospital.requestDoctor'
+]);
 
+Route::post('/requestDoctor/{hosid}/{userid}/{docid}', [
+    'uses'=>'Hospital@requestDoctor',
+    'as'=>'Hospital.requestDoctorPOST'
+]);
+
+Route::get('/doctorAttendance', [
+    'uses'=>'Hospital@doctorAttendance',
+    'as'=>'Hospital.doctorAttendance'
+]);
+
+Route::post('/drAttendance', [
+    'uses'=>'Hospital@drAttendance',
+    'as'=>'Hospital.drAttendancePOST'
+]);
+
+Route::get('/addpatient', [
+    'uses'=>'Hospital@addpatient',
+    'as'=>'Hospital.addpatient'
+]);
+
+Route::post('/addpatient', [
+    'uses'=>'Hospital@addpatientPOST',
+    'as'=>'Hospital.addpatientPOST'
+]);
+
+Route::get('/shiftpatient', [
+    'uses'=>'Hospital@shiftpatient',
+    'as'=>'Hospital.shiftpatient'
+]);
+
+Route::post('/shiftpatient', [
+    'uses'=>'Hospital@shiftpatientPOST',
+    'as'=>'Hospital.shiftpatientPOST'
+]);
+
+
+Route::get('/dischargepatient', [
+    'uses'=>'Hospital@dischargepatient',
+    'as'=>'Hospital.dischargepatient'
+]);
+
+Route::post('/dischargepatient', [
+    'uses'=>'Hospital@dischargepatientPOST',
+    'as'=>'Hospital.dischargepatientPOST'
+]);
+
+
+// Doctor
+Route::get('/Doctor', [
+    'uses'=>'Doctor@index',
+    'as'=>'Doctor.index'
+]);
+
+
+Route::get('/DoctorCompleteRegistration', [
+    'uses'=>'Doctor@DoctorCompleteRegistration',
+    'as'=>'Doctor.DoctorCompleteRegistration'
+]);
+
+Route::post('/DoctorCompleteRegistration', [
+    'uses'=>'Doctor@addRegisterDetials',
+    'as'=>'Doctor.DoctorCompleteRegistrationPOST'
+]);
+
+Route::get('/medicalspeciality', [
+    'uses'=>'Doctor@medicalspeciality',
+    'as'=>'Doctor.medicalspeciality'
+]);
+
+
+Route::post('/addSpec', [
+    'uses'=>'Doctor@addSpec',
+    'as'=>'Doctor.addSpecPOST'
+]);
+
+
+Route::get('/language', [
+    'uses'=>'Doctor@language',
+    'as'=>'Doctor.language'
+]);
+
+Route::post('/addlang', [
+    'uses'=>'Doctor@addlang',
+    'as'=>'Doctor.addlangPOST'
+]);
+
+Route::get('/awards', [
+    'uses'=>'Doctor@awards',
+    'as'=>'Doctor.awards'
+]);
+
+Route::post('/awards', [
+    'uses'=>'Doctor@awardsPOST',
+    'as'=>'Doctor.awardsPOST'
+]);
+
+
+Route::get('/research', [
+    'uses'=>'Doctor@research',
+    'as'=>'Doctor.research'
+]);
+
+Route::post('/research', [
+    'uses'=>'Doctor@researchPOST',
+    'as'=>'Doctor.researchPOST'
+]);
+
+Route::get('/summary', [
+    'uses'=>'Doctor@summary',
+    'as'=>'Doctor.summary'
+]);
+
+Route::post('/summary', [
+    'uses'=>'Doctor@summaryPOST',
+    'as'=>'Doctor.summaryPOST'
+]);
+
+Route::get('/hosrequst', [
+    'uses'=>'Doctor@hosrequst',
+    'as'=>'Doctor.hosrequst'
+]);
+
+Route::post('/hosrequst', [
+    'uses'=>'Doctor@hosrequstPOST',
+    'as'=>'Doctor.hosrequstPOST'
+]);
+
+Route::get('/accepthospital/{docid}/{hosid}', [
+    'uses'=>'Doctor@accepthospital',
+    'as'=>'Doctor.accepthospital'
+]);
+
+
+Route::get('/rejecthospital/{docid}/{hosid}', [
+    'uses'=>'Doctor@rejecthospital',
+    'as'=>'Doctor.rejecthospital'
+]);
+
+Route::post('/settimings', [
+    'uses'=>'Doctor@settimings',
+    'as'=>'Doctor.settimings'
+]);
+
+
+// Pharmacy
+
+Route::get('/Pharmacy', [
+    'uses'=>'Pharmacy@index',
+    'as'=>'Pharmacy.index'
+]);
+
+
+Route::get('/PharmacyCompleteRegistration', [
+    'uses'=>'Pharmacy@PharmacyCompleteRegistration',
+    'as'=>'Pharmacy.PharmacyCompleteRegistration'
+]);
+
+Route::post('/PharmacyCompleteRegistration', [
+    'uses'=>'Pharmacy@addRegisterDetials',
+    'as'=>'Pharmacy.PharmacyCompleteRegistrationPOST'
+]);
 
 
 // ADMIN
@@ -117,6 +281,14 @@ Route::get('/Doc2/{B}','ADMIN@viewDoc2');
 Route::get('/acceptHospital/{id}/{hosid}','ADMIN@acceptHospital');
 Route::get('/rejectHospital/{id}/{hosid}','ADMIN@rejectHospital');
 
+
+Route::get('/verifyd', [
+    'uses'=>'ADMIN@verifydoctor',
+    'as'=>'verifydoctor'
+]);
+
+Route::get('/acceptDoctor/{docid}/{userid}','ADMIN@acceptDoctor');
+Route::get('/rejectDoctor/{docid}/{userid}','ADMIN@rejectDoctor');
 
 
 
