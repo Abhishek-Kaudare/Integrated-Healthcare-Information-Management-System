@@ -10,6 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::view('/demo', 'demo.dashboard');
 Route::group(['middleware' => 'web'], function () {
 Auth::routes();
 Route::auth();
