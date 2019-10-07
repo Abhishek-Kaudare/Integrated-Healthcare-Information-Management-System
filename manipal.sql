@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 06, 2019 at 11:06 PM
+-- Generation Time: Oct 08, 2019 at 12:31 AM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.3
 
@@ -58,19 +58,106 @@ INSERT INTO `awards_and_achievement` (`id`, `doctor_id`, `award_or_achievement`)
 -- --------------------------------------------------------
 
 --
--- Table structure for table `blood_bank`
+-- Table structure for table `bloodbank`
 --
 
-CREATE TABLE `blood_bank` (
-  `blood_bank_id` int(11) NOT NULL,
-  `blood_bank_name` varchar(255) NOT NULL,
+CREATE TABLE `bloodbank` (
+  `bloodbank_id` int(11) NOT NULL,
   `manager_id` int(11) NOT NULL,
-  `license_no` varchar(255) NOT NULL,
-  `address` varchar(255) NOT NULL,
-  `lattitude` float NOT NULL,
-  `longitude` float NOT NULL,
-  `verified` int(11) NOT NULL
+  `bloodbank_name` varchar(255) DEFAULT NULL,
+  `city` varchar(255) DEFAULT NULL,
+  `state` varchar(255) DEFAULT NULL,
+  `pincode` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `address` varchar(255) DEFAULT NULL,
+  `phone` varchar(255) DEFAULT NULL,
+  `verified` int(11) NOT NULL,
+  `lat` varchar(500) NOT NULL,
+  `longitude` varchar(500) NOT NULL,
+  `doc1` varchar(5000) NOT NULL,
+  `doc2` varchar(5000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `bloodbank`
+--
+
+INSERT INTO `bloodbank` (`bloodbank_id`, `manager_id`, `bloodbank_name`, `city`, `state`, `pincode`, `created_at`, `address`, `phone`, `verified`, `lat`, `longitude`, `doc1`, `doc2`) VALUES
+(1, 29, 'Rajpreet Singh', 'Mumbai', '', '400080', '2019-10-07 21:44:05', 'Building Number 4, Flat Number 28, B-wing, Vaishali Park, Vaishali Nagar, Mulund West,, Balrajeshwar Road', 'rajpreet24033@gmail.com', 1, '', '', 'Rajpreet Singh29doc1.pdf', 'Rajpreet Singh29doc2.pdf');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `bloodtype`
+--
+
+CREATE TABLE `bloodtype` (
+  `id` int(11) NOT NULL,
+  `type` varchar(15) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `bloodtype`
+--
+
+INSERT INTO `bloodtype` (`id`, `type`) VALUES
+(1, 'A+'),
+(2, 'A-'),
+(3, 'B+'),
+(4, 'B-'),
+(5, 'O+'),
+(6, 'O-'),
+(7, 'AB+'),
+(8, 'AB-');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `blood_map`
+--
+
+CREATE TABLE `blood_map` (
+  `id` int(11) NOT NULL,
+  `bloodtype_id` int(11) DEFAULT NULL,
+  `bloodbank_id` int(11) DEFAULT NULL,
+  `quantity` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `blood_map`
+--
+
+INSERT INTO `blood_map` (`id`, `bloodtype_id`, `bloodbank_id`, `quantity`) VALUES
+(1, 1, 1, 0),
+(2, 2, 1, 50),
+(3, 3, 1, 0),
+(4, 4, 1, 0),
+(5, 5, 1, 0),
+(6, 6, 1, 0),
+(7, 7, 1, 0),
+(8, 8, 1, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `campaign`
+--
+
+CREATE TABLE `campaign` (
+  `id` int(11) NOT NULL,
+  `name` varchar(500) DEFAULT NULL,
+  `bloodbank_id` int(11) DEFAULT NULL,
+  `start` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `address` varchar(1200) DEFAULT NULL,
+  `end` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `campaign`
+--
+
+INSERT INTO `campaign` (`id`, `name`, `bloodbank_id`, `start`, `address`, `end`) VALUES
+(1, 'Rajpreet Singh', 1, '2019-12-30 18:29:00', 'Building Number 4, Flat Number 28, B-wing, Vaishali Park, Vaishali Nagar, Mulund West,, Balrajeshwar Road', '2019-12-31 18:29:00');
 
 -- --------------------------------------------------------
 
@@ -419,12 +506,14 @@ INSERT INTO `oauth_access_tokens` (`id`, `user_id`, `client_id`, `name`, `scopes
 ('69c97e5f7453c2d452aee2ba32d11281bd0d8fb0133f399216e0352777e3b330432acd3b6c8a1a72', NULL, 8, NULL, '[]', 0, '2019-09-24 09:48:42', '2019-09-24 09:48:42', '2020-09-24 15:18:42'),
 ('6a407da82bbd6053703e09a560fc0b6be67675b11e80bfaee3bef7b1e56d65c546bff9387fb5340a', NULL, 8, NULL, '[]', 0, '2019-09-24 09:35:05', '2019-09-24 09:35:05', '2020-09-24 15:05:05'),
 ('70434cbda4f10dec8f4e3511f06c924f24156ab92531749e5795ffd9064a0a077a123193ddb56f5f', NULL, 8, NULL, '[]', 0, '2019-10-03 21:44:42', '2019-10-03 21:44:42', '2020-10-04 03:14:42'),
+('71c33c80e88feeb2a5b9862ccd72c62a66834e480a3e99a7277b732cb4080fd55319172785b99455', NULL, 8, NULL, '[]', 0, '2019-10-07 16:13:27', '2019-10-07 16:13:27', '2020-10-07 21:43:27'),
 ('71d6116dd23b12a6a0a548b66775eea95df457b90d320176eedcd9340c250e477e18f1840986f49b', NULL, 8, NULL, '[]', 0, '2019-09-28 08:30:57', '2019-09-28 08:30:57', '2020-09-28 14:00:57'),
 ('727ee48d40de4009a47be017b92ebdddf8aca859f62b42215bd3dd62950329ba946d65e1863fa3ba', NULL, 8, NULL, '[]', 0, '2019-10-02 10:27:08', '2019-10-02 10:27:08', '2020-10-02 15:57:08'),
 ('7291ab35883a8ddc49ee57276831215aea202b9d965e4a150c42822a18ffb6f8383c755fcf66bf94', NULL, 8, NULL, '[]', 0, '2019-09-24 12:21:08', '2019-09-24 12:21:08', '2020-09-24 17:51:08'),
 ('75bdf824f8f524094fe6dbf199edc02bce00f6ef101b35527a462c1efa21504509c6e00f5dfc5b99', NULL, 8, NULL, '[]', 0, '2019-09-24 09:39:20', '2019-09-24 09:39:20', '2020-09-24 15:09:20'),
 ('7899c6f2fd1bb12ffffa6c648df5559029c5a90faa20ecf8fdf5e670914adae5a3936167dc15ece0', NULL, 8, NULL, '[]', 0, '2019-09-27 10:54:31', '2019-09-27 10:54:31', '2020-09-27 16:24:31'),
 ('790a636f71b33bbcda2ca05994d640204eb9576cb601eaf841011d23f780409878caa6a27d62cada', NULL, 8, NULL, '[]', 0, '2019-09-24 12:30:55', '2019-09-24 12:30:55', '2020-09-24 18:00:55'),
+('7bf35b05371af6b54fcaff8206883568d8b18b88dfc2552bc8374dd1d20f0f20cc8fcaea6bb02bb0', NULL, 8, NULL, '[]', 0, '2019-10-07 16:56:38', '2019-10-07 16:56:38', '2020-10-07 22:26:38'),
 ('7c92cbd426189addcb0e675bce253e6ca32c0154cd90dd2d65d1cae83573d737b5241c9e4e3e9fc7', NULL, 8, NULL, '[]', 0, '2019-09-24 09:30:23', '2019-09-24 09:30:23', '2020-09-24 15:00:23'),
 ('81be8d02e3f363b1670c319a08c7567af740b00e166c2f4cd4adab64950d0501dcb9f1eda711e2c0', NULL, 8, NULL, '[]', 0, '2019-10-03 03:59:00', '2019-10-03 03:59:00', '2020-10-03 09:29:00'),
 ('8290f50717620ceef9f9bdadc9986b917a109440cdc6996f382642f500b9580c3c727c18e152c4bb', NULL, 8, NULL, '[]', 0, '2019-09-27 15:37:37', '2019-09-27 15:37:37', '2020-09-27 21:07:37'),
@@ -478,6 +567,8 @@ INSERT INTO `oauth_access_tokens` (`id`, `user_id`, `client_id`, `name`, `scopes
 ('d611a7f5eead4cfd872a5d7216479c46363e29f34535c7861ad8dbe8ef3e2f9d8a09b42f197243fb', NULL, 8, NULL, '[]', 0, '2019-09-27 15:52:00', '2019-09-27 15:52:00', '2020-09-27 21:22:00'),
 ('d76cd9b50b3aac6372e419e5211b5f8b1c14b5c2e30bc68b29a4b5318080c2c8268d8d665885a374', NULL, 8, NULL, '[]', 0, '2019-09-24 09:30:52', '2019-09-24 09:30:52', '2020-09-24 15:00:52'),
 ('d7c961626f0638de3224121b4c20cbdd7ceaca519a2d27035923383cc101832f05c0e93fe0361d6e', NULL, 8, NULL, '[]', 0, '2019-10-03 08:06:09', '2019-10-03 08:06:09', '2020-10-03 13:36:09'),
+('d93c5da5202c08fb772021f0947141903a037f04322f78e5bb18b948fe077efba289c1be310603c7', NULL, 8, NULL, '[]', 0, '2019-10-07 09:20:16', '2019-10-07 09:20:16', '2020-10-07 14:50:16'),
+('d9faf4e757cc8b8580fce84f437ec31a070f5111903de2b4504222e5fd19ccf680845d4d96b8bbdb', NULL, 8, NULL, '[]', 0, '2019-10-07 15:44:43', '2019-10-07 15:44:43', '2020-10-07 21:14:43'),
 ('de3a9350129b9590c32aa229aae51e599f5fc670a9038c06720933d57e6a66f6f2a2f4c6c2c36ba2', NULL, 8, NULL, '[]', 0, '2019-09-24 09:42:25', '2019-09-24 09:42:25', '2020-09-24 15:12:25'),
 ('df3c05d93640bca0dae98260226b690467547d3d84d705a40a55108dd302e4f423cc97cfe94e0c51', NULL, 8, NULL, '[]', 0, '2019-09-24 10:36:00', '2019-09-24 10:36:00', '2020-09-24 16:06:00'),
 ('e3c3a73ed7053101d3fb031fc12b18678ddbc1ae32090c4dbd4056ebc3fcfd85de707471c6e76e7b', NULL, 8, NULL, '[]', 0, '2019-09-24 10:03:56', '2019-09-24 10:03:56', '2020-09-24 15:33:56'),
@@ -487,6 +578,7 @@ INSERT INTO `oauth_access_tokens` (`id`, `user_id`, `client_id`, `name`, `scopes
 ('ea4874673222b31bba59aaca104a2e3a0eaf81832e1cd36eea5209c92310574aae9a130e3ac34c64', NULL, 8, NULL, '[]', 0, '2019-09-27 15:47:42', '2019-09-27 15:47:42', '2020-09-27 21:17:42'),
 ('eb398f7416b01007aa403aa620176e32a8bbaba58e46401c5dd44c50a3f3f8dbb0f9c395f85f8380', NULL, 8, NULL, '[]', 0, '2019-10-03 06:37:03', '2019-10-03 06:37:03', '2020-10-03 12:07:03'),
 ('ebcb652f0a3334a4cfec94c29924577cf7c7fc5fa3b44c3ddde71d1dce53716325c37e224ff08312', NULL, 8, NULL, '[]', 0, '2019-09-27 10:05:48', '2019-09-27 10:05:48', '2020-09-27 15:35:48'),
+('ec70599eaeba6bde9ce273b0e5eac4e432de86692db59c57508714aba68919a1964eebfabf72ae22', NULL, 8, NULL, '[]', 0, '2019-10-07 15:12:17', '2019-10-07 15:12:17', '2020-10-07 20:42:17'),
 ('ec9869e70466713cb7af92f87fb0d4f4684d948e7f07e3374e528c7f99f9a719415546e1c9315c87', NULL, 8, NULL, '[]', 0, '2019-10-03 04:29:43', '2019-10-03 04:29:43', '2020-10-03 09:59:43'),
 ('ef72c5ccc35cdc8a8acd86c8c220fb74f1e2e99f96cde1c6b9287ce67a97af781dc48fc3ad0d23e3', NULL, 8, NULL, '[]', 0, '2019-09-27 23:57:37', '2019-09-27 23:57:37', '2020-09-28 05:27:37'),
 ('f059fadfdf94524c377e16b437ade888232002a7e698c31dca1d128b1075afd961b2f632070c827c', NULL, 8, NULL, '[]', 0, '2019-09-27 09:34:39', '2019-09-27 09:34:39', '2020-09-27 15:04:39'),
@@ -592,6 +684,7 @@ INSERT INTO `oauth_refresh_tokens` (`id`, `access_token_id`, `revoked`, `expires
 ('239dd7a98ed18e8b3e27931a5f2933a816a1ff3e88d95abd102db6e668c21dce33867d7553b40e20', 'de3a9350129b9590c32aa229aae51e599f5fc670a9038c06720933d57e6a66f6f2a2f4c6c2c36ba2', 0, '2020-09-24 15:12:26'),
 ('27420b30c89f332c5a657eb82a6841b954d47039cca51293dcf2ef259f2f00ddbb3f0b917ad5d454', '513682aa07e894ef61692c98ad07153ba9565f311f2df06b4bc64c8c837952f77619c66e6dd01351', 0, '2020-09-28 20:04:03'),
 ('2b88d04516a239a6cf576580d72911630f0654563a6ba53c1aa241c311cc00b28a5e4b106c76e3e0', 'fb56313ec372be2cf1e657eda9a82dd6aa63cd2b75175249d33331aac2658d38e5d10a66417c47b5', 0, '2020-10-03 13:35:51'),
+('2c4adb0c1f6cd33da513ebda3f90ec0a1fc97735ce8a6b6f252696189f832161e7ae148da90dde1d', '7bf35b05371af6b54fcaff8206883568d8b18b88dfc2552bc8374dd1d20f0f20cc8fcaea6bb02bb0', 0, '2020-10-07 22:26:38'),
 ('2e67c494ec0f348b3e2cfc3f7e1e0e02917e40893f7b47d78a5d9a41c44a803ab82e854b52e76243', '2ce16cb220a3b59ca51a51635216ef140042452bdb7f5f752e2a1ee4ec68a5b344b3db7620231e94', 0, '2020-10-01 13:53:34'),
 ('30863b480c32d9e2cd6ccea67cc7f80f4da4bbb5cf79b041f520a8aaac72628b793aaae7f063958b', '51b1f1254869f562ee6818ba5038f25f34a0ccd024c0dc1e302d5c3e27885bc5b0d94cac477568e2', 0, '2020-09-24 15:05:39'),
 ('33edb24766b902091fc3f64adba75dc2e2a82c32ba02415187b221194e36f3bf4147c1938d974c12', '0c048c5a6c1718d712012bf8e0e12c7c21b86786169f6684a98c1a3c1abedf05292cc5943c6bf15a', 0, '2020-09-27 18:04:58'),
@@ -621,8 +714,10 @@ INSERT INTO `oauth_refresh_tokens` (`id`, `access_token_id`, `revoked`, `expires
 ('5a424b1122e85d3a7b5bf9d6c4c16d3a27eaad74c5a3f34f67f1a38ffb818efb6265eb454b05b40b', '38aab38b943aaf8fb2839804b4cb23d7a9a7ced1221326d2cef8c857a94fdf2a1ff36502d781f602', 0, '2020-10-03 14:13:18'),
 ('5bdece6ad08c739be3c94920b78276648c63a552ff5128dafec06020bcf82a130d4887e56fec0a3e', '790a636f71b33bbcda2ca05994d640204eb9576cb601eaf841011d23f780409878caa6a27d62cada', 0, '2020-09-24 18:00:55'),
 ('62fb95378c238aa3a47d82adf6717ea2072d1ebaed62479d4b92d9b4c0257a0153bc66a70babc815', '430d1abb2d29163eb2cced9106581fde1f12d6e074c583f504f31512c6a82edf39092ccd11cf1556', 0, '2020-09-27 16:18:13'),
+('65c77a3d01e20b753c4df4d82a51115c99dfc32945af00087f81af2606eed68e4454c575f178881f', 'ec70599eaeba6bde9ce273b0e5eac4e432de86692db59c57508714aba68919a1964eebfabf72ae22', 0, '2020-10-07 20:42:18'),
 ('66f5033e1cc3db13c4979bc035298ece910ff1c2e65e662aef686af1cdf79e14430510bc086820c8', '95cd617801ef7c27c5acd5380325077af94ab270a71233216bba038f2d91d6f1c71709d9fb39372b', 0, '2020-09-27 16:40:51'),
 ('678487e650517995e06176991b99f814812a7c1e2815bc6a0fd1e4a44e27df81a3a1a73159fef1db', '3db1a23e8c2cedef8b68342a493980708610b95dbec8cfdb2232edce29bb3a72f00f3a7e8cd44949', 0, '2020-09-24 15:54:33'),
+('67b969e2506aa8cc0f1420cde64b9bcdd346c43a3e0b53c970bce341dcccf966f1ab1e79a93b16f2', '71c33c80e88feeb2a5b9862ccd72c62a66834e480a3e99a7277b732cb4080fd55319172785b99455', 0, '2020-10-07 21:43:28'),
 ('68e6b43a880f2290447fc7f8f8a8b7650b4f0221b9c7bac6a8f94c38b7a5c9adc153b690d1683bb8', '3665899882e71b84690c88d19104fba4bedc69892305f577323d4e8a2ba9de9c1ae6df26042596c3', 0, '2020-09-27 16:41:20'),
 ('6952b5076633cb4927faa983d84974b8de3f784df1fcd41a5ef0f9fc4249bed128830c0bca1a5823', 'e3cd3fabc9ec920970fa9e67e63b517712372ffe7a08eea634304f0e18ad5931ffd23f8d4ae676a4', 0, '2020-09-27 16:26:59'),
 ('6a887bc11deab535795247f45bbdb308709486ac15cbfd22bfee668cd9134d6aaefa7b91640beddd', '61909d18a081cc2e817e3e619245966956d739350369c090dc06ba0e9ba29106f38b4c9e9fb0b153', 0, '2020-09-27 15:35:57'),
@@ -674,6 +769,7 @@ INSERT INTO `oauth_refresh_tokens` (`id`, `access_token_id`, `revoked`, `expires
 ('cf1cecd8925aa1cb76da4647fad8b7b9685a329950d3d40d3f1e162f26452a1a98b8a97b1e9aa882', 'ea4874673222b31bba59aaca104a2e3a0eaf81832e1cd36eea5209c92310574aae9a130e3ac34c64', 0, '2020-09-27 21:17:42'),
 ('cf85b3b47690a2eeacd59b2157005bb5e890b1cc5678b3870dc6887f19d4c680bdab2104c3ecd4b9', '8e865e109093043bb5a94e609c5e3f2d14982caedd866831df543e308d27ffa0dd61aaee8e03f028', 0, '2020-09-24 15:04:04'),
 ('cffbcc73c47a52a21901bea085b229e5f604e27fa9f58a70edf129414df734443e95dc46112c96c2', '82f33d298b00d7a51c73082fc1c967bfd552aaf47ea7f8ec2f1cd689fc2e972f883f26a581181209', 0, '2020-09-29 13:21:12'),
+('d0354fad1cc323b77178b3375cddb6bffbad959e9479f25e0af24ff7b5a23e9a8b82c204f62a0b91', 'd93c5da5202c08fb772021f0947141903a037f04322f78e5bb18b948fe077efba289c1be310603c7', 0, '2020-10-07 14:50:17'),
 ('d4257da93ee864690d62b406c49d6b9b869fcf67e8d371a9e84176e3ce52dbf61f94bbaacfa5a1a9', '8f3533e1fcb6094f095b8eeb47c6183c29cb0226328878837b84eadc9aebd699daa4c2202192df97', 0, '2020-09-27 15:48:56'),
 ('d42d98c179713a9e3519bf9ab5e23a5c41ae561c693e5895ea386246500acfb5b6eb958c5f9d235e', 'e3c3a73ed7053101d3fb031fc12b18678ddbc1ae32090c4dbd4056ebc3fcfd85de707471c6e76e7b', 0, '2020-09-24 15:33:56'),
 ('d9c10ff8c07624a2d691daa50b8121fa0ea60572b02e80b5d8debb6dc4a719ff918855f38153876e', '0d1e46e4e01366f54f16713732098fcf9d1d5f382e941e8caea0b262c51b7d3bbbb2d7f154d04e80', 0, '2020-09-27 16:13:29'),
@@ -683,6 +779,7 @@ INSERT INTO `oauth_refresh_tokens` (`id`, `access_token_id`, `revoked`, `expires
 ('de310a31a128653771210b1d79a137f45e46e76c9470a252201fe61538927020d04480a7922917b2', '4a98cbd9536e8cd9f02034105ab3ff7a079d47ddb8878d77b5f9d1e07cfebcf05df5ddc74c7c0de8', 0, '2020-09-24 15:02:39'),
 ('e00b81d41d60b2fd67c2c97be30a440eb4616d9d06e3ffcc894fc9b329511e2e2a73ee80f12a21a9', '3dccd79624eeaf8fab3cffb476548cdb1f7dae9d87f22faa35998a702f28c1270e159a58035edd12', 0, '2020-09-24 15:52:11'),
 ('e01ed2eb2439a680d50132e00148ddc6eaf4f0f34666a315ed2b599d63fb10944b3cb2e2766d1bc3', '93e69287460d301136a7c3cccbd78e848b509cb3bf61d9d2d14273b62d89d2778e8995dcaa1da434', 0, '2020-09-24 15:00:45'),
+('e0c38f0579363e4ceb776c74fc28cffc3f6266df5ea7eae9fb9360dce3ace3115e67a38a832807b5', 'd9faf4e757cc8b8580fce84f437ec31a070f5111903de2b4504222e5fd19ccf680845d4d96b8bbdb', 0, '2020-10-07 21:14:43'),
 ('e3fa4d13d281a416f990790cfe5942f56e75e000954e7154a9058be1251d8d9c120b63413c0ec903', 'a855fd9c3e04444dec49bb40cbce77ca25637fab3d3d10a17af15cc7e448d4125b1f51f40d309bb9', 0, '2020-09-24 16:05:12'),
 ('e8989c7c4d085fc3d501a20958b9c032810696e1ae37e7e724ef25b7feced2e2b3886c1ad99c3f24', '491c487c72b4715f40a02fb51a3809a236681dcbec213153a9da5d8c881f3cbf591c7d1dd481cf40', 0, '2020-09-30 18:52:59'),
 ('eb3c935fb7bcc0fa0577c006908767698d9090e7c5c3de8c0e6e0116e8f2e33f326837c71637a98f', 'a39d88df72e6cdfc369dc6d57c98a304872c67915fef509980df2123269e7bf3ac337e310d65880c', 0, '2020-10-04 03:19:25'),
@@ -734,7 +831,9 @@ CREATE TABLE `pharmacy` (
 
 INSERT INTO `pharmacy` (`pharmacy_id`, `manager_id`, `pharmacy_name`, `city`, `state`, `pincode`, `created_at`, `address`, `phone`, `verified`, `lat`, `longitude`, `doc1`, `doc2`) VALUES
 (1, 25, 'Rajpreet Singh', 'Mumbai', '', '400080', '2019-10-03 15:57:31', 'Building Number 4, Flat Number 28, B-wing, Vaishali Park, Vaishali Nagar, Mulund West,, Balrajeshwar Road', 'rajpreet24033@gmail.com', 0, '', '', 'Rajpreet Singh25doc1.pdf', 'Rajpreet Singh25doc2.pdf'),
-(2, 28, 'Rajpreet Singh', 'Mumbai', '', '400080', '2019-10-06 18:11:33', 'Building Number 4, Flat Number 28, B-wing, Vaishali Park, Vaishali Nagar, Mulund West,, Balrajeshwar Road', 'rajpreet24033@gmail.com', 1, '', '', 'Rajpreet Singh28doc1.pdf', 'Rajpreet Singh28doc2.pdf');
+(2, 28, 'Rajpreet Singh', 'Mumbai', '', '400080', '2019-10-06 18:11:33', 'Building Number 4, Flat Number 28, B-wing, Vaishali Park, Vaishali Nagar, Mulund West,, Balrajeshwar Road', 'rajpreet24033@gmail.com', 1, '', '', 'Rajpreet Singh28doc1.pdf', 'Rajpreet Singh28doc2.pdf'),
+(3, 29, 'Rajpreet Singh', 'Mumbai', '', '400080', '2019-10-07 15:40:10', 'Building Number 4, Flat Number 28, B-wing, Vaishali Park, Vaishali Nagar, Mulund West,, Balrajeshwar Road', 'rajpreet24033@gmail.com', 0, '', '', 'Rajpreet Singh29doc1.pdf', 'Rajpreet Singh29doc2.pdf'),
+(4, 29, 'Rajpreet Singh', 'Mumbai', '', '400080', '2019-10-07 15:40:58', 'Building Number 4, Flat Number 28, B-wing, Vaishali Park, Vaishali Nagar, Mulund West,, Balrajeshwar Road', 'rajpreet24033@gmail.com', 0, '', '', 'Rajpreet Singh29doc1.pdf', 'Rajpreet Singh29doc2.pdf');
 
 -- --------------------------------------------------------
 
@@ -992,7 +1091,8 @@ INSERT INTO `users` (`user_id`, `role_id`, `name`, `first_name`, `middle_name`, 
 (25, 4, 'Pharmacy', '', '', '', '2019-10-06 18:00:10', '', '', 0, 'p@pp.com', '$2y$10$TRdlf3zimcTKbmda8RQfu.DFkCkrJsoCTQX93HNecoX.ZXEWgSrG2', '', '', '', 1),
 (26, 2, 'Athul', '', '', '', '2019-10-04 03:16:35', 'Building Number 4, Flat Number 28, B-wing, Vaishali Park, Vaishali Nagar, Mulund West,, Balrajeshwar Road', 'rajpreet24033@gmail.com', 0, 'a@b.com', '$2y$10$Ux9h3rXuEkeftsmBNLjMz.D74uSe/XphDYUylHL8so9akB5ymu68u', 'Mumbai', '', '400080', 1),
 (27, 3, 'Athul', '', '', '', '2019-10-04 03:18:15', '', '', 0, 'a@c.com', '$2y$10$44eLiPMDxcEXUJBDDdZUNuQqeDsEHwAVRoYNuPbWMn/x3Fax3yjwG', '', '', '', 1),
-(28, 4, 'Pharmacy', '', '', '', '2019-10-06 18:11:32', '', '', 0, 'p@ppp.com', '$2y$10$GbgYaHqitc/g7SrF0vZi7O5lFWlcfogHqWfpOxFxMlmD05YlSKKK6', '', '', '', 1);
+(28, 4, 'Pharmacy', '', '', '', '2019-10-06 18:11:32', '', '', 0, 'p@ppp.com', '$2y$10$GbgYaHqitc/g7SrF0vZi7O5lFWlcfogHqWfpOxFxMlmD05YlSKKK6', '', '', '', 1),
+(29, 5, 'BB', '', '', '', '2019-10-07 21:44:05', '', '', 0, 'bb@bb.com', '$2y$10$NEM51vyxKKpRoQM0wKmKTu/LpWLj.KpF37Clax4htf/r44tBJKPoW', '', '', '', 1);
 
 --
 -- Indexes for dumped tables
@@ -1014,13 +1114,32 @@ ALTER TABLE `awards_and_achievement`
   ADD KEY `fk_doc_id_1` (`doctor_id`);
 
 --
--- Indexes for table `blood_bank`
+-- Indexes for table `bloodbank`
 --
-ALTER TABLE `blood_bank`
-  ADD PRIMARY KEY (`blood_bank_id`),
-  ADD UNIQUE KEY `license_no` (`license_no`),
-  ADD UNIQUE KEY `address` (`address`),
-  ADD KEY `Blood_Bank_fk0` (`manager_id`);
+ALTER TABLE `bloodbank`
+  ADD PRIMARY KEY (`bloodbank_id`),
+  ADD KEY `fk_user_random` (`manager_id`);
+
+--
+-- Indexes for table `bloodtype`
+--
+ALTER TABLE `bloodtype`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `blood_map`
+--
+ALTER TABLE `blood_map`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_rand` (`bloodtype_id`),
+  ADD KEY `fk_rand_1` (`bloodbank_id`);
+
+--
+-- Indexes for table `campaign`
+--
+ALTER TABLE `campaign`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_ran` (`bloodbank_id`);
 
 --
 -- Indexes for table `clinic`
@@ -1244,10 +1363,28 @@ ALTER TABLE `awards_and_achievement`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `blood_bank`
+-- AUTO_INCREMENT for table `bloodbank`
 --
-ALTER TABLE `blood_bank`
-  MODIFY `blood_bank_id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `bloodbank`
+  MODIFY `bloodbank_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `bloodtype`
+--
+ALTER TABLE `bloodtype`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `blood_map`
+--
+ALTER TABLE `blood_map`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `campaign`
+--
+ALTER TABLE `campaign`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `clinic`
@@ -1343,7 +1480,7 @@ ALTER TABLE `oauth_personal_access_clients`
 -- AUTO_INCREMENT for table `pharmacy`
 --
 ALTER TABLE `pharmacy`
-  MODIFY `pharmacy_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `pharmacy_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `research_and_publication`
@@ -1391,7 +1528,7 @@ ALTER TABLE `timings`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- Constraints for dumped tables
@@ -1411,10 +1548,23 @@ ALTER TABLE `awards_and_achievement`
   ADD CONSTRAINT `fk_doc_id_1` FOREIGN KEY (`doctor_id`) REFERENCES `doctor` (`doctor_id`);
 
 --
--- Constraints for table `blood_bank`
+-- Constraints for table `bloodbank`
 --
-ALTER TABLE `blood_bank`
-  ADD CONSTRAINT `Blood_Bank_fk0` FOREIGN KEY (`manager_id`) REFERENCES `users` (`user_id`);
+ALTER TABLE `bloodbank`
+  ADD CONSTRAINT `fk_user_random` FOREIGN KEY (`manager_id`) REFERENCES `users` (`user_id`);
+
+--
+-- Constraints for table `blood_map`
+--
+ALTER TABLE `blood_map`
+  ADD CONSTRAINT `fk_rand` FOREIGN KEY (`bloodtype_id`) REFERENCES `bloodtype` (`id`),
+  ADD CONSTRAINT `fk_rand_1` FOREIGN KEY (`bloodbank_id`) REFERENCES `bloodbank` (`bloodbank_id`);
+
+--
+-- Constraints for table `campaign`
+--
+ALTER TABLE `campaign`
+  ADD CONSTRAINT `fk_ran` FOREIGN KEY (`bloodbank_id`) REFERENCES `bloodbank` (`bloodbank_id`);
 
 --
 -- Constraints for table `clinic`

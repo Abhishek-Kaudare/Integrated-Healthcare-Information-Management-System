@@ -141,6 +141,18 @@ class WebAuth extends Controller
                         Session::put('id', $user->user_id);
                         return redirect()->route('Pharmacy.index');
                     }
+                    
+                    if($user->blood()){
+                        $data = WebAuth::getAccessToken($request);
+                        $data1[] =  (array) $data;
+                        $access_token = ($data1[0]['original']['data']['data']['access_token']);
+                        $refresh_token = ($data1[0]['original']['data']['data']['refresh_token']);
+                        Session::put('access', $access_token);
+                        Session::put('refresh', $refresh_token);
+                        Session::put('role', $user->role_id);
+                        Session::put('id', $user->user_id);
+                        return redirect()->route('BloodBank.index');
+                    }
 
 
 

@@ -289,6 +289,53 @@ Route::post('/checkoutmedPOST', [
 
 
 
+// Blood Bank
+
+Route::get('/BloodBank', [
+    'uses'=>'BloodBank@index',
+    'as'=>'BloodBank.index'
+]);
+
+
+Route::get('/BloodBankCompleteRegistration', [
+    'uses'=>'BloodBank@BloodBankCompleteRegistration',
+    'as'=>'BloodBank.BloodBankCompleteRegistration'
+]);
+
+Route::post('/BloodBankCompleteRegistration', [
+    'uses'=>'BloodBank@addRegisterDetials',
+    'as'=>'BloodBank.BloodBankCompleteRegistrationPOST'
+]);
+
+Route::get('/addblood', [
+    'uses'=>'BloodBank@addblood',
+    'as'=>'BloodBank.addblood'
+]);
+
+Route::get('/checkoutblood', [
+    'uses'=>'BloodBank@checkoutblood',
+    'as'=>'BloodBank.checkoutblood'
+]);
+
+Route::post('/addbloodPOST', [
+    'uses'=>'BloodBank@addbloodPOST',
+    'as'=>'BloodBank.addbloodPOST'
+]);
+
+Route::post('/checkoutbloodPOST', [
+    'uses'=>'BloodBank@checkoutbloodPOST',
+    'as'=>'BloodBank.checkoutbloodPOST'
+]);
+
+Route::get('/addnewcam', [
+    'uses'=>'BloodBank@addnewcam',
+    'as'=>'BloodBank.addnewcam'
+]);
+Route::post('/addcampPOST', [
+    'uses'=>'BloodBank@addcampPOST',
+    'as'=>'BloodBank.addcampPOST'
+]);
+
 
 
 
@@ -335,6 +382,14 @@ Route::get('/verifyp', [
 
 Route::get('/acceptPharmacy/{docid}/{userid}','ADMIN@acceptPharmacy');
 Route::get('/rejectPharmacy/{docid}/{userid}','ADMIN@rejectPharmacy');
+
+Route::get('/verifyb', [
+    'uses'=>'ADMIN@verifyBloodBank',
+    'as'=>'verifyBloodBank'
+]);
+
+Route::get('/acceptBloodBank/{docid}/{userid}','ADMIN@acceptBloodBank');
+Route::get('/rejectBloodBank/{docid}/{userid}','ADMIN@rejectBloodBank');
 
 
 

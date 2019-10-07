@@ -1,6 +1,6 @@
 @extends('admin_layout.master')
 
-@section('sidebarOptions')
+ @section('sidebarOptions')
     <nav class="sidebar-nav">
       <ul id="sidebarnav" class="p-t-30">
     
@@ -16,12 +16,12 @@
             aria-expanded="false"><i class="mdi mdi-receipt"></i><span class="hide-menu">VERIFY CLINIC</span></a>
         </li>       
 
+            <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark" href="{{ url('verifyd') }}"
+            aria-expanded="false"><i class="mdi mdi-receipt"></i><span class="hide-menu">VERIFY DOCTOR</span></a>
+        </li>       
 
     <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark" href="{{ url('verifyp') }}"
             aria-expanded="false"><i class="mdi mdi-receipt"></i><span class="hide-menu">VERIFY PHARMACY</span></a>
-        </li>       
-    <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark" href="{{ url('verifyb') }}"
-            aria-expanded="false"><i class="mdi mdi-receipt"></i><span class="hide-menu">VERIFY BLOOD BANK</span></a>
         </li>       
 
       </ul>
@@ -47,7 +47,7 @@
                             <table id="zero_config" class="table table-striped table-bordered">
                                 <thead>
                                     <tr>
-                                
+                      
                                         <th>Name</th>
                                         <th>City</th>
                                         <th>State</th>
@@ -74,9 +74,9 @@
                                         <td>{{$item->phone}}</td>
                                     <td id=""><a class="btn btn-primary" href="Doc1/{{$item->doc1}}">Doc 1</a></td>
                                         <td id=""><a class="btn btn-primary" href="Doc2//{{$item->doc2}}">Doc 2</a></td>
-                                    <td id=""><a class="btn btn-success" href="acceptDoctor/{{$item->doctor_id}}/{{$item->user_id}}">Accept Doctor</a></td>
-                                        <td id=""><a class="btn btn-danger" href="rejectDoctor/{{$item->doctor_id}}/{{$item->user_id}}">Reject Doctor</a></td>
-                                            
+                                    <td id=""><a class="btn btn-success" href="acceptBloodBank/{{$item->bloodbank_id}}/{{$item->user_id}}">Accept Blood Bank</a></td>
+                                        <td id=""><a class="btn btn-danger" href="rejectBloodBank/{{$item->bloodbank_id}}/{{$item->user_id}}">Reject Blood Bank</a></td>
+                                             
                                         
                                     </tr>  
                                     @endforeach

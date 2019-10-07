@@ -132,7 +132,56 @@ class ADMIN extends Controller
         return redirect()->route('verifypharmacy');      
     }
 
+    public function verifyBloodBank(){
+        
+        $query="SELECT u.*,d.* FROM users u JOIN bloodbank d  ON u.user_id = d.manager_id AND u.auth=2 ";
+        $requests = DB::select($query);
+        return view('admin.verifyb')->with('values',$requests); 
+    }
+    
 
+    public function acceptBloodBank($bloodbank,$userid){
+        $query2 = "UPDATE users SET auth = 1 WHERE user_id = $userid";
+        DB::select($query2);      
+        DB::statement("UPDATE bloodbank SET verified=1 WHERE bloodbank_id=$bloodbank");
+        
+
+        $query = "INSERT INTO `blood_map`(`id`, `bloodtype_id`, `bloodbank_id`, `quantity`) 
+        VALUES (null,1,$bloodbank,0)";
+        DB::select($query);      
+        $query = "INSERT INTO `blood_map`(`id`, `bloodtype_id`, `bloodbank_id`, `quantity`) 
+        VALUES (null,2,$bloodbank,0)";
+        DB::select($query);      
+        $query = "INSERT INTO `blood_map`(`id`, `bloodtype_id`, `bloodbank_id`, `quantity`) 
+        VALUES (null,3,$bloodbank,0)";
+        DB::select($query);      
+        $query = "INSERT INTO `blood_map`(`id`, `bloodtype_id`, `bloodbank_id`, `quantity`) 
+        VALUES (null,4,$bloodbank,0)";
+        DB::select($query);      
+        $query = "INSERT INTO `blood_map`(`id`, `bloodtype_id`, `bloodbank_id`, `quantity`) 
+        VALUES (null,5,$bloodbank,0)";
+        DB::select($query);      
+        $query = "INSERT INTO `blood_map`(`id`, `bloodtype_id`, `bloodbank_id`, `quantity`) 
+        VALUES (null,6,$bloodbank,0)";
+        DB::select($query);      
+        $query = "INSERT INTO `blood_map`(`id`, `bloodtype_id`, `bloodbank_id`, `quantity`) 
+        VALUES (null,7,$bloodbank,0)";
+        DB::select($query);      
+        $query = "INSERT INTO `blood_map`(`id`, `bloodtype_id`, `bloodbank_id`, `quantity`) 
+        VALUES (null,8,$bloodbank,0)";
+        DB::select($query);      
+
+        return redirect()->route('verifyBloodBank');      
+    }
+    
+    public function rejectBloodBank($bloodbank,$userid){
+        $query2 = "UPDATE users SET auth = 3 WHERE user_id = $userid";
+        DB::select($query2);            
+        return redirect()->route('verifyBloodBank');      
+    }
+
+
+    
 
     
 
