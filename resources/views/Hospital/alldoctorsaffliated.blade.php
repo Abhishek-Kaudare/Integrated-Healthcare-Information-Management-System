@@ -23,21 +23,26 @@
         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark" href="{{ url('beds') }}"
             aria-expanded="false"><i class="mdi mdi-receipt"></i><span class="hide-menu">BEDS</span></a>
         </li>
-        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark" href="{{ url('alldoctorsaffliated') }}"
-            aria-expanded="false"><i class="mdi mdi-receipt"></i><span class="hide-menu">ALL DOCTORS</span></a>
-        </li>
+     
         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark" href="{{ url('doctorAttendance') }}"
             aria-expanded="false"><i class="mdi mdi-receipt"></i><span class="hide-menu">DOCTORS ATTENDANCE</span></a>
         </li>
-      
+        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark" href="{{ url('addDoctor') }}"
+            aria-expanded="false"><i class="mdi mdi-receipt"></i><span class="hide-menu">ADD DOCTOR</span></a>
+        </li>
       </ul>
     </nav>
 @endsection
 
 
 
-@section('content')
 
+@section('content')
+    
+
+
+<div class="login-page">
+         
     <div class="container-fluid">
         <!-- ============================================================== -->
         <!-- Start Page Content -->
@@ -56,23 +61,59 @@
                                     <tr>
                                 
                                         <th>Name</th>
+                                        <th>City</th>
+                                        <th>State</th>
+                                        <th>pincode</th>
+                                        <th>address</th>
+                                        <th>phone 1 </th>
+                                        <th>doc1</th>
+                                        <th>doc2</th>
+                                        <th>Timings</th>
+                                        <th>Remove</th>
                                         
-                                        <th>Work Experience</th>
-                                        <th>View Profile</th>
-                               
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($data as $item)
-                                    @if($item->auth==1)
-                                    <tr>    
-                                        <td>{{$item->name}}</td>
-                                        <td>{{$item->work_exp}}</td>
+                                    <tr>
                                         
-                                    <td id=""><a class="btn btn-primary" href="AllDoctor/{{$item->doctor_id}}/{{$item->user_id}}">View Profile</a></td>
+                                        
+                                        <td>{{$item->name}}</td>
+                                        <td>{{$item->city}}</td>
+                                        <td>{{$item->state}}</td>
+                                        <td>{{$item->pincode}}</td>
+                                        <td>{{$item->address}}</td>
+                                        <td>{{$item->phone}}</td>
+                                    <td id=""><a class="btn btn-primary" href="Doc1/{{$item->doc1}}">Doc 1</a></td>
+                                        <td id=""><a class="btn btn-primary" href="Doc2//{{$item->doc2}}">Doc 2</a></td>
+                                        <td>
+                                            @if($item->monin !=null)
+                                            MONDAY : {{$item->monin}} - {{$item->monout}}
+                                            @endif
+                                            @if($item->tuesin !=null)
+                                            TUESDAY : {{$item->tuesin}} - {{$item->tuesout}}
+                                            @endif
+                                            @if($item->wedin !=null)
+                                            WEDNESDAY : {{$item->wedin}} - {{$item->wedout}}
+                                            @endif
+                                            @if($item->thurin !=null)
+                                            THURSDAY : {{$item->thurin}} - {{$item->thurout}}
+                                            @endif
+                                            @if($item->friin !=null)
+                                            FRIDAY : {{$item->friin}} - {{$item->friout}}
+                                            @endif
+                                            @if($item->satin !=null)
+                                            SATURDAY : {{$item->satin}} - {{$item->satout}}
+                                            @endif
+                                            @if($item->sunin !=null)
+                                            SUNDAY : {{$item->sunin}} - {{$item->sunout}}
+                                            @endif
 
+                                        </td>
+                                        <td id=""><a class="btn btn-danger" href="removeDoctor/{{$item->doctor_id}}/{{$item->user_id}}">Remove Doctor</a></td>
+                                            
+                                        
                                     </tr>  
-                                    @endif
                                     @endforeach
                                 </tbody>
                                
@@ -83,6 +124,5 @@
                 </div>
             </div>
         </div>
-    </div>
-
+    </div>     
 @endsection

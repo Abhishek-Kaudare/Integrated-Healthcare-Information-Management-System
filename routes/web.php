@@ -146,6 +146,16 @@ Route::post('/dischargepatient', [
 ]);
 
 
+Route::get('/alldoctorsaffliated', [
+    'uses'=>'Hospital@alldoctorsaffliated',
+    'as'=>'Hospital.alldoctorsaffliated'
+]);
+
+Route::get('/removeDoctor/{docid}/{userid}','Hospital@removeDoctor');
+
+
+
+
 // Doctor
 Route::get('/Doctor', [
     'uses'=>'Doctor@index',
@@ -241,6 +251,7 @@ Route::post('/settimings', [
     'uses'=>'Doctor@settimings',
     'as'=>'Doctor.settimings'
 ]);
+
 
 
 // Pharmacy

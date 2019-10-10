@@ -42,10 +42,12 @@
 
 @endsection
      
-    @section('sidebarOptions')
-     <nav class="sidebar-nav">
-         <ul id="sidebarnav" class="p-t-30">    
-        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark" href="{{ url('hospital') }}"
+  
+
+@section('sidebarOptions')
+    <nav class="sidebar-nav">
+      <ul id="sidebarnav" class="p-t-30">    
+          <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark" href="{{ url('hospital') }}"
             aria-expanded="false"><i class="mdi mdi-receipt"></i><span class="hide-menu">HOME</span></a>
         </li>   
         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark" href="{{ url('addpatient') }}"
@@ -60,6 +62,10 @@
         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark" href="{{ url('AddSpecialization') }}"
             aria-expanded="false"><i class="mdi mdi-receipt"></i><span class="hide-menu">SPECIALIZATION</span></a>
         </li>
+     
+        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark" href="{{ url('alldoctorsaffliated') }}"
+            aria-expanded="false"><i class="mdi mdi-receipt"></i><span class="hide-menu">ALL DOCTORS</span></a>
+        </li>
         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark" href="{{ url('doctorAttendance') }}"
             aria-expanded="false"><i class="mdi mdi-receipt"></i><span class="hide-menu">DOCTORS ATTENDANCE</span></a>
         </li>
@@ -67,9 +73,10 @@
             aria-expanded="false"><i class="mdi mdi-receipt"></i><span class="hide-menu">ADD DOCTOR</span></a>
         </li>
       </ul>
-    </nav>    
-
+    </nav>
 @endsection
+
+
 
 
 

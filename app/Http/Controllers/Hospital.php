@@ -447,6 +447,38 @@ class Hospital extends Controller
             return redirect()->route('Hospital.dischargepatient');
         }
         
-        
+    
+        public function alldoctorsaffliated(){
+            $role = session()->get('id');
+            $query10 = "SELECT hospital_id from hospital WHERE manager_id=$role";
+            $requests10 = DB::select($query10);
+            $hosid = $requests10[0]->hospital_id;  
+            // $query = "SELECT u.*, h.*,d.*,dr.*,dmh.*,dt.*
+            // FROM users u JOIN hospital h JOIN doctor d JOIN dr_request dr JOIN doctor_mapped_hospital dmh JOIN dr_timings dt
+            // WHERE u.role_id=2 AND u.auth=1 AND h.hospital_id=$hosid AND d.doctor_id=dr.doctor_id AND 
+            // dr.hospital_id=$hosid AND d.user_id=u.user_id AND dr.stat=1 AND dmh.hospital_id=$hosid 
+            // AND dmh.doctor_id=d.doctor_id AND dt.hospital_id=$hosid 
+            // AND dt.doctor_id=d.doctor_id ";
+
+            $query = "SELECT u.*, h.*,d.*,dr.*,dt.*
+            FROM users u JOIN hospital h JOIN doctor d JOIN dr_request dr  JOIN dr_timings dt
+            WHERE u.role_id=2 AND u.auth=1 AND h.hospital_id=$hosid AND d.doctor_id=dr.doctor_id AND 
+            dr.hospital_id=$hosid AND d.user_id=u.user_id AND dr.stat=1 AND dt.hospital_id=$hosid 
+            AND dt.doctor_id=d.doctor_id ";
+            $requests = DB::select($query);
+    
+            return view('Hospital.alldoctorsaffliated')->with('data',$requests);
+        }
+
+        public function removeDoctor($docid,$uid){
+            
+            $role = session()->get('id');
+            $query10 = "SELECT hospital_id from hospital WHERE manager_id=$role";
+            $requests10 = DB::select($query10);
+            $hosid = $requests10[0]->hospital_id;  
+            $query = "UPDATE dr_request SET stat=3 WHERE doctor_id = $docid AND hospital_id=$hosid";
+            $requests = DB::select($query);
+            return redirect()->route('Hospital.alldoctorsaffliated');
+        }
 
 }
