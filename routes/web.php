@@ -20,6 +20,10 @@ Route::get('/',[
     'middleware' => 'guest'
 ]);
 
+Route::get('/logout', 'Auth\LoginController@logout')->name('logout' );
+
+Route::post('logout', 'AuthController@logout');
+
 Route::view('/index', 'admin_pages.dashboard');
 // Route::view('/l', 'admin_pages.auth.login');
 // Route::view('/r', 'admin_pages.auth.register');

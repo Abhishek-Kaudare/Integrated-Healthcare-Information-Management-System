@@ -17,6 +17,7 @@ use Cookie;
 use Tracker;
 use Session;
 use Redirect;
+use DB;
 class WebAuth extends Controller
 {
     public function getAccessToken($request){
@@ -53,7 +54,7 @@ class WebAuth extends Controller
     
     public function registerpage(){
 
-        session_start();
+    session_start();
     if((session()->has('access'))){
         
     return Redirect::route('home');
@@ -65,7 +66,41 @@ class WebAuth extends Controller
         
     }
     public function home(){
-        return view('home');
+
+    session_start();
+    if((session()->has('access'))){
+  
+    $userid = session()->get('id');
+    
+    $query = "SELECT * from users WHERE user_id=$userid";
+    $requests = DB::select($query);
+    $role = $requests[0]->role_id;
+    
+    if($role==2){
+        return redirect()->route('Doctor.index');
+    }
+
+    if($role==3){
+        return redirect()->route('hospital.index');
+    }
+
+    if($role==4){
+        return redirect()->route('Pharmacy.index');
+    }
+
+    if($role==5){
+        return redirect()->route('BloodBank.index');
+    }
+
+    if($role==6){
+        return redirect()->route('admin.index');
+    }
+
+    }
+    else{
+        return redirect()->route('login');
+        return view('admin_pages.auth.login');
+    }
     }
 
 
