@@ -91,7 +91,7 @@ class ADMIN extends Controller
     
     public function verifydoctor(){
         
-        $query="SELECT u.*,d.* FROM users u JOIN doctor d  ON u.user_id = d.user_id AND u.auth=2 ";
+        $query="SELECT u.*,d.* FROM users u JOIN doctor d  ON u.user_id = d.user_id AND u.auth=2";
         $requests = DB::select($query);
         return view('admin.verifydoctor')->with('values',$requests); 
     }
