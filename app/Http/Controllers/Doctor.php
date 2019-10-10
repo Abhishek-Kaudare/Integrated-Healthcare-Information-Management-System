@@ -297,29 +297,26 @@ class Doctor extends Controller
         $query = "UPDATE dr_request SET stat=1 WHERE doctor_id = $docid AND hospital_id=$hosid";
         // $requests = DB::select($query);
 
-        $query1 = "INSERT INTO `timings`(`id`, `doctor_id`, `hospital_id`, `day`, `in_time`, `out_time`) 
-        VALUES (null,$docid,$hosid,'1','$request->mon1','$request->mon2')";
-        $query2 = "INSERT INTO `timings`(`id`, `doctor_id`, `hospital_id`, `day`, `in_time`, `out_time`) 
-        VALUES (null,$docid,$hosid,'2','$request->tue1','$request->tue2')";
-        $query3 = "INSERT INTO `timings`(`id`, `doctor_id`, `hospital_id`, `day`, `in_time`, `out_time`) 
-        VALUES (null,$docid,$hosid,'3','$request->wed1','$request->wed2')";
-        $query4 = "INSERT INTO `timings`(`id`, `doctor_id`, `hospital_id`, `day`, `in_time`, `out_time`) 
-        VALUES (null,$docid,$hosid,'4','$request->thu1','$request->thu2')";
-        $query5 = "INSERT INTO `timings`(`id`, `doctor_id`, `hospital_id`, `day`, `in_time`, `out_time`) 
-        VALUES (null,$docid,$hosid,'5','$request->fri1','$request->fri2')";
-        $query6 = "INSERT INTO `timings`(`id`, `doctor_id`, `hospital_id`, `day`, `in_time`, `out_time`) 
-        VALUES (null,$docid,$hosid,'6','$request->sat1','$request->sat2')";
-        $query7 = "INSERT INTO `timings`(`id`, `doctor_id`, `hospital_id`, `day`, `in_time`, `out_time`) 
-        VALUES (null,$docid,$hosid,'7','$request->sun1','$request->sun2')";
+        $query1 = "INSERT INTO `dr_timings`(`id`, `doctor_id`, `hospital_id`, `monin`, `monout`, `tuesin`, `tuesout`, `wedin`, `wedout`, `thurin`, `thurout`, `friin`, `friout`, `satin`, `satout`, `sunin`, `sunout`) 
+        VALUES (null,$docid,$hosid,'$request->mon1','$request->mon2','$request->tue1','$request->tue2','$request->wed1','$request->wed2','$request->thu1','$request->thu2','$request->fri1','$request->fri2','$request->sat1','$request->sat2','$request->sun1','$request->sun2')";
+
+        // $query1 = "INSERT INTO `timings`(`id`, `doctor_id`, `hospital_id`, `day`, `in_time`, `out_time`) 
+        // VALUES (null,$docid,$hosid,'1','$request->mon1','$request->mon2')";
+        // $query2 = "INSERT INTO `timings`(`id`, `doctor_id`, `hospital_id`, `day`, `in_time`, `out_time`) 
+        // VALUES (null,$docid,$hosid,'2','$request->tue1','$request->tue2')";
+        // $query3 = "INSERT INTO `timings`(`id`, `doctor_id`, `hospital_id`, `day`, `in_time`, `out_time`) 
+        // VALUES (null,$docid,$hosid,'3','$request->wed1','$request->wed2')";
+        // $query4 = "INSERT INTO `timings`(`id`, `doctor_id`, `hospital_id`, `day`, `in_time`, `out_time`) 
+        // VALUES (null,$docid,$hosid,'4','$request->thu1','$request->thu2')";
+        // $query5 = "INSERT INTO `timings`(`id`, `doctor_id`, `hospital_id`, `day`, `in_time`, `out_time`) 
+        // VALUES (null,$docid,$hosid,'5','$request->fri1','$request->fri2')";
+        // $query6 = "INSERT INTO `timings`(`id`, `doctor_id`, `hospital_id`, `day`, `in_time`, `out_time`) 
+        // VALUES (null,$docid,$hosid,'6','$request->sat1','$request->sat2')";
+        // $query7 = "INSERT INTO `timings`(`id`, `doctor_id`, `hospital_id`, `day`, `in_time`, `out_time`) 
+        // VALUES (null,$docid,$hosid,'7','$request->sun1','$request->sun2')";
 
         DB::select($query);
         DB::select($query1);
-        DB::select($query2);
-        DB::select($query3);
-        DB::select($query4);
-        DB::select($query5);
-        DB::select($query6);
-        DB::select($query7);
 
         return redirect()->route('Doctor.hosrequst');
 
