@@ -11,7 +11,8 @@ class Hospital extends Controller
 {
     public function index(){
         $role = session()->get('id');
-        $requests = DB::select("SELECT u.*, h.* FROM users u JOIN hospital h ON u.user_id = h.manager_id WHERE u.user_id=$role");
+        $requests = DB::select("SELECT u.* FROM users u WHERE u.user_id=$role");
+        
         return view('Hospital.index')->with('data',$requests);
     }
 
@@ -61,7 +62,7 @@ class Hospital extends Controller
      VALUES (null,'$id','$name','$city','$state','$pincode','$mytime','$address','$con1',0,'$lat','$long','$doc1file','$doc2file');";
     DB::insert($query);
 
-    $query2 = "UPDATE users SET auth = 1 WHERE user_id = $id";
+    $query2 = "UPDATE users SET auth = 2 WHERE user_id = $id";
     DB::select($query2);            
     return redirect()->route('hospital.index');
     }

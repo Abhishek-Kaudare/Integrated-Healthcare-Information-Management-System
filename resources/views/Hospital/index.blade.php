@@ -15,13 +15,13 @@
 @endsection
     @endif
 
-    @if($item->verified==0 and $item->auth==0)
+    @if($item->auth==2)
      @section('content')
     WAIT FOR AUTHORIZATION
 @endsection
     @endif
 
-    @if($item->verified==1 and $item->auth==1)
+    @if($item->auth==1)
      @section('content')
     @section('sidebarOptions')
     <nav class="sidebar-nav">
