@@ -322,4 +322,32 @@ class Doctor extends Controller
 
     }
 
+    public function ahc(){
+        $role = session()->get('id');
+        $query10 = "SELECT * from doctor WHERE user_id=$role";
+        $requests10 = DB::select($query10);
+        $uid = $requests10[0]->user_id;  
+        $did = $requests10[0]->doctor_id;  
+        
+
+        $query = "SELECT u.*, h.*,d.*,dr.*,dt.*
+            FROM users u JOIN hospital h JOIN doctor d JOIN dr_request dr  JOIN dr_timings dt
+            WHERE u.role_id=2 AND u.auth=1 AND h.hospital_id=dt.hospital_id AND d.doctor_id=dr.doctor_id AND 
+            dr.hospital_id=h.hospital_id AND d.user_id=u.user_id AND dr.stat=1 AND dt.hospital_id=dt.hospital_id 
+            AND dt.doctor_id=d.doctor_id AND d.doctor_id=$did AND u.user_id =$uid";
+            $requests = DB::select($query);
+    
+            
+        
+
+
+        return view('Doctor.ahc')->with('data',$requests);
+    }
+
+    public function removeHospital($docid,$hosid){
+        $query = "UPDATE dr_request SET stat=3 WHERE doctor_id = $docid AND hospital_id=$hosid";
+        $requests = DB::select($query);
+        return redirect()->route('Doctor.ahc');
+    }
+
 }

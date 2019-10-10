@@ -26,15 +26,12 @@
     @section('sidebarOptions')
     <nav class="sidebar-nav">
       <ul id="sidebarnav" class="p-t-30">    
-          
           <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark" href="{{ url('medicalspeciality') }}"
             aria-expanded="false"><i class="mdi mdi-receipt"></i><span class="hide-menu">MEDICAL SPECIALITY</span></a>
         </li>
-        
         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark" href="{{ url('language') }}"
             aria-expanded="false"><i class="mdi mdi-receipt"></i><span class="hide-menu">ADD LANGUAGE</span></a>
         </li>
-
         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark" href="{{ url('awards') }}"
             aria-expanded="false"><i class="mdi mdi-receipt"></i><span class="hide-menu">AWARD AND ACHIEVEMENT</span></a>
         </li>
@@ -47,8 +44,9 @@
         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark" href="{{ url('hosrequst') }}"
             aria-expanded="false"><i class="mdi mdi-receipt"></i><span class="hide-menu">HOSPITAL/CLINIC REQUEST</span></a>
         </li>
-        
-        
+        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark" href="{{ url('ahc') }}"
+            aria-expanded="false"><i class="mdi mdi-receipt"></i><span class="hide-menu">AFFLIATED HOSPITALS/CLINICS</span></a>
+        </li>        
       </ul>
     </nav>
 @endsection

@@ -153,6 +153,12 @@ Route::get('/alldoctorsaffliated', [
 
 Route::get('/removeDoctor/{docid}/{userid}','Hospital@removeDoctor');
 
+Route::get('/removeHospital/{docid}/{hosid}', [
+    'uses'=>'Doctor@removeHospital',
+    'as'=>'Doctor.removeHospital'
+]);
+
+
 
 
 
@@ -250,6 +256,11 @@ Route::get('/rejecthospital/{docid}/{hosid}', [
 Route::post('/settimings', [
     'uses'=>'Doctor@settimings',
     'as'=>'Doctor.settimings'
+]);
+
+Route::get('/ahc', [
+    'uses'=>'Doctor@ahc',
+    'as'=>'Doctor.ahc'
 ]);
 
 
