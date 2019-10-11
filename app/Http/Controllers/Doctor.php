@@ -168,30 +168,9 @@ class Doctor extends Controller
 
         
 
-        $query10 = "SELECT * from attendance WHERE doctor_id='6' and hospital_id='6'";
-        $requests10 = DB::select($query10);
+       
 
-        foreach($requests10 as $items){
-            $ts=$items->date_time;
-
-             $timestamp = strtotime($ts);
-
-            $date = date('d-m-Y', $timestamp);
-            $time = date('Gi.s', $timestamp);
-            $ldate = date('d-m-Y');
-
-            echo $date;
-
-        }
-        // $ts=$requests10->date_time;
-        // $date = date('d-m-Y', $timestamp);
-        // $time = date('Gi.s', $timestamp);
-        // echo $date;
-        // dd($requests10);
-
-
-
-        // return view('Doctor.language')->with('dat',array('dis'=>$dis,'final'=>$final));
+        return view('Doctor.language')->with('dat',array('dis'=>$dis,'final'=>$final));
     }
 
     public function addlang(Request $request){

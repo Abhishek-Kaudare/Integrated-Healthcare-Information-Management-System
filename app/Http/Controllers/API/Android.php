@@ -16,6 +16,7 @@ use Response;
 use Carbon;
 use Illuminate\Support\Facades\Input;
 use DB;
+use DateTime;
 class Android extends Controller
 {
     
@@ -290,6 +291,37 @@ public function docfilter($lang,$spec){
 
     public function docavail($hosid,$docid){
         
+         $query10 = "SELECT * from attendance WHERE doctor_id='6' and hospital_id='6'";
+        $requests10 = DB::select($query10);
+        $val = 0;
+        foreach($requests10 as $items){
+            $ts=$items->date_time;
+
+            
+
+            $now = new DateTime();
+            $l = $now->format('d-m-Y');    
+            
+            if(date('d-m-Y', strtotime('0 day', strtotime($ts))) == date('d-m-Y', strtotime('1 day', strtotime($l)))){
+                $val=$val+1;
+            }
+
+            
+
+        }
+        if($val%2==0){
+            $data = [[
+            "message"=> "no",            
+        ]];
+        }
+        else{
+             $data = [[
+            "message"=> "yes",            
+        ]];
+        }
+        return Response::json($data, 200);
+
+
 
     }
 
