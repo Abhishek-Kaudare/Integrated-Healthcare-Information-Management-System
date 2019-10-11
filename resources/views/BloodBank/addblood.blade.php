@@ -3,22 +3,23 @@
 
 @section('content')
     
-{{-- @if($dat != null)
-
-    @foreach($dat as $item)
-        BLOOD TYPE - {{$item->type}} <br>
-    @endforeach
-@endif --}}
 
 <div class="login-page">
 
-        
-        <div class="form">
+
+    
+  <div class="form">
             <form class="" method="POST"  action="{{ action('BloodBank@addbloodPOST') }}"  accept-charset="UTF-8" enctype="multipart/form-data">
             {{ csrf_field() }}
             <input name="_token" type="hidden" value="{{ csrf_token() }}"/> 
-                <select required name="type">
-                <option value="" disabled="disabled" selected="selected" >Please select a Blood Type</option>
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title"style="margin-left:45%;color:#2255a4;font-weight:bold;font-family:Sans">Checkout Blood</h2>
+            <div class="form-group row">
+                <!-- <label class="col-md-3 m-t-15">Single Select</label> -->
+                <div class="col-md-9">
+                    <select name="type" class="select2 form-control custom-select" style="float:right;margin-right:9%;width: 30%;margin-left:50%;height:36px;" required>
+                        <option value="" disabled="disabled" selected="selected" >Please select a Blood Type</option>
                 
 
 
@@ -27,15 +28,26 @@
             @endforeach
 
                 </select>
-            <input  type="text" placeholder="Quantity In ml" id="quantity" name="quantity" required/><br><br>
-
-          <br>  <button class="btn btn-success">Add Blood</button>    
-
-
+                </div>
+              
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-9">
+                    <input name = "quantity" type="number" style="width:20%;margin-left:61%"class="form-control" id="lname" placeholder="Quantity in ml">
+                </div>
+            </div>
+        </div>
+    </div>
+        <div class="border-top">
+            <div class="card-body">
+                <button  Style="margin-left:50%;color: white;font-weight:bold;border-radius: 55px;padding: 10px;" class="btn btn-info"> Add Blood</button>
+            </div>
+        </div>
     </form>
-  </div>
-</div>
-   
+
+
+        
+    
 @endsection
 
 @section('sidebarOptions')

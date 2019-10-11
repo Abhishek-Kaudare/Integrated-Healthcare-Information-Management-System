@@ -51,32 +51,7 @@
         </div>
     </form>
 
-        
-        <div class="form">
-            <form class="" method="POST"  action="{{ action('Pharmacy@addmedPOST') }}"  accept-charset="UTF-8" enctype="multipart/form-data">
-            {{ csrf_field() }}
-            <input name="_token" type="hidden" value="{{ csrf_token() }}"/> 
-                <select required name="med">
-                <option value="" disabled="disabled" selected="selected" >Please select a Medicine</option>
-                
-
-            @foreach($dat['dis'] as $item)
-            <option disabled="disabled"  value="{{$item->id}}">{{$item->medicine_name}}</option></option>
-            @endforeach
-
-            @foreach($dat['final'] as $item)
-            <option  value="{{$item->id}}">{{$item->medicine_name}}</option></option>
-            @endforeach
-
-                </select>
-            <input  type="text" placeholder="count" id="count" name="count" required/><br><br>
-
-          <br>  <button class="btn btn-success">Add Medicine</button>    
-
-
-    </form>
-  </div>
-</div>
+     
    
 @endsection
 
