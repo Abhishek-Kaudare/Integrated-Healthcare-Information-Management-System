@@ -91,6 +91,11 @@ class Android extends Controller
         return Response::json($response);
     }
 
+public function allhosspec(){
+        $response = DB::select("SELECT * from specialization_of_hospital");       
+        return Response::json($response);
+    }
+
     public function sendhosreview($hosid,$email,$reviews,$star){
         $query10 = "SELECT user_id from users WHERE email='$email'";
         $requests10 = DB::select($query10);
@@ -278,6 +283,13 @@ public function docfilter($lang,$spec){
 
 
         return Response::json($response);
+
+    }
+
+
+
+    public function docavail($hosid,$docid){
+        
 
     }
 

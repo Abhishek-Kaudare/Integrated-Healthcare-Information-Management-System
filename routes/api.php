@@ -59,5 +59,6 @@ Route::post('/hospitalfilter/{hostype}/{spec}/{lat}/{long}','API\Android@hospita
 Route::post('/medavail/{name}/{lat}/{long}','API\Android@medavail');
 
 
+Route::post('/docavail/{hosid}/{docid}','API\Android@docavail');
 
-
+Route::post('/allhosspec','API\Android@allhosspec');
