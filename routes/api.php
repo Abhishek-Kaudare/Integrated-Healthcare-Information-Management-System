@@ -53,7 +53,10 @@ Route::post('/senddrreview/{hosid}/{email}/{review}/{stars}','API\Android@senddr
 Route::post('/getreviewdr/{hosid}','API\Android@getreviewdr');
 
 
+Route::post('/docfilter/{lang}/{spec}','API\Android@docfilter');
+Route::post('/hospitalfilter/{hostype}/{spec}/{lat}/{long}','API\Android@hospitalfilter');
 
+Route::post('/medavail/{name}/{lat}/{long}','API\Android@medavail');
 
 
 

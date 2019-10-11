@@ -164,6 +164,14 @@ class Doctor extends Controller
                 array_push($final, $item);
             }
         }
+
+        
+
+        
+       
+
+
+
         return view('Doctor.language')->with('dat',array('dis'=>$dis,'final'=>$final));
     }
 
@@ -179,7 +187,7 @@ class Doctor extends Controller
         VALUES (null,$request->lang,$docid)";
         DB::select($query);
         return redirect()->route('Doctor.index');
-
+        
     }
 
 
