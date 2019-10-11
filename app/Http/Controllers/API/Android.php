@@ -42,4 +42,23 @@ class Android extends Controller
         return Response::json($response);
     }
 
+    public function alltypesofdoctor(){ 
+        $response = DB::select("SELECT * FROM medical_speciality");       
+        return Response::json($response);
+    }
+
+    public function specifictypeofdoctors($typeid){
+        $response = DB::select("SELECT ms.*,d.*,msp.* FROM medical_speciality ms JOIN doctor d JOIN medical_speciality_doctor_mapped msp ON ms.medical_speciality_id=msp.medical_speciality_id AND d.doctor_id=msp.doctor_id AND ms.medical_speciality_id=$typeid");       
+        return Response::json($response);
+    }
+
+   public function alltypesofhospital(){
+        $response = DB::select("SELECT * FROM hostype");       
+        return Response::json($response);
+   }
+   public function specifictypeofhospital($typeid){
+        $response = DB::select("SELECT h.*,ht.*,hm.* FROM hospital h JOIN hostype ht JOIN hostype_map_hos hm ON h.hospital_id=hm.hospital_id AND hm.hostype_id=ht.id AND ht.id=$typeid");
+        return Response::json($response);
+   }
+   
 }

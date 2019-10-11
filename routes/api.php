@@ -17,7 +17,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-
+Route::get('/hello','API\AuthController@hello');
 Route::post('/register','API\AuthController@register');
 Route::post('/login','API\AuthController@login');
 
@@ -25,6 +25,19 @@ Route::post('/allhospital','API\Android@allhospital');
 Route::post('/allpharmacy','API\Android@allpharmacy');
 Route::post('/allbloodbank','API\Android@allbloodbank');
 Route::post('/alldoctors','API\Android@alldoctors');
+Route::post('/alltypesofdoctor','API\Android@alltypesofdoctor');
+Route::post('/specifictypeofdoctors/{typeid}','API\Android@specifictypeofdoctors');
 
-Route::get('/hello','API\AuthController@hello');
+
+Route::post('/alltypesofhospital','API\Android@alltypesofhospital');
+Route::post('/specifictypeofhospital/{typeid}','API\Android@specifictypeofhospital');
+
+
+
+
+
+
+
+
+
 

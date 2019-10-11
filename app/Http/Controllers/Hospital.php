@@ -30,11 +30,12 @@ class Hospital extends Controller
     }
 
     public function HospitalCompleteRegistration(){
-        return view('Hospital.Complete_Register');
+        $requests = DB::select("SELECT * FROM hostype");
+        return view('Hospital.Complete_Register')->with('data',$requests);
     }
     
     public function addRegisterDetials(Request $request){
-
+        $user_id = session()->get('id');
         $name = $request->name;
         $city = $request->city;
         $pincode = $request->pincode;
@@ -90,13 +91,19 @@ class Hospital extends Controller
                 VALUES (null,'$id','$name','$city','$state','$pincode','$mytime','$address','$con1',0,'$lat','$long','$doc1file','$doc2file');";
             }
 
-        DB::insert($query);
+            DB::insert($query);
 
-    $query2 = "UPDATE users SET auth = 2 WHERE user_id = $id";
-    DB::select($query2);  
+            $query2 = "UPDATE users SET auth = 2 WHERE user_id = $id";
+            DB::select($query2);  
 
-   
-        
+            $query = "SELECT hospital_id from hospital WHERE manager_id=$user_id";
+            $requests = DB::select($query);
+            $hosid = $requests[0]->hospital_id;
+            $type = $request->type;
+
+    $q = "INSERT INTO `hostype_map_hos`(`id`, `hospital_id`, `hostype_id`) 
+    VALUES (null,$hosid,$type)";
+        DB::select($q);  
 
 
     return redirect()->route('hospital.index');

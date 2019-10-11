@@ -87,12 +87,21 @@
 
       Longitude<input type="text" placeholder="Longitude" id="long" name="long"/>
       <br>  
+      Hospital Type <select required name="type" required>
+            <option value="" disabled="disabled" selected="selected" >Please select a Hospital Type</option>
+
+                @foreach($data as $item) 
+                     <option  value="{{$item->id}}">{{$item->type}}</option></option>
+                 @endforeach 
+            </select><br><br>
+
+
         <label class="" for="">Choose file...</label>
       <input class="" id="" name="doc1" required type="file"><br>
 
       <label class="" for="">Choose file...</label>
       <input class="" id="" name="doc2" required type="file"><br>
-    
+
 
       <button>Register</button>
       
