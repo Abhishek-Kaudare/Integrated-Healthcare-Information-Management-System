@@ -215,6 +215,8 @@ body {
                   </div>
 
 
+
+
    
 
               <div class="radio__container" >
@@ -234,13 +236,13 @@ body {
                   <input class="radio" id="role_id" name="radioBlock" type="radio" value="4" checked>
                   <label class="radio__label" for="">Pharmacy</label>    
                 </div>
-                <div><div>
-                  <input class="radio" id="role_id" name="radioBlock" type="radio" value="5" checked>
-                  <label class="radio__label" for="">Blood Bank</label>    
+                  <input class="radio" style="font-family: sans-serif" class="form-check-input" id="role_id" name="radioBlock" type="radio" value="5" checked>Pharmacy
                 </div>
                 <div>
               </div>
             </div>
+
+
 
           </div>
               </div>

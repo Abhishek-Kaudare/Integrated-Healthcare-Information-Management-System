@@ -22,7 +22,7 @@ class WebAuth extends Controller
 {
     public function getAccessToken($request){
           $client = new Client();
-                $response = $client->request('POST', 'http://manipal.com/api/login', [
+                $response = $client->request('POST', 'http://manipal.com/api/log', [
                     'form_params' => [
                         'username' => $request->email,
                         'password' => $request->password,
@@ -133,6 +133,7 @@ class WebAuth extends Controller
                     if($user->hospital()){
                         $data = WebAuth::getAccessToken($request);
                         $data1[] =  (array) $data;
+                        
                         $access_token = ($data1[0]['original']['data']['data']['access_token']);
                         $refresh_token = ($data1[0]['original']['data']['data']['refresh_token']);
                         Session::put('access', $access_token);

@@ -24,7 +24,6 @@ class Android extends Controller
     public function allhospital(){    
         $response = DB::select("SELECT u.*, h.* FROM users u JOIN hospital h ON u.user_id = h.manager_id AND u.auth=1 AND h.verified=1");       
         return Response::json($response);
-        // return response(['data' => json_dencode((string) $response->getBody()->getContents(),true)]);
     }
 
     public function allpharmacy(){       
@@ -60,5 +59,8 @@ class Android extends Controller
         $response = DB::select("SELECT h.*,ht.*,hm.* FROM hospital h JOIN hostype ht JOIN hostype_map_hos hm ON h.hospital_id=hm.hospital_id AND hm.hostype_id=ht.id AND ht.id=$typeid");
         return Response::json($response);
    }
-   
+   public function ihsopital($typeid){
+       $response = DB::select("SELECT u.*, h.* FROM users u JOIN hospital h ON u.user_id = h.manager_id AND u.auth=1 AND h.verified=1 AND h.hospital_id=$typeid");       
+        return Response::json($response);
+   }
 }

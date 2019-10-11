@@ -20,6 +20,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/hello','API\AuthController@hello');
 Route::post('/register','API\AuthController@register');
 Route::post('/login','API\AuthController@login');
+Route::post('/log','API\AuthController@log');
 
 Route::post('/allhospital','API\Android@allhospital');
 Route::post('/allpharmacy','API\Android@allpharmacy');
@@ -33,6 +34,9 @@ Route::post('/alltypesofhospital','API\Android@alltypesofhospital');
 Route::post('/specifictypeofhospital/{typeid}','API\Android@specifictypeofhospital');
 
 Route::post('/sort','API\Android@alltypesofhospital');
+
+Route::post('/ihsopital/{typeid}','API\Android@ihsopital');
+
 
 
 
