@@ -51,9 +51,8 @@ class AuthController extends Controller
         $user->auth = 0;
         $user->save();
         $data = [[
-            "message"=> "SUCCESS",            
-        ]
-    ];
+            "message"=> "SUCCESS",
+        ]];
 
         return Response::json($data, 200);
     }
@@ -69,8 +68,8 @@ class AuthController extends Controller
                 $response = $client->request('POST', 'http://manipal.com/oauth/token', [
                     'form_params' => [
                         'grant_type' => 'password',
-                        'client_id' => '8',
-                        'client_secret' => 'zvVnTf1pT0U5dP6gnpMdeDjhc6uPMuomOuuWsC8D',
+                        'client_id' => '13',
+                        'client_secret' => 'UhVu0luDXwlR0WHzgIQE6EYNomzzcgzZSPA235dy',
                         'username' => $request->username,
                         'password' => $request->password,
                         
@@ -81,8 +80,9 @@ class AuthController extends Controller
             ]
 
                 ]);
-                
-        return response(['data' => json_decode((string) $response->getBody()->getContents(),true)]);
+                dd(Response::json($response));
+        //         return Response::json($response);
+        // return response(['data' => json_decode((string) $response->getBody()->getContents(),true)]);
 
     }
 
