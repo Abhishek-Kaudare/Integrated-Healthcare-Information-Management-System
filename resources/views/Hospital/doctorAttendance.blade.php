@@ -37,22 +37,26 @@
 
 
 @section('content')
-    
+
+<section>
+                    <div>
+                         <form class="" method="POST"  action="{{ action('Hospital@drAttendance') }}"  accept-charset="UTF-8" enctype="multipart/form-data">
+                        {{ csrf_field() }}
+                        <input name="_token" type="hidden" value="{{ csrf_token() }}"/> 
+                        <label class="control-label"style="margin-left:40%;color:#2255a4;font-weight:bold;font-family:Sans;padding-bottom:20px;"><h1>Mark Doctors Attendence</h1></label>
+                        <div class="controls">
+                          
+                          <input  type="text" placeholder="Doctor ID" id="docid" name="docid" style="margin-left: 550px;padding: 5px;width:20%;"class="span11" required />
+                        </div>
+                    </div>
+                    <div class="border-top">
+                        <div class="card-body">
+                            <button onclick="markalert()" Style="margin-left:50%;color: white;font-weight:bold;border-radius: 55px;padding: 10px;" class="btn btn-info">Mark Attendence</button>
+                        </div>
+                </section>
 
 
-<div class="login-page">
-        <div class="form">
-            <form class="" method="POST"  action="{{ action('Hospital@drAttendance') }}"  accept-charset="UTF-8" enctype="multipart/form-data">
-            {{ csrf_field() }}
-            <input name="_token" type="hidden" value="{{ csrf_token() }}"/> 
-            <input  type="text" placeholder="Doctor ID" id="docid" name="docid" required/><br><br>
 
-            
-      <button class="btn btn-success">Mark Attendance</button>
-      
-    </form>
-  </div>
-</div>
 
               
 @endsection
