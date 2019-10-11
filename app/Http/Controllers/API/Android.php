@@ -46,10 +46,10 @@ class Android extends Controller
         return Response::json($response);
     }
 
-    public function specifictypeofdoctors($typeid){
-        $response = DB::select("SELECT ms.*,d.*,msp.* FROM medical_speciality ms JOIN doctor d JOIN medical_speciality_doctor_mapped msp ON ms.medical_speciality_id=msp.medical_speciality_id AND d.doctor_id=msp.doctor_id AND ms.medical_speciality_id=$typeid");       
-        return Response::json($response);
-    }
+    // public function specifictypeofdoctors($typeid){
+    //     $response = DB::select("SELECT ms.*,d.*,msp.* FROM medical_speciality ms JOIN doctor d JOIN medical_speciality_doctor_mapped msp ON ms.medical_speciality_id=msp.medical_speciality_id AND d.doctor_id=msp.doctor_id AND ms.medical_speciality_id=$typeid");       
+    //     return Response::json($response);
+    // }
 
    public function alltypesofhospital(){
         $response = DB::select("SELECT * FROM hostype");       
@@ -77,10 +77,17 @@ class Android extends Controller
              return Response::json($response);
         }
         public function speciality($typeid){
-            $response = DB::select("SELECT u.*, d.*, m.*, mm.* FROM users u JOIN doctor d JOIN medical_spciality m JOIN medical_spciality_doctor_mapped mm ON u.user_id = d.user_id AND d.doctor_id = mm.doctor_id AND m.doctor_speciality_id = mm.doctor_speciality_id  AND  u.auth=1 AND d.doctor_id = $typeid");       
+            $response = DB::select("SELECT u.*, d.*, m.*, mm.* FROM users u JOIN doctor d JOIN medical_speciality m JOIN medical_speciality_doctor_mapped mm ON u.user_id = d.user_id AND d.doctor_id = mm.doctor_id AND m.medical_speciality_id = mm.medical_speciality_id  AND  u.auth=1 AND m.medical_speciality_id = $typeid");       
              return Response::json($response);
         }
     
-    
+    public function bedavail($typeid){
+        $response = DB::select("SELECT h.*, rt.*, rc.* FROM hospital h JOIN roomcount rc JOIN room_type rt ON h.hospital_id=rc.hospital_id AND rc.room_type=rt.id AND h.hospital_id=$typeid");       
+        return Response::json($response);
+    }
 
+    public function mriavail($typeid){
+        $response = DB::select("SELECT h.*, s.*, sm.* FROM hospital h JOIN specialization_of_hospital_mapped sm JOIN specialization_of_hospital s ON s.id=sm.specialization_of_hospital_id AND sm.hospital_id=h.hospital_id AND h.hospital_id=$typeid");       
+        return Response::json($response);
+    }
 }

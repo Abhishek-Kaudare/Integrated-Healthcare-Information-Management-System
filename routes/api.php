@@ -27,20 +27,23 @@ Route::post('/allpharmacy','API\Android@allpharmacy');
 Route::post('/allbloodbank','API\Android@allbloodbank');
 Route::post('/alldoctors','API\Android@alldoctors');
 Route::post('/alltypesofdoctor','API\Android@alltypesofdoctor');
-Route::post('/specifictypeofdoctors/{typeid}','API\Android@specifictypeofdoctors');
+// Route::post('/specifictypeofdoctors/{typeid}','API\Android@specifictypeofdoctors');
 
 
 Route::post('/alltypesofhospital','API\Android@alltypesofhospital');
 Route::post('/specifictypeofhospital/{typeid}','API\Android@specifictypeofhospital');
 
-Route::post('/sort','API\Android@alltypesofhospital');
+
 
 Route::post('/ihsopital/{typeid}','API\Android@ihsopital');
 Route::post('/ibloodbank/{typeid}','API\Android@ibloodbank');
 Route::post('/ipharmacy/{typeid}','API\Android@ipharmacy');
 Route::post('/idoctor/{typeid}','API\Android@idoctor');
 
-Route::post('/speciality/{typeid}','API\Android@speciality');
+Route::post('/specialitydr/{typeid}','API\Android@speciality');
+
+Route::post('/bedavail/{typeid}','API\Android@bedavail');
+Route::post('/mriavail/{typeid}','API\Android@mriavail');
 
 
 
