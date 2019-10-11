@@ -69,8 +69,8 @@ class AuthController extends Controller
                 $response = $client->request('POST', 'http://manipal.com/oauth/token', [
                     'form_params' => [
                         'grant_type' => 'password',
-                        'client_id' => '8',
-                        'client_secret' => 'zvVnTf1pT0U5dP6gnpMdeDjhc6uPMuomOuuWsC8D',
+                        'client_id' => '19',
+                        'client_secret' => '6Vl5t3Ok235azZjSbYs0v6fBbtulCllT4wfyqQ6Y',
                         'username' => $request->username,
                         'password' => $request->password,
                         

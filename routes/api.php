@@ -36,6 +36,10 @@ Route::post('/specifictypeofhospital/{typeid}','API\Android@specifictypeofhospit
 Route::post('/sort','API\Android@alltypesofhospital');
 
 Route::post('/ihsopital/{typeid}','API\Android@ihsopital');
+Route::post('/ibloodbank/{typeid}','API\Android@ibloodbank');
+Route::post('/ipharmacy/{typeid}','API\Android@ipharmacy');
+Route::post('/idoctor/{typeid}','API\Android@idoctor');
+
 
 
 
