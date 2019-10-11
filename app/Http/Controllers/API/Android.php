@@ -90,4 +90,43 @@ class Android extends Controller
         $response = DB::select("SELECT h.*, s.*, sm.* FROM hospital h JOIN specialization_of_hospital_mapped sm JOIN specialization_of_hospital s ON s.id=sm.specialization_of_hospital_id AND sm.hospital_id=h.hospital_id AND h.hospital_id=$typeid");       
         return Response::json($response);
     }
+
+    public function sendhosreview($hosid,$email,$reviews,$star){
+        $query10 = "SELECT user_id from users WHERE email='$email'";
+        $requests10 = DB::select($query10);
+        $id = $requests10[0]->user_id;
+        $mytime = Carbon\Carbon::now();
+        $current_date_time = $mytime->toDateTimeString();
+        $query10 = "INSERT INTO `reviews`(`id`, `hospital_id`, `user_id`, `review`, `stars`, `whenn`) 
+        VALUES (null,$hosid,$id,'$reviews','$star','$current_date_time')";
+        $requests10 = DB::select($query10);
+        return Response::json($requests10);
+
+
+    }
+
+    public function getreview($hosid){
+        $response = DB::select("SELECT u.*, r.* FROM users u JOIN reviews r ON u.user_id=r.user_id AND r.hospital_id=$hosid");       
+        return Response::json($response);
+    }
+
+    public function senddrreview($hosid,$email,$reviews,$star){
+        $query10 = "SELECT user_id from users WHERE email='$email'";
+        $requests10 = DB::select($query10);
+        $id = $requests10[0]->user_id;
+        $mytime = Carbon\Carbon::now();
+        $current_date_time = $mytime->toDateTimeString();
+        $query10 = "INSERT INTO `reviews_dr`(`id`, `doctor_id`, `user_id`, `review`, `stars`, `whenn`) 
+        VALUES (null,$hosid,$id,'$reviews','$star','$current_date_time')";
+        $requests10 = DB::select($query10);
+        return Response::json($requests10);
+
+        
+    }
+    public function getreviewdr($hosid){
+        $response = DB::select("SELECT u.*, r.* FROM users u JOIN reviews_dr r ON u.user_id=r.user_id AND r.doctor_id=$hosid");       
+        return Response::json($response);
+    }
+    
+
 }

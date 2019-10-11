@@ -46,10 +46,11 @@ Route::post('/bedavail/{typeid}','API\Android@bedavail');
 Route::post('/mriavail/{typeid}','API\Android@mriavail');
 
 
+Route::post('/sendhosreview/{hosid}/{email}/{review}/{stars}','API\Android@sendhosreview');
+Route::post('/getreview/{hosid}','API\Android@getreview');
 
-
-
-
+Route::post('/senddrreview/{hosid}/{email}/{review}/{stars}','API\Android@senddrreview');
+Route::post('/getreviewdr/{hosid}','API\Android@getreviewdr');
 
 
 
