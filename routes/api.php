@@ -32,6 +32,8 @@ Route::post('/specifictypeofdoctors/{typeid}','API\Android@specifictypeofdoctors
 Route::post('/alltypesofhospital','API\Android@alltypesofhospital');
 Route::post('/specifictypeofhospital/{typeid}','API\Android@specifictypeofhospital');
 
+Route::post('/sort','API\Android@alltypesofhospital');
+
 
 
 

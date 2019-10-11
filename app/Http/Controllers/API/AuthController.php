@@ -81,9 +81,11 @@ class AuthController extends Controller
             ]
 
                 ]);
-            return Response::json($response);
-        // return response(['data' => json_decode((string) $response->getBody()->getContents(),true)]);
+            // return Response::json($response);
+        return response(['data' => json_decode((string) $response->getBody()->getContents(),true)]);
 
     }
+
+    
 
 }
