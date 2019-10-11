@@ -3,6 +3,7 @@
 
 @include('admin_layout.inc.head')
 
+
 <body>
   <!-- Preloader - style you can find in spinners.css -->
   <div class="preloader">
