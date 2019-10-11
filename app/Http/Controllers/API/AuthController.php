@@ -81,8 +81,10 @@ class AuthController extends Controller
             ]
 
                 ]);
-            
-        return Response::json($response, 200);
+            $data = [[
+            "message"=> "SUCCESS",            
+        ]];
+        return Response::json($data, 200);
 
     }
 

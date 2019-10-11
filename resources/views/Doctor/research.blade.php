@@ -32,22 +32,29 @@
 
 @section('content')
     
-
-
-<div class="login-page">
-        <div class="form">
-            <form class="" method="POST"  action="{{ action('Doctor@researchPOST') }}"  accept-charset="UTF-8" enctype="multipart/form-data">
+<form class="" method="POST"  action="{{ action('Doctor@researchPOST') }}"  accept-charset="UTF-8" enctype="multipart/form-data">
             {{ csrf_field() }}
             <input name="_token" type="hidden" value="{{ csrf_token() }}"/> 
-            
-            <textarea placeholder="Research" id="research" name="research" cols="80" rows="7" required></textarea>
-                <br>
-            
-      <button class="btn btn-success">Add Research and/or Publication</button>
-      
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title"style="margin-left:40%;color:#2255a4;font-weight:bold;font-family:Sans">Add Awards/Achievements</h2></br>
+            <div class="form-group row">
+                <!-- <label class="col-md-3 m-t-15">Single Select</label> -->
+                <div class="col-md-9">
+                    
+                    
+                    <textarea style="margin-left:40%;" placeholder="Research" id="research" name="research" cols="80" rows="7" required></textarea>
+                </div>
+            </div>
+           
+        </div>
+    </div>
+        <div class="border-top">
+            <div class="card-body">
+                <button  Style="margin-left:50%;color: white;font-weight:bold;border-radius: 55px;padding: 10px;" class="btn btn-info">Add Award and/or Achievement</button>
+            </div>
+        </div>
     </form>
-  </div>
-</div>
 
-              
+  
 @endsection

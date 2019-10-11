@@ -32,21 +32,33 @@
     
 
 Summary - {{$data[0]->summary}}
-<div class="login-page">
-        <div class="form">
-            <form class="" method="POST"  action="{{ action('Doctor@summaryPOST') }}"  accept-charset="UTF-8" enctype="multipart/form-data">
+<form class="" method="POST"  action="{{ action('Doctor@summaryPOST') }}"  accept-charset="UTF-8" enctype="multipart/form-data">
             {{ csrf_field() }}
             <input name="_token" type="hidden" value="{{ csrf_token() }}"/> 
-            
-            {{-- <textarea value={{$data[0]->summary}}  id="summary" name="summary" cols="80" rows="7" required></textarea> --}}
-            <textarea   id="summary" name="summary" cols="80" rows="7" required></textarea>
-                <br>
-            
-      <button class="btn btn-success">Add Summary</button>
-      
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title"style="margin-left:40%;color:#2255a4;font-weight:bold;font-family:Sans">Add Awards/Achievements</h2></br>
+            <div class="form-group row">
+                <!-- <label class="col-md-3 m-t-15">Single Select</label> -->
+                <div class="col-md-9">
+                    
+                    <textarea style="margin-left:40%;"  id="summary" name="summary" cols="80" rows="7" required></textarea>
+                    
+                </div>
+            </div>
+           
+        </div>
+    </div>
+        <div class="border-top">
+            <div class="card-body">
+                <button  Style="margin-left:50%;color: white;font-weight:bold;border-radius: 55px;padding: 10px;" class="btn btn-info">Add Award and/or Achievement</button>
+            </div>
+        </div>
     </form>
-  </div>
-</div>
+
+  
+
+
 
               
 @endsection
