@@ -76,6 +76,10 @@ class Android extends Controller
             $response = DB::select("SELECT u.*, d.* FROM users u JOIN doctor d ON u.user_id = d.user_id AND u.auth=1 AND d.doctor_id=$typeid");       
              return Response::json($response);
         }
+        public function speciality($typeid){
+            $response = DB::select("SELECT u.*, d.*, m.*, mm.* FROM users u JOIN doctor d JOIN medical_spciality m JOIN medical_spciality_doctor_mapped mm ON u.user_id = d.user_id AND d.doctor_id = mm.doctor_id AND m.doctor_speciality_id = mm.doctor_speciality_id  AND  u.auth=1 AND d.doctor_id = $typeid");       
+             return Response::json($response);
+        }
     
     
 

@@ -40,6 +40,9 @@ Route::post('/ibloodbank/{typeid}','API\Android@ibloodbank');
 Route::post('/ipharmacy/{typeid}','API\Android@ipharmacy');
 Route::post('/idoctor/{typeid}','API\Android@idoctor');
 
+Route::post('/speciality/{typeid}','API\Android@speciality');
+
+
 
 
 
