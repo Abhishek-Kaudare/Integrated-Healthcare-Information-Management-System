@@ -37,8 +37,84 @@
 
 
 @section('content')
-    
+     <form class="" method="POST"  action="{{ action('Hospital@shiftpatient') }}"  accept-charset="UTF-8" enctype="multipart/form-data">
+            {{ csrf_field() }}
+            <input name="_token" type="hidden" value="{{ csrf_token() }}"/> 
+<div class="card">
+        <div class="card-body">
+            <h2 class="card-title"style="margin-left:50%;color:#2255a4;font-weight:bold;font-family:Sans">Shift Patient</h2>
+            <div class="form-group row">
+                <!-- <label class="col-md-3 m-t-15">Single Select</label> -->
+                <div class="col-md-9">
+                    <select class="select2 form-control custom-select" style="float:right;width: 35%;margin-left:20px;height:36px;">
+                        <option>Please Select a room to be shifted</option>
+                            <option value="AK">ICU</option>
+                            <option value="HI">NORMAL WARD</option>
+                            <option value="AK">ICU</option>
+                            <option value="HI">NORMAL WARD</option>
+                            <option value="AK">ICU</option>
+                            <option value="HI">NORMAL WARD</option>
+                       
+                    </select>
+                    <select class="select2 form-control custom-select" style="float:right;width: 35%; height:36px;">
+                            <option>Please Select current room</option>
+                                <option value="AK">ICU</option>
+                                <option value="HI">NORMAL WARD</option>
+                                <option value="AK">ICU</option>
+                                <option value="HI">NORMAL WARD</option>
+                                <option value="AK">ICU</option>
+                                <option value="HI">NORMAL WARD</option>
+                           
+                        </select>
+                </div>
+              
+            </div>
+           
+        </div>
+    </div>
+        <div class="border-top">
+            <div class="card-body">
+                <button type="button" Style="margin-left:45%;color: white;font-weight:bold;border-radius: 55px;padding: 10px;" class="btn btn-info">Add Patient</button>
+            </div>
+        </div>
+    </form>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Room Available</h5>
+            <div class="table-responsive">
+                <table id="zero_config" class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Room Type</th>
+                            <th>Availability</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>ICU</td>
+                            <td>500</td>    
+                        </tr>
+                        <tr>
+                            <td>LABOUR ROOM</td>
+                            <td>500</td>
+                        </tr>
+                        <tr>
+                            <td>NORMAL WARD</td>
+                            <td>500</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>SPECIAL ROOM</th>
+                            <th>500</th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
 
+        </div>
+    </div>
+    </div>
 
 <div class="login-page">
         <div class="form">
