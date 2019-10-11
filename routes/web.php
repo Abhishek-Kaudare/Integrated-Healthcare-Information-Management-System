@@ -169,6 +169,9 @@ Route::get('/Doctor', [
 ]);
 
 
+
+ 
+
 Route::get('/DoctorCompleteRegistration', [
     'uses'=>'Doctor@DoctorCompleteRegistration',
     'as'=>'Doctor.DoctorCompleteRegistration'

@@ -7,6 +7,19 @@ use DB;
 use Auth;
 use Carbon;
 use Illuminate\Support\Facades\Input;
+use App\User;
+use GuzzleHttp\Exception\GuzzleException;
+use GuzzleHttp\Client;
+use GuzzleHttp;
+use GuzzleHttp\Subscriber\Oauth\Oauth1;
+use GuzzleHttp\Psr7\Request as GuzzleRequest;
+use Config;
+use Illuminate\Support\Facades\Hash;
+use Cookie;
+use Tracker;
+use Session;
+use Redirect;
+
 class Hospital extends Controller
 {
     public function index(){
@@ -56,14 +69,36 @@ class Hospital extends Controller
             }
             $mytime = Carbon\Carbon::now();
         $current_date_time = $mytime->toDateTimeString();
+        
 
-    
-     $query = "INSERT INTO `hospital`(`hospital_id`, `manager_id`, `hospital_name`, `city`, `state`, `pincode`, `created_at`, `address`, `phone`, `verified`, `lat`, `longitude`, `doc1`, `doc2`)
-     VALUES (null,'$id','$name','$city','$state','$pincode','$mytime','$address','$con1',0,'$lat','$long','$doc1file','$doc2file');";
-    DB::insert($query);
+        if($lat ==null){
+            $encode = urlencode($address);
+            $key = "AIzaSyAqAMKoI7eBdpGDuzowlZ65gBu_oN9WfWE";
+            $url = "https://maps.googleapis.com/maps/api/geocode/json?address={$encode}&key={$key}";
+
+            $json = file_get_contents($url);
+            $data = json_decode($json);
+
+            $lat = $data->results[0]->geometry->location->lat;  
+            $lng = $data->results[0]->geometry->location->lng;  
+            
+            $query = "INSERT INTO `hospital`(`hospital_id`, `manager_id`, `hospital_name`, `city`, `state`, `pincode`, `created_at`, `address`, `phone`, `verified`, `lat`, `longitude`, `doc1`, `doc2`)
+             VALUES (null,'$id','$name','$city','$state','$pincode','$mytime','$address','$con1',0,'$lat','$lng','$doc1file','$doc2file');";
+        }
+        else{
+                $query = "INSERT INTO `hospital`(`hospital_id`, `manager_id`, `hospital_name`, `city`, `state`, `pincode`, `created_at`, `address`, `phone`, `verified`, `lat`, `longitude`, `doc1`, `doc2`)
+                VALUES (null,'$id','$name','$city','$state','$pincode','$mytime','$address','$con1',0,'$lat','$long','$doc1file','$doc2file');";
+            }
+
+        DB::insert($query);
 
     $query2 = "UPDATE users SET auth = 2 WHERE user_id = $id";
-    DB::select($query2);            
+    DB::select($query2);  
+
+   
+        
+
+
     return redirect()->route('hospital.index');
     }
 
