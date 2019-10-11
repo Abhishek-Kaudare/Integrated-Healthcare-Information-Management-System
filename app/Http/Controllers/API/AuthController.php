@@ -87,6 +87,7 @@ class AuthController extends Controller
     }
 
 
+    
     public function log(Request $request){
 
         $client = new Client();
