@@ -72,11 +72,11 @@ class Android extends Controller
          return Response::json($response);
         }
 
-    public function idoctor($typeid){
-        $response = DB::select("SELECT u.*, d.* FROM users u JOIN doctor d ON u.user_id = d.user_id AND u.auth=1 AND d.doctor_id=$typeid");       
-         return Response::json($response);
-    }
-
+        public function idoctor($typeid){
+            $response = DB::select("SELECT u.*, d.* FROM users u JOIN doctor d ON u.user_id = d.user_id AND u.auth=1 AND d.doctor_id=$typeid");       
+             return Response::json($response);
+        }
+    
     
 
 }
