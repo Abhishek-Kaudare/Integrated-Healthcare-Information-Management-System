@@ -120,10 +120,10 @@ class WebAuth extends Controller
                     if($user->generaluser()){
                         $data = WebAuth::getAccessToken($request);
                         $data1[] =  (array) $data;
-                        $access_token = ($data1[0]['original']['data']['data']['access_token']);
-                        $refresh_token = ($data1[0]['original']['data']['data']['refresh_token']);
-                        Session::put('access', $access_token);
-                        Session::put('refresh', $refresh_token);
+                        // $access_token = ($data1[0]['original']['data']['data']['access_token']);
+                        // $refresh_token = ($data1[0]['original']['data']['data']['refresh_token']);
+                        Session::put('access', '123');
+                        // Session::put('refresh', $refresh_token);
                         Session::put('role', $user->role_id);
                         Session::put('id', $user->user_id);
 
@@ -134,10 +134,10 @@ class WebAuth extends Controller
                         $data = WebAuth::getAccessToken($request);
                         $data1[] =  (array) $data;
                         
-                        $access_token = ($data1[0]['original']['data']['data']['access_token']);
-                        $refresh_token = ($data1[0]['original']['data']['data']['refresh_token']);
-                        Session::put('access', $access_token);
-                        Session::put('refresh', $refresh_token);
+                        // $access_token = ($data1[0]['original']['data']['data']['access_token']);
+                        // $refresh_token = ($data1[0]['original']['data']['data']['refresh_token']);
+                        Session::put('access', '123');
+                        // Session::put('refresh', $refresh_token);
                         Session::put('role', $user->role_id);
                         Session::put('id', $user->user_id);
                         return redirect()->route('hospital.index');
@@ -146,10 +146,10 @@ class WebAuth extends Controller
                     if($user->admin()){
                         $data = WebAuth::getAccessToken($request);
                         $data1[] =  (array) $data;
-                        $access_token = ($data1[0]['original']['data']['data']['access_token']);
-                        $refresh_token = ($data1[0]['original']['data']['data']['refresh_token']);
-                        Session::put('access', $access_token);
-                        Session::put('refresh', $refresh_token);
+                        // $access_token = ($data1[0]['original']['data']['data']['access_token']);
+                        // $refresh_token = ($data1[0]['original']['data']['data']['refresh_token']);
+                        Session::put('access', '123');
+                        // Session::put('refresh', $refresh_token);
                         Session::put('role', $user->role_id);
                         Session::put('id', $user->user_id);
                         return redirect()->route('admin.index');
@@ -157,10 +157,10 @@ class WebAuth extends Controller
                     if($user->doctor()){
                         $data = WebAuth::getAccessToken($request);
                         $data1[] =  (array) $data;
-                        $access_token = ($data1[0]['original']['data']['data']['access_token']);
-                        $refresh_token = ($data1[0]['original']['data']['data']['refresh_token']);
-                        Session::put('access', $access_token);
-                        Session::put('refresh', $refresh_token);
+                        // $access_token = ($data1[0]['original']['data']['data']['access_token']);
+                        // $refresh_token = ($data1[0]['original']['data']['data']['refresh_token']);
+                        Session::put('access', '123');
+                        // Session::put('refresh', $refresh_token);
                         Session::put('role', $user->role_id);
                         Session::put('id', $user->user_id);
                         return redirect()->route('Doctor.index');
@@ -169,10 +169,10 @@ class WebAuth extends Controller
                     if($user->pharmacy()){
                         $data = WebAuth::getAccessToken($request);
                         $data1[] =  (array) $data;
-                        $access_token = ($data1[0]['original']['data']['data']['access_token']);
-                        $refresh_token = ($data1[0]['original']['data']['data']['refresh_token']);
-                        Session::put('access', $access_token);
-                        Session::put('refresh', $refresh_token);
+                        // $access_token = ($data1[0]['original']['data']['data']['access_token']);
+                        // $refresh_token = ($data1[0]['original']['data']['data']['refresh_token']);
+                        Session::put('access', '123');
+                        // Session::put('refresh', $refresh_token);
                         Session::put('role', $user->role_id);
                         Session::put('id', $user->user_id);
                         return redirect()->route('Pharmacy.index');
@@ -181,10 +181,10 @@ class WebAuth extends Controller
                     if($user->blood()){
                         $data = WebAuth::getAccessToken($request);
                         $data1[] =  (array) $data;
-                        $access_token = ($data1[0]['original']['data']['data']['access_token']);
-                        $refresh_token = ($data1[0]['original']['data']['data']['refresh_token']);
-                        Session::put('access', $access_token);
-                        Session::put('refresh', $refresh_token);
+                        // $access_token = ($data1[0]['original']['data']['data']['access_token']);
+                        // $refresh_token = ($data1[0]['original']['data']['data']['refresh_token']);
+                        Session::put('access', '123');
+                        // Session::put('refresh', $refresh_token);
                         Session::put('role', $user->role_id);
                         Session::put('id', $user->user_id);
                         return redirect()->route('BloodBank.index');
