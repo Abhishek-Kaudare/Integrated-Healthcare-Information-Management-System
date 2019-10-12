@@ -1,0 +1,78 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@drawable/background</item>
+        <item name="colorPrimaryDark">@drawable/background</item>
+        <item name="colorAccent">@drawable/background</item>
+    </style>
+    <style name="AppTheme.NoActionBar" >
+<item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="button">
+        <item name="android:text" android:width="303dp" android:height="41dp">
+            <shape android:shape="rectangle">
+                <corners android:radius="5dp" />
+                <gradient android:type="linear" android:useLevel="false" android:startColor="#ff19769f" android:endColor="#ff35d8a6" android:angle="0" />
+                <item android:name="android:shadowColor">#29000000</item>
+                <!-- TextView shadow offsets do not respect scale. -->
+                <item android:name="android:shadowDx">0</item>
+                <item android:name="android:shadowDy">9</item>
+                <corners android:radius="15dp"/>
+                <padding android:top="15dp" android:right="15dp" android:left="15dp" android:bottom="15dp"/>
+            </shape>
+        </item>
+    </style>
+
+
+    <style name="names">
+        <item name="android:textColor">#ff19769f</item>
+        <item name="android:textSize">12dp</item>
+    </style>
+
+
+    <!-- Text style for "peditricia" -->
+    <!-- Add this snippet to styles.xml. -->
+    <style name="description">
+        <item name="android:textColor">#ff95989a</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+
+    <!-- Text style for "dishant_ho" -->
+    <!-- Add this snippet to styles.xml. -->
+    <style name="doctor_address">
+        <item name="android:textColor">#ff51565f</item>
+        <item name="android:textSize">10sp</item>
+    </style>
+
+
+    <!-- Text style for "4.5" -->
+    <!-- Add this snippet to styles.xml. -->
+    <style name="rating">
+        <item name="android:textColor">#ff19769f</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <!-- Text style for "about" -->
+    <!-- Add this snippet to styles.xml. -->
+    <style name="about">
+        <item name="android:textColor">#ff3d3d3d</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <!-- Text style for "the_doctor" -->
+    <!-- Add this snippet to styles.xml. -->
+    <style name="content">
+        <item name="android:textColor">#ff95989a</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+
+
+
+
+
+</resources>

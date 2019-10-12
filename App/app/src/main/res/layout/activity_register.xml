@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+<!--        <EditText-->
+<!--            android:layout_width="350dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:hint="First Name"-->
+<!--            android:inputType="text"/>-->
+<!--        <EditText-->
+<!--            android:layout_width="350dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:hint="Middle Name"-->
+<!--            android:inputType="text"/>-->
+        <EditText
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/firstname"
+            android:inputType="text"
+            android:id="@+id/name"
+            />
+
+        <EditText
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/email"
+            android:id="@+id/email"
+            android:inputType="textWebEmailAddress"/>
+        <EditText
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            android:id="@+id/password"/>
+
+        <EditText
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/confirm"
+            android:inputType="textPassword"
+            android:id="@+id/confirm"/>
+
+        <TextView
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:textColor="#ff0000"
+            android:visibility="gone"
+            android:text="Passwords do not match"
+            android:id="@+id/text"/>
+<!--        <EditText-->
+<!--            android:layout_width="350dp"-->
+<!--            android:layout_height="50dp"-->
+<!--            android:hint="Address"-->
+<!--            android:id="@+id/address"-->
+<!--            android:inputType="textMultiLine"-->
+<!--            android:lines="3"-->
+<!--            android:minLines="3"-->
+<!--            />-->
+<!--        <EditText-->
+<!--            android:layout_width="350dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:hint="City"-->
+<!--            android:id="@+id/city"-->
+<!--            android:inputType="text"/>-->
+<!--        <EditText-->
+<!--            android:layout_width="350dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:hint="State"-->
+<!--            android:id="@+id/state"-->
+<!--            android:inputType="text"/>-->
+<!--        <EditText-->
+<!--            android:layout_width="350dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:hint="Pincode"-->
+<!--            android:id="@+id/pincode"-->
+<!--            android:inputType="number"/>-->
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/register"
+                android:background="@drawable/button_style_final"
+                android:textColor="#fff"
+                android:layout_marginTop="20dp"
+                android:id="@+id/register"
+                />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
