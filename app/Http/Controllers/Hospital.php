@@ -26,6 +26,11 @@ class Hospital extends Controller
         $role = session()->get('id');
         $requests = DB::select("SELECT u.* FROM users u WHERE u.user_id=$role");
         
+       
+
+
+
+
         return view('Hospital.index')->with('data',$requests);
     }
 
