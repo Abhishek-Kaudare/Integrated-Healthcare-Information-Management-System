@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Fragment_Hospital">
+
+    <TextView
+        android:drawableLeft="@drawable/total_bed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Total Beds"/>
+    <TextView
+        android:drawableLeft="@drawable/ic_fiber_manual_record_black_24dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Engaged Beds"/>
+
+    <View
+        android:layout_marginTop="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#ffd5d5d5"/>
+
+
+
+
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/listViewOfBeds"></ListView>
+
+</LinearLayout>

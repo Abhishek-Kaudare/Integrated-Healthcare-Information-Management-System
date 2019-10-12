@@ -1,0 +1,77 @@
+<resources>
+
+    <string-array name="spinner_gov">
+        <item>Kids</item>
+        <item>Physically Challenged</item>
+        <item>Women</item>
+    </string-array>
+
+
+    <string name="app_name">FindMyHospital</string>
+    <string name="welcome">Welcome to Find My</string>
+    <string name="google_maps_key">AIzaSyAqAMKoI7eBdpGDuzowlZ65gBu_oN9WfWE</string>
+
+    <!-- Fragement Home page -->
+    <string name="hospital">Hospital</string>
+    <string name="doctor">Doctor</string>
+    <string name="pharmacy">Pharmacy</string>
+    <string name="bloodbank">BloodBank</string>
+    <string name="government">Government Schemes</string>
+
+    <!-- Nav Header -->
+    <string name="homepage">Homepage</string>
+    <string name="filter_hospital">Filter Hospital</string>
+    <string name="filter_doctor">Filter Doctor</string>
+    <string name="normal">List All</string>
+
+    <string name="profile">My Profile</string>
+    <string name="saved">My Saved List</string>
+    <string name="sos">SOS</string>
+
+    <!-- Maps -->
+    <string name="direction">Get Direction</string>
+
+    <!-- List of operators -->
+    <string name="name">Name</string>
+    <string name="description">Description</string>
+    <string name="address">Address</string>
+    <string name="distance">Distance</string>
+
+    <!-- Register -->
+
+    <string name="register">Register</string>
+    <string name="login">Login</string>
+
+    <string name="firstname">Full Name</string>
+    <string name="password">Password</string>
+    <string name="confirm">Confirm Password</string>
+    <string name="email">Enter Email</string>
+
+    <!-- Personal info Hospital -->
+    <string name="about">About</string>
+    <string name="addressTime">Address</string>
+    <string name="hospital_description">Heart Specialist</string>
+    <string name="time">10:00 AM to 11:59 PM</string>
+    <string name="certificate">Certification</string>
+    <string name="map">View on map</string>
+    <string name="routes">View on routes</string>
+    <string name="beds">View Beds</string>
+    <string name="infra">View Infra</string>
+
+    <string name="certificate1">Registered under Delhi Nursing Home Act, 1953</string>
+    <string name="certificate2">License for Medical Store</string>
+    <string name="certificate3">License for IPD pharmacy</string>
+    <string name="certificate4">License for OPD pharmacy</string>
+
+    <string name="certified">Certified By</string>
+
+    <string name="finddoc">Find Doctor</string>
+    <string name="findHospital">Find Hospital</string>
+    <string name="findGovernment">Government Schemes</string>
+    <string name="search">Search</string>
+    <string name="base_url">http://192.168.43.58/Manipal_Website/public/</string>
+    <!-- Reviews -->
+    <string name="edit">Add Review</string>
+
+
+</resources>

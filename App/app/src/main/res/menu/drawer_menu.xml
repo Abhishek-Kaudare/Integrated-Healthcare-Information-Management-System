@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="naigation_view">
+
+     <item android:id="@+id/home"
+         android:title="@string/homepage"/>
+
+    <item android:title="@string/hospital">
+    <group android:checkableBehavior="single">
+        <menu>
+     <item android:id="@+id/hospital_filter"
+         android:title="@string/filter_hospital"/>
+            <item android:id="@+id/hospital"
+                android:title="@string/normal"/>
+        </menu>
+    </group>
+</item>
+     <item android:title="@string/doctor">
+    <group android:checkableBehavior="single">
+        <menu>
+            <item android:id="@+id/doctor_filter"
+                android:title="@string/filter_doctor"/>
+            <item android:id="@+id/doctor"
+                android:title="@string/normal"/>
+        </menu>
+    </group>
+     </item>
+     <item android:id="@+id/bloodbank"
+         android:title="@string/bloodbank"/>
+     <item android:id="@+id/pharmacy"
+         android:title="@string/pharmacy"/>
+    <item android:id="@+id/government"
+        android:title="@string/government"/>
+
+    <group android:checkableBehavior="single">
+        <item android:id="@+id/profile"
+            android:title="@string/profile"/>
+        <item android:id="@+id/hospital_nav"
+            android:title="@string/saved"/>
+        <item android:id="@+id/logout"
+            android:title="Logout"/>
+    </group>
+</menu>
