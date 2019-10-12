@@ -50,8 +50,52 @@ Currently, there are tons of problems faced by common people during critical hea
 7. With data available from users and hospitals over a course of time, We can analyze and predict where to build hospitals in future.
 
 ### Future Scope
+
 * Integrations of all type of healthcare institutions into the healthcare delivery process.
 * Expansion of this services to every service in emergency spectrum.
 * The data collected from this system can be used to apply machine learning and pattern recognition so that Epidemics can be predicted well before and scale of impact can also be predicted.
 * With data available from users and hospitals over a course of time, We can analyze and predict where to build hospitals in future.
 
+# Team : Bug Slayers
+
+![picture alt](https://github.com/Abhishek-Kaudare/Manipal_Website/blob/master/images/Logo.jpg "Team Logo")
+
+### Team Member
+s
+* **Rajpreet Singh**
+* **Megha Sahu**
+* **Abhishek Kaudare**
+* **Athul Balakrishnan**
+* **Sejal Nair**
+* **Milan Hazra**
+
+
+# Installation
+
+Refer the dependencies at Official Website. [Official Laravel Website](https://laravel.com/)
+
+Please check the official laravel installation guide for server requirements before you start. [Official Documentation](https://laravel.com/docs/5.6/installation#installation)
+
+##Steps
+
+Clone the repository
+
+    git clone https://github.com/Abhishek-Kaudare/Manipal_Website.git
+
+Switch to the repo folder
+
+    cd Manipal_Website
+
+Install all the dependencies using composer
+
+    composer install
+
+Copy the example env file and make the required configuration changes in the .env file
+
+    cp .env.example .env
+
+Generate a new application key
+
+    php artisan key:generate
+    
+Change the necessary database field in .env and import the DB file [manipal.sql](https://github.com/Abhishek-Kaudare/Manipal_Website/blob/master/manipal1.sql)
