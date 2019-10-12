@@ -38,7 +38,14 @@ class Android extends Controller
     }
 
     public function alldoctors(){        
-        $response = DB::select("SELECT u.*,d.* FROM users u JOIN doctor d  ON u.user_id = d.user_id AND u.auth=1");       
+          $response = DB::select("SELECT u.*, l.*,lm.*,d.*,ms.*,msm.*,aaa.*,rad.*
+        FROM users u INNER JOIN languages l INNER JOIN languages_dr_mapped lm INNER JOIN doctor d
+        JOIN medical_speciality ms JOIN medical_speciality_doctor_mapped msm JOIN awards_and_achievement aaa JOIN
+        research_and_publication rad
+        ON d.user_id=u.user_id AND lm.doctor_id=d.doctor_id AND lm.languageid=l.id 
+        AND msm.doctor_id=d.doctor_id AND ms.medical_speciality_id=msm.medical_speciality_id AND
+        d.doctor_id=rad.doctor_id AND d.doctor_id=aaa.doctor_id");
+        // $response = DB::select("SELECT u.*,d.* FROM users u JOIN doctor d  ON u.user_id = d.user_id AND u.auth=1");       
         return Response::json($response);
     }
 
@@ -337,10 +344,43 @@ public function docfilter(Request $request){
         research_and_publication rad
         ON d.user_id=u.user_id AND lm.doctor_id=d.doctor_id AND lm.languageid=l.id 
         AND msm.doctor_id=d.doctor_id AND ms.medical_speciality_id=msm.medical_speciality_id AND
-        d.doctor_id=rad.doctor_id AND d.doctor_id=aaa.doctor_id AND d.doctor_id=$docid
-        ");
-        
+        d.doctor_id=rad.doctor_id AND d.doctor_id=aaa.doctor_id AND d.doctor_id=$docid");
 
+        $awards = array();
+        $languages = array();
+        $research_and_publication = array();
+        $medical_speciality_name = array();
+
+
+        foreach($response as $item){    
+            if(!in_array( $item->award_or_achievement ,$awards )){
+                array_push($awards, $item->award_or_achievement);
+            }
+        }
+        foreach($response as $item){    
+            if(!in_array( $item->languages ,$languages )){
+                array_push($languages, $item->languages);
+            }
+        }
+        foreach($response as $item){    
+            if(!in_array( $item->research_and_publication ,$research_and_publication )){
+                array_push($research_and_publication, $item->research_and_publication);
+            }
+        }
+        foreach($response as $item){    
+            if(!in_array( $item->medical_speciality_name ,$medical_speciality_name )){
+                array_push($medical_speciality_name, $item->medical_speciality_name);
+            }
+        }        
+
+        $data = array();
+        $data = array_merge($data,array($awards));
+        $data = array_merge($data,array($languages));
+        $data = array_merge($data,array($research_and_publication));
+        $data = array_merge($data,array($medical_speciality_name));
+        $data = array_merge($data,array($response[0]));
+        
+       
 
         return Response::json($data, 200);
            

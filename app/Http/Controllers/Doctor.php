@@ -168,8 +168,6 @@ class Doctor extends Controller
 
         
 
-       
-
         return view('Doctor.language')->with('dat',array('dis'=>$dis,'final'=>$final));
     }
 
