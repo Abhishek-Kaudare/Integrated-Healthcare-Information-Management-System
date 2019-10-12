@@ -203,13 +203,13 @@
                             <div class="form-group row">
                                     <label for="fname" class="col-md-3 m-t-15">Latitude</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="fname" placeholder="Enter Latitude" name="lat" required>
+                                        <input type="text" class="form-control" id="fname" placeholder="Enter Latitude" name="lat" >
                             </div>
                             </div>
                             <div class="form-group row">
                                     <label for="fname" class="col-md-3 m-t-15">Longitude</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="fname" placeholder="Enter Longitude" name="long" required>
+                                        <input type="text" class="form-control" id="fname" placeholder="Enter Longitude" name="long" >
                             </div>
                             </div>
 

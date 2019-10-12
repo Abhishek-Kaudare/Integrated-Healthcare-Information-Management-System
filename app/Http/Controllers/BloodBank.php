@@ -71,7 +71,7 @@ class BloodBank extends Controller
             $lng = $data->results[0]->geometry->location->lng;  
             
               $query = "INSERT INTO `bloodbank`(`bloodbank_id`, `manager_id`, `bloodbank_name`, `city`, `state`, `pincode`, `created_at`, `address`, `phone`, `verified`, `lat`, `longitude`, `doc1`, `doc2`)
-     VALUES (null,'$id','$name','$city','$state','$pincode','$mytime','$address','$con1',0,'$lat','$long','$doc1file','$doc2file');";
+     VALUES (null,'$id','$name','$city','$state','$pincode','$mytime','$address','$con1',0,'$lat','$lng','$doc1file','$doc2file');";
         }
         else{
                   $query = "INSERT INTO `bloodbank`(`bloodbank_id`, `manager_id`, `bloodbank_name`, `city`, `state`, `pincode`, `created_at`, `address`, `phone`, `verified`, `lat`, `longitude`, `doc1`, `doc2`)

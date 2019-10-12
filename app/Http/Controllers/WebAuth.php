@@ -99,7 +99,7 @@ class WebAuth extends Controller
     }
     else{
         return redirect()->route('login');
-        return view('admin_pages.auth.login');
+        
     }
     }
 
