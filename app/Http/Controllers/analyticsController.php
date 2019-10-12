@@ -124,8 +124,8 @@ class analyticsController extends Controller
       $array[$key1][1] = $value1[1];
     }
     $json = file_get_contents(storage_path("MC_Wards.geojson"));
-    print_r($json);
-    dd($array);
+    // print_r($json);
+    // dd($array);
     die();
     return view('demo.dashboard')->with('disease', json_encode($array));
   }
