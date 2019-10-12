@@ -60,8 +60,8 @@ Currently, there are tons of problems faced by common people during critical hea
 
 ![picture alt](https://github.com/Abhishek-Kaudare/Manipal_Website/blob/master/images/Logo.jpg "Team Logo")
 
-### Team Member
-s
+### Team Members
+
 * **Rajpreet Singh**
 * **Megha Sahu**
 * **Abhishek Kaudare**
@@ -76,7 +76,7 @@ Refer the dependencies at Official Website. [Official Laravel Website](https://l
 
 Please check the official laravel installation guide for server requirements before you start. [Official Documentation](https://laravel.com/docs/5.6/installation#installation)
 
-##Steps
+## Steps
 
 Clone the repository
 
