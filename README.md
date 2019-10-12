@@ -19,6 +19,14 @@ Currently, there are tons of problems faced by common people during critical hea
 * Web application will be provided to all healthcare institutions to update data related to their infrastructure and live status incase they don’t have any existing system. 
 * Mobile application will be used by end users to get details about nearby hospitals, blood banks and other health related emergency services with real time status of bed availability, doctors in duty, reviews by other users, blood groups available in the blood bank and lot more.
 
+**Solution Overview:**
+![picture alt](https://github.com/Abhishek-Kaudare/Manipal_Website/blob/master/images/Integrated%20Healthcare%20Management%20System.jpg "Solution Overview Diagram")
+
+**Features Overview:**
+![picture alt](https://github.com/Abhishek-Kaudare/Manipal_Website/blob/master/images/Integrated%20Healthcare%20Management%20System2.jpg "Feature Diagram")
+
+**Participant Interaction Overview:**
+![picture alt](https://github.com/Abhishek-Kaudare/Manipal_Website/blob/master/images/Integrated%20Healthcare%20Management%20System3.jpg "Participant Interaction Diagram")
 ### Scale of Impact
 
 * All the citizen in the Smart City can use the system to find the availability of Medicines, Doctors, Pharmacies, Emergency medical requirement.
