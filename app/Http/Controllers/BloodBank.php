@@ -58,7 +58,7 @@ $role = session()->get('id');
         $con3 = $request->con3;
         $lat  = $request->lat;
         $long = $request->long;
-        session_start();
+       
         $id = session()->get('id');
             if($request->hasFile('doc1')){
             if (Input::file('doc1')->isValid()) {
@@ -124,7 +124,7 @@ $role = session()->get('id');
 
            session_start();
     if((session()->has('access'))){
- session_start();
+
         $id = session()->get('id');
         $query = "SELECT bloodbank_id from bloodbank WHERE manager_id=$id";
         $requests = DB::select($query);
@@ -147,7 +147,7 @@ $role = session()->get('id');
            session_start();
     if((session()->has('access'))){
 
-        session_start();
+        
         $id = session()->get('id');
         $query = "SELECT bloodbank_id from bloodbank WHERE manager_id=$id";
         $requests = DB::select($query);
@@ -179,7 +179,7 @@ $role = session()->get('id');
            session_start();
     if((session()->has('access'))){
 
-        session_start();
+   
         $id = session()->get('id');
         $query = "SELECT bloodbank_id from bloodbank WHERE manager_id=$id";
         $requests = DB::select($query);
@@ -221,6 +221,7 @@ $role = session()->get('id');
 
         $query1 = "SELECT quantity from blood_map WHERE bloodbank_id=$bloodbank_id AND bloodtype_id=$bt";
         $requests2 = DB::select($query1);
+        
         $c = $requests2[0]->quantity;
         
         if($c <$q){

@@ -18,11 +18,11 @@
                 
 
             @foreach($dat['dis'] as $item)
-            <option disabled="disabled"  value="{{$item->id}}">{{$item->type}}</option></option>
+            <option disabled="disabled"  value="{{$item->bloodtype_id}}">{{$item->type}}</option></option>
             @endforeach
 
             @foreach($dat['final'] as $item)
-            <option  value="{{$item->id}}">{{$item->type}}</option></option>
+            <option  value="{{$item->bloodtype_id}}">{{$item->type}}</option></option>
             @endforeach
 
                 </select>

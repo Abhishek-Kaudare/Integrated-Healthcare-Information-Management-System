@@ -40,28 +40,27 @@ class WebAuth extends Controller
 
     public function loginpage(){
 
-    session_start();
-    if((session()->has('access'))){
-
-    return Redirect::route('home');
-    }
-    else{
+    
         return view('admin_pages.auth.login');
-    }
+    
+    
+    
+    return Redirect::route('home');    
+    
 }
 
 
     
     public function registerpage(){
 
-    session_start();
-    if((session()->has('access'))){
+    
         
-    return Redirect::route('home');
-    }
-    else{
-        return view('admin_pages.auth.register');
-    }
+    return view('admin_pages.auth.register');
+    
+
+    
+    return Redirect::route('home');    
+    
 
         
     }
@@ -247,6 +246,10 @@ class WebAuth extends Controller
             
         
 
+    }
+
+    public function landing(){
+        return view('landing');
     }
 }
 

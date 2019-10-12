@@ -37,7 +37,7 @@
             <input name="_token" type="hidden" value="{{ csrf_token() }}"/> 
     <div class="card">
         <div class="card-body">
-            <h2 class="card-title"style="margin-left:40%;color:#2255a4;font-weight:bold;font-family:Sans">Add Awards/Achievements</h2></br>
+            <h2 class="card-title"style="margin-left:40%;color:#2255a4;font-weight:bold;font-family:Sans">Add Research and Publications</h2></br>
             <div class="form-group row">
                 <!-- <label class="col-md-3 m-t-15">Single Select</label> -->
                 <div class="col-md-9">

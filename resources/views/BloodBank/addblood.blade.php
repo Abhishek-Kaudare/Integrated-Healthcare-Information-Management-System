@@ -14,7 +14,7 @@
             <input name="_token" type="hidden" value="{{ csrf_token() }}"/> 
     <div class="card">
         <div class="card-body">
-            <h2 class="card-title"style="margin-left:45%;color:#2255a4;font-weight:bold;font-family:Sans">Checkout Blood</h2>
+            <h2 class="card-title"style="margin-left:45%;color:#2255a4;font-weight:bold;font-family:Sans">Add Blood</h2>
             <div class="form-group row">
                 <!-- <label class="col-md-3 m-t-15">Single Select</label> -->
                 <div class="col-md-9">
