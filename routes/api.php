@@ -54,7 +54,7 @@ Route::post('/getreviewdr/{hosid}','API\Android@getreviewdr');
 
 
 Route::post('/docfilter','API\Android@docfilter');
-Route::post('/hospitalfilter/{$hostype}/{$spec}/{$lat}/{long}','API\Android@hospitalfilter');
+Route::post('/hospitalfilter','API\Android@hospitalfilter');
 
 Route::post('/medavail/{name}/{lat}/{long}','API\Android@medavail');
 

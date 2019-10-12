@@ -11,20 +11,42 @@ use Illuminate\Support\Facades\Input;
 class Doctor extends Controller
 {
     public function index(){
-        $role = session()->get('id');
+
+           session_start();
+    if((session()->has('access'))){
+         $role = session()->get('id');
         $query = "SELECT * FROM users u WHERE u.user_id=$role";
         $requests = DB::select($query);
         // echo $query;
         return view('Doctor.index')->with('data',$requests);
     }
+    else{
+        return redirect()->route('login');
+    }
+
+
+       
+    }
 
     public function DoctorCompleteRegistration(){
-        return view('Doctor.Complete_Register');
+
+              session_start();
+    if((session()->has('access'))){
+return view('Doctor.Complete_Register');
     }
-    
-    public function addRegisterDetials(Request $request){
+    else{
+        return redirect()->route('login');
+    }
+
 
         
+    }
+    
+
+
+    public function addRegisterDetials(Request $request){
+      session_start();
+    if((session()->has('access'))){
         $license = $request->license;
         $city = $request->city;
         $pincode = $request->pincode;
@@ -77,12 +99,20 @@ class Doctor extends Controller
 
     return redirect()->route('Doctor.index');
     }
+    else{
+        return redirect()->route('login');
+    }
+        
+        
+    }
 
 
 
     public function medicalspeciality(){
-        session_start();
-        $id = session()->get('id');
+
+              session_start();
+    if((session()->has('access'))){
+$id = session()->get('id');
 
         $query = "SELECT doctor_id from doctor WHERE user_id=$id";
         $requests = DB::select($query);
@@ -112,11 +142,21 @@ class Doctor extends Controller
             }
         }
         return view('Doctor.medicalspeciality')->with('dat',array('dis'=>$dis,'final'=>$final));
+    }
+    else{
+        return redirect()->route('login');
+    }
+
+
+        
+        
         
     }
 
     public function addSpec(Request $request){
-         session_start();
+
+              session_start();
+    if((session()->has('access'))){
         $id = session()->get('id');
 
         $query = "SELECT doctor_id from doctor WHERE user_id=$id";
@@ -131,11 +171,22 @@ class Doctor extends Controller
         VALUES (null,$spec,$docid,$certiid)";
         DB::select($query);
         return redirect()->route('Doctor.index');
+    }
+    else{
+        return redirect()->route('login');
+    }
+
+
+         
+        
 
     }
 
     public function language(){
-        session_start();
+
+              session_start();
+    if((session()->has('access'))){
+
         $id = session()->get('id');
         $query = "SELECT doctor_id from doctor WHERE user_id=$id";
         $requests = DB::select($query);
@@ -170,10 +221,19 @@ class Doctor extends Controller
 
         return view('Doctor.language')->with('dat',array('dis'=>$dis,'final'=>$final));
     }
+    else{
+        return redirect()->route('login');
+    }
+
+
+        
+    }
 
     public function addlang(Request $request){
-        session_start();
-        $id = session()->get('id');
+
+              session_start();
+    if((session()->has('access'))){
+$id = session()->get('id');
         $query = "SELECT doctor_id from doctor WHERE user_id=$id";
         $requests = DB::select($query);
         $docid = $requests[0]->doctor_id;
@@ -185,10 +245,27 @@ class Doctor extends Controller
         return redirect()->route('Doctor.index');
         
     }
+    else{
+        return redirect()->route('login');
+    }
+
+
+        
+    }
 
 
     public function awards(){
-        return view('Doctor.awards');
+
+              session_start();
+    if((session()->has('access'))){
+return view('Doctor.awards');
+    }
+    else{
+        return redirect()->route('login');
+    }
+
+
+        
         
     }
 
@@ -209,7 +286,16 @@ class Doctor extends Controller
     }
 
     public function research(){
-        return view('Doctor.research');
+
+        session_start();
+    if((session()->has('access'))){
+return view('Doctor.research');
+    }
+    else{
+        return redirect()->route('login');
+    }
+
+        
         
     }
 
@@ -230,8 +316,10 @@ class Doctor extends Controller
     }
 
     public function summary(){
-        
-        session_start();
+
+              session_start();
+    if((session()->has('access'))){
+         
         $id = session()->get('id');
         $query = "SELECT doctor_id from doctor WHERE user_id=$id";
         $requests = DB::select($query);
@@ -242,6 +330,14 @@ class Doctor extends Controller
         $requests = DB::select($query);
         
         return view('Doctor.summary')->with('data',$requests);
+    }
+    else{
+        return redirect()->route('login');
+    }
+
+
+        
+       
 
     }
 
@@ -262,7 +358,10 @@ class Doctor extends Controller
 
 
     public function hosrequst(){
-        session_start();
+
+              session_start();
+    if((session()->has('access'))){
+        
         $id = session()->get('id');
         $query = "SELECT doctor_id from doctor WHERE user_id=$id";
         $requests = DB::select($query);
@@ -273,27 +372,58 @@ class Doctor extends Controller
         return view('Doctor.hosrequst')->with('data',$requests);
         
     }
+    else{
+        return redirect()->route('login');
+    }
+
+
+
+    }
 
     public function hosrequstPOST(){}
     
     public function accepthospital($docid,$hosid){
+
+              session_start();
+    if((session()->has('access'))){
         $query="SELECT h.*,dr.* FROM hospital h JOIN dr_request dr  ON h.hospital_id = dr.hospital_id AND doctor_id=$docid AND dr.stat=0 AND h.hospital_id=$hosid";
         $requests = DB::select($query);
 
         return view('Doctor.settiming')->with('data',array('docid'=>$docid,'hosid'=>$hosid,'details'=>$requests));
+    }
+    else{
+        return redirect()->route('login');
+    }
+
+
+        
 
     }
 
 
     public function rejecthospital($docid,$hosid){
+
+              session_start();
+    if((session()->has('access'))){
+        
+
         $query = "UPDATE dr_request SET stat=2 WHERE doctor_id = $docid AND hospital_id=$hosid";
         
         $requests = DB::select($query);
         
         return redirect()->route('Doctor.hosrequst');
     }
+    else{
+        return redirect()->route('login');
+    }
+
+    }
 
     public function settimings(Request $request){
+
+              session_start();
+    if((session()->has('access'))){
+        
         $hosid =  $request->hosid;
         $docid = $request->docid;
 
@@ -304,29 +434,25 @@ class Doctor extends Controller
         $query1 = "INSERT INTO `dr_timings`(`id`, `doctor_id`, `hospital_id`, `monin`, `monout`, `tuesin`, `tuesout`, `wedin`, `wedout`, `thurin`, `thurout`, `friin`, `friout`, `satin`, `satout`, `sunin`, `sunout`) 
         VALUES (null,$docid,$hosid,'$request->mon1','$request->mon2','$request->tue1','$request->tue2','$request->wed1','$request->wed2','$request->thu1','$request->thu2','$request->fri1','$request->fri2','$request->sat1','$request->sat2','$request->sun1','$request->sun2')";
 
-        // $query1 = "INSERT INTO `timings`(`id`, `doctor_id`, `hospital_id`, `day`, `in_time`, `out_time`) 
-        // VALUES (null,$docid,$hosid,'1','$request->mon1','$request->mon2')";
-        // $query2 = "INSERT INTO `timings`(`id`, `doctor_id`, `hospital_id`, `day`, `in_time`, `out_time`) 
-        // VALUES (null,$docid,$hosid,'2','$request->tue1','$request->tue2')";
-        // $query3 = "INSERT INTO `timings`(`id`, `doctor_id`, `hospital_id`, `day`, `in_time`, `out_time`) 
-        // VALUES (null,$docid,$hosid,'3','$request->wed1','$request->wed2')";
-        // $query4 = "INSERT INTO `timings`(`id`, `doctor_id`, `hospital_id`, `day`, `in_time`, `out_time`) 
-        // VALUES (null,$docid,$hosid,'4','$request->thu1','$request->thu2')";
-        // $query5 = "INSERT INTO `timings`(`id`, `doctor_id`, `hospital_id`, `day`, `in_time`, `out_time`) 
-        // VALUES (null,$docid,$hosid,'5','$request->fri1','$request->fri2')";
-        // $query6 = "INSERT INTO `timings`(`id`, `doctor_id`, `hospital_id`, `day`, `in_time`, `out_time`) 
-        // VALUES (null,$docid,$hosid,'6','$request->sat1','$request->sat2')";
-        // $query7 = "INSERT INTO `timings`(`id`, `doctor_id`, `hospital_id`, `day`, `in_time`, `out_time`) 
-        // VALUES (null,$docid,$hosid,'7','$request->sun1','$request->sun2')";
-
+        
         DB::select($query);
         DB::select($query1);
 
         return redirect()->route('Doctor.hosrequst');
+    }
+    else{
+        return redirect()->route('login');
+    }
+
+
 
     }
 
     public function ahc(){
+
+              session_start();
+    if((session()->has('access'))){
+        
         $role = session()->get('id');
         $query10 = "SELECT * from doctor WHERE user_id=$role";
         $requests10 = DB::select($query10);
@@ -347,11 +473,27 @@ class Doctor extends Controller
 
         return view('Doctor.ahc')->with('data',$requests);
     }
+    else{
+        return redirect()->route('login');
+    }
+
+
+    }
 
     public function removeHospital($docid,$hosid){
-        $query = "UPDATE dr_request SET stat=3 WHERE doctor_id = $docid AND hospital_id=$hosid";
+
+              session_start();
+    if((session()->has('access'))){
+         $query = "UPDATE dr_request SET stat=3 WHERE doctor_id = $docid AND hospital_id=$hosid";
         $requests = DB::select($query);
         return redirect()->route('Doctor.ahc');
+    }
+    else{
+        return redirect()->route('login');
+    }
+
+
+       
     }
 
 }

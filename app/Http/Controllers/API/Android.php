@@ -191,7 +191,7 @@ public function allhosspec(){
     }
 
 
-    public function hospitalfilter($hostype,$dpec,$lat,$long){
+    public function hospitalfilter(){
         
         
         $response = DB::select("SELECT s.*,shm.*,h.*,ht.*,htm.*
@@ -200,9 +200,9 @@ public function allhosspec(){
          JOIN hostype ht JOIN hostype_map_hos htm
         ON h.hospital_id=shm.hospital_id AND shm.specialization_of_hospital_id=s.id 
          AND htm.hospital_id = h.hospital_id AND htm.hostype_id=ht.id 
-         AND ht.type = IFNULL('$hostype',ht.type) AND s.specialization_name = IFNULL('$spec',s.specialization_name)
+         
         ");       
-        
+        // AND ht.type = IFNULL('$hostype',ht.type) AND s.specialization_name = IFNULL('$spec',s.specialization_name)
              
         $already_there = array();
         $final = array();

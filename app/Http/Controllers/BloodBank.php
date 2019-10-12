@@ -13,16 +13,40 @@ use Illuminate\Support\Facades\Input;
 class BloodBank extends Controller
 {
     public function index(){
-        $role = session()->get('id');
+
+        session_start();
+    if((session()->has('access'))){
+$role = session()->get('id');
         $requests = DB::select("SELECT * FROM users WHERE user_id=$role AND role_id=5");
         return view('BloodBank.index')->with('data',$requests);
     }
+    else{
+        return redirect()->route('login');
+    }
+        
+    
+
+        
+    }
 
     public function BloodBankCompleteRegistration(){
-        return view('BloodBank.Complete_Register');
+
+           session_start();
+    if((session()->has('access'))){
+     return view('BloodBank.Complete_Register');
+    }
+    else{
+        return redirect()->route('login');
+    }
+
+
+   
     }
 
     public function addRegisterDetials(Request $request){
+
+           session_start();
+    if((session()->has('access'))){
 
         $name = $request->name;
         $city = $request->city;
@@ -87,10 +111,20 @@ class BloodBank extends Controller
     DB::select($query2);            
     return redirect()->route('BloodBank.index');
     }
+    else{
+        return redirect()->route('login');
+    }
+
+
+
+    }
 
 
     public function addblood(){
-        session_start();
+
+           session_start();
+    if((session()->has('access'))){
+ session_start();
         $id = session()->get('id');
         $query = "SELECT bloodbank_id from bloodbank WHERE manager_id=$id";
         $requests = DB::select($query);
@@ -99,9 +133,20 @@ class BloodBank extends Controller
         $data1 = DB::select($msdm1);
         return view('BloodBank.addblood')->with('dat',$data1);
     }
+    else{
+        return redirect()->route('login');
+    }
+
+
+       
+    }
 
 
     public function addbloodPOST(Request $request){
+
+           session_start();
+    if((session()->has('access'))){
+
         session_start();
         $id = session()->get('id');
         $query = "SELECT bloodbank_id from bloodbank WHERE manager_id=$id";
@@ -120,10 +165,20 @@ class BloodBank extends Controller
         $query2 = "UPDATE blood_map SET quantity = $total WHERE bloodbank_id=$bloodbank_id AND bloodtype_id=$bloodtype";
         DB::select($query2);            
         return redirect()->route('BloodBank.addblood');
+    }
+    else{
+        return redirect()->route('login');
+    }
+
+
 
     }
         
     public function checkoutblood(){
+
+           session_start();
+    if((session()->has('access'))){
+
         session_start();
         $id = session()->get('id');
         $query = "SELECT bloodbank_id from bloodbank WHERE manager_id=$id";
@@ -145,8 +200,16 @@ class BloodBank extends Controller
         
         return view('BloodBank.checkoutblood')->with('dat',array('dis'=>$dis,'final'=>$final));   
     }
+    else{
+        return redirect()->route('login');
+    }
+
+
+    }
 
     public function checkoutbloodPOST(Request $request){
+
+        
         session_start();
         $id = session()->get('id');
         $query = "SELECT bloodbank_id from bloodbank WHERE manager_id=$id";
@@ -175,8 +238,18 @@ class BloodBank extends Controller
 
 
     public function addnewcam(){
+
+           session_start();
+    if((session()->has('access'))){
+return view('BloodBank.addnewcam');
+    }
+    else{
+        return redirect()->route('login');
+    }
+
+
         
-        return view('BloodBank.addnewcam');
+        
     }
 
 
