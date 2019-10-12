@@ -16,56 +16,22 @@
     margin: 0 auto;
   }
 </style>
-<script type="text/javascript">
-  google.load('visualization', '1.0', {'packages':['corechart']});
-  
-    google.charts.setOnLoadCallback(drawChart);
-  
-    function drawChart()
-    {
-      
-      var data = google.visualization.arrayToDataTable(<?php echo $disease['bar'] ?>);
-      var options = {
-        title: 'Dengue Patient Cases By Month in 2017',
-        chartArea: {width: '60%', hieght: '100%'},
-        hAxis: {
-          title: 'Month',
-          minValue: 0,
-          textStyle: {
-          fontSize: 14,
-          color: '#053061',
-          bold: true,
-          italic: false
-        },
-          titleTextStyle: {
-          fontSize: 18,
-          color: '#053061',
-          bold: true,
-          italic: false
-        }
-        },
-        vAxis: {
-          title: 'Number of Cases',
-          minValue: 0,
-          textStyle: {
-          fontSize: 14,
-          color: '#053061',
-          bold: true,
-          italic: false
-          },
-          titleTextStyle: {
-          fontSize: 18,
-          color: '#053061',
-          bold: true,
-          italic: false
-          }
-        }
-      };
-      var chart = new google.visualization.LineChart(document.getElementById('pie_chart'));
-      chart.draw(data, options);
-    }
+<script>
+  var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 4,
+          center: {lat: -28, lng: 137}
+        });
+
+        // NOTE: This uses cross-domain XHR, and may not work on older browsers.
+        map.data.loadGeoJson(json);
+      }
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap">
 </script>
 @endsection
+
 @section('content')
 
 <div class="card">
@@ -78,9 +44,34 @@
           <h3 class="panel-title">Disease Inference</h3>
         </div>
         <div class="panel-body" align="center">
-          <div id="pie_chart">
-
-
+          <style>
+            .embed-container {
+              position: relative;
+              padding-bottom: 78%;
+              height: 0;
+              max-width: 100%;
+            }
+          
+            .embed-container iframe,
+            .embed-container object,
+            .embed-container iframe {
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+            }
+          
+            small {
+              position: absolute;
+              z-index: 40;
+              bottom: 0;
+              margin-bottom: -15px;
+            }
+          </style>
+          <div class="embed-container"><iframe width="900" height="700" frameborder="0" scrolling="no" marginheight="0"
+              marginwidth="0" title="Mumbai Dengue Visualization"
+              src="//www.arcgis.com/apps/Embed/index.html?webmap=c695e2d33de2481ebbbcfba8a06ccb08&extent=72.3768,18.674,73.8133,19.3919&zoom=true&previewImage=false&scale=true&legend=true&disable_scroll=true&theme=light"></iframe>
           </div>
         </div>
       </div>
