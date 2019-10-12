@@ -13,16 +13,40 @@ use Illuminate\Support\Facades\Input;
 class BloodBank extends Controller
 {
     public function index(){
-        $role = session()->get('id');
+
+        session_start();
+    if((session()->has('access'))){
+$role = session()->get('id');
         $requests = DB::select("SELECT * FROM users WHERE user_id=$role AND role_id=5");
         return view('BloodBank.index')->with('data',$requests);
     }
+    else{
+        return redirect()->route('login');
+    }
+        
+    
+
+        
+    }
 
     public function BloodBankCompleteRegistration(){
-        return view('BloodBank.Complete_Register');
+
+           session_start();
+    if((session()->has('access'))){
+     return view('BloodBank.Complete_Register');
+    }
+    else{
+        return redirect()->route('login');
+    }
+
+
+   
     }
 
     public function addRegisterDetials(Request $request){
+
+           session_start();
+    if((session()->has('access'))){
 
         $name = $request->name;
         $city = $request->city;
@@ -34,7 +58,7 @@ class BloodBank extends Controller
         $con3 = $request->con3;
         $lat  = $request->lat;
         $long = $request->long;
-        session_start();
+       
         $id = session()->get('id');
             if($request->hasFile('doc1')){
             if (Input::file('doc1')->isValid()) {
@@ -59,19 +83,48 @@ class BloodBank extends Controller
             $mytime = Carbon\Carbon::now();
          $current_date_time = $mytime->toDateTimeString();
 
+                 if($lat ==null){
+            $encode = urlencode($address);
+            $key = "AIzaSyAqAMKoI7eBdpGDuzowlZ65gBu_oN9WfWE";
+            $url = "https://maps.googleapis.com/maps/api/geocode/json?address={$encode}&key={$key}";
+
+            $json = file_get_contents($url);
+            $data = json_decode($json);
+
+            $lat = $data->results[0]->geometry->location->lat;  
+            $lng = $data->results[0]->geometry->location->lng;  
+            
+              $query = "INSERT INTO `bloodbank`(`bloodbank_id`, `manager_id`, `bloodbank_name`, `city`, `state`, `pincode`, `created_at`, `address`, `phone`, `verified`, `lat`, `longitude`, `doc1`, `doc2`)
+     VALUES (null,'$id','$name','$city','$state','$pincode','$mytime','$address','$con1',0,'$lat','$lng','$doc1file','$doc2file');";
+        }
+        else{
+                  $query = "INSERT INTO `bloodbank`(`bloodbank_id`, `manager_id`, `bloodbank_name`, `city`, `state`, `pincode`, `created_at`, `address`, `phone`, `verified`, `lat`, `longitude`, `doc1`, `doc2`)
+     VALUES (null,'$id','$name','$city','$state','$pincode','$mytime','$address','$con1',0,'$lat','$lng','$doc1file','$doc2file');";
+            }
+
+
     
-     $query = "INSERT INTO `bloodbank`(`bloodbank_id`, `manager_id`, `bloodbank_name`, `city`, `state`, `pincode`, `created_at`, `address`, `phone`, `verified`, `lat`, `longitude`, `doc1`, `doc2`)
-     VALUES (null,'$id','$name','$city','$state','$pincode','$mytime','$address','$con1',0,'$lat','$long','$doc1file','$doc2file');";
+   
     DB::insert($query);
 
     $query2 = "UPDATE users SET auth = 2 WHERE user_id = $id";
     DB::select($query2);            
     return redirect()->route('BloodBank.index');
     }
+    else{
+        return redirect()->route('login');
+    }
+
+
+
+    }
 
 
     public function addblood(){
-        session_start();
+
+           session_start();
+    if((session()->has('access'))){
+
         $id = session()->get('id');
         $query = "SELECT bloodbank_id from bloodbank WHERE manager_id=$id";
         $requests = DB::select($query);
@@ -80,10 +133,21 @@ class BloodBank extends Controller
         $data1 = DB::select($msdm1);
         return view('BloodBank.addblood')->with('dat',$data1);
     }
+    else{
+        return redirect()->route('login');
+    }
+
+
+       
+    }
 
 
     public function addbloodPOST(Request $request){
-        session_start();
+
+           session_start();
+    if((session()->has('access'))){
+
+        
         $id = session()->get('id');
         $query = "SELECT bloodbank_id from bloodbank WHERE manager_id=$id";
         $requests = DB::select($query);
@@ -101,11 +165,21 @@ class BloodBank extends Controller
         $query2 = "UPDATE blood_map SET quantity = $total WHERE bloodbank_id=$bloodbank_id AND bloodtype_id=$bloodtype";
         DB::select($query2);            
         return redirect()->route('BloodBank.addblood');
+    }
+    else{
+        return redirect()->route('login');
+    }
+
+
 
     }
         
     public function checkoutblood(){
-        session_start();
+
+           session_start();
+    if((session()->has('access'))){
+
+   
         $id = session()->get('id');
         $query = "SELECT bloodbank_id from bloodbank WHERE manager_id=$id";
         $requests = DB::select($query);
@@ -126,8 +200,16 @@ class BloodBank extends Controller
         
         return view('BloodBank.checkoutblood')->with('dat',array('dis'=>$dis,'final'=>$final));   
     }
+    else{
+        return redirect()->route('login');
+    }
+
+
+    }
 
     public function checkoutbloodPOST(Request $request){
+
+        
         session_start();
         $id = session()->get('id');
         $query = "SELECT bloodbank_id from bloodbank WHERE manager_id=$id";
@@ -139,6 +221,7 @@ class BloodBank extends Controller
 
         $query1 = "SELECT quantity from blood_map WHERE bloodbank_id=$bloodbank_id AND bloodtype_id=$bt";
         $requests2 = DB::select($query1);
+        
         $c = $requests2[0]->quantity;
         
         if($c <$q){
@@ -156,8 +239,18 @@ class BloodBank extends Controller
 
 
     public function addnewcam(){
+
+           session_start();
+    if((session()->has('access'))){
+return view('BloodBank.addnewcam');
+    }
+    else{
+        return redirect()->route('login');
+    }
+
+
         
-        return view('BloodBank.addnewcam');
+        
     }
 
 

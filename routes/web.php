@@ -10,15 +10,39 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/analytics/home', 'analyticsController@home');
+Route::get('/analytics/diseaseMonth/{type}/{year}/{disease}', 'analyticsController@diseaseMonth');
+Route::get('/analytics/diseaseYear/{type}/{disease}', 'analyticsController@diseaseYear');
+Route::get('/analytics/diseaseRegMonth/{type}/{year}/{disease}/{region}', 'analyticsController@diseaseLocMonth');
+Route::get('/analytics/diseaseRegYear/{type}/{disease}/{region}', 'analyticsController@diseaseLocYear');
+Route::get('/analytics/diseaseMap/{year}/{disease}', 'analyticsController@diseaseYearMap');
+
+Route::get('/analytics/diseaseMapDemo/{year}/{disease}', 'analyticsController@diseaseYearMapDemo');
+
+
+// Route::get('/data', 'analyticsController@ajax');
 Route::view('/demo', 'demo.dashboard');
+
+
+Route::get('/',[
+    'uses' => 'WebAuth@landing',
+    'as' => 'landing',
+    
+]);
+
+
+
+
+
+
 Route::group(['middleware' => 'web'], function () {
 Auth::routes();
 Route::auth();
-Route::get('/',[
-    'uses' => 'WebAuth@home',
-    'as' => 'home',
-    'middleware' => 'guest'
-]);
+// Route::get('/',[
+//     'uses' => 'WebAuth@home',
+//     'as' => 'home',
+//     'middleware' => 'guest'
+// ]);
 
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout' );
 
@@ -168,6 +192,9 @@ Route::get('/Doctor', [
     'as'=>'Doctor.index'
 ]);
 
+
+
+ 
 
 Route::get('/DoctorCompleteRegistration', [
     'uses'=>'Doctor@DoctorCompleteRegistration',
