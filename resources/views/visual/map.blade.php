@@ -16,57 +16,71 @@
     margin: 0 auto;
   }
 </style>
-<script type="text/javascript">
-  google.load('visualization', '1.0', {'packages':['corechart']});
-  
-    google.charts.setOnLoadCallback(drawChart);
-  
-    function drawChart()
-    {
-      
-      var data = google.visualization.arrayToDataTable(<?php echo $disease ?>);
-      var options = {
-        title: 'Dengue Patient Cases By Month in 2017',
-        chartArea: {width: '50%'},
-        hAxis: {
-          title: 'Month',
-          minValue: 0,
-          textStyle: {
-          fontSize: 14,
-          color: '#053061',
-          bold: true,
-          italic: false
-        },
-          titleTextStyle: {
-          fontSize: 18,
-          color: '#053061',
-          bold: true,
-          italic: false
-        }
-        },
-        vAxis: {
-          title: 'Number of Cases',
-          minValue: 0,
-          textStyle: {
-          fontSize: 14,
-          color: '#053061',
-          bold: true,
-          italic: false
-          },
-          titleTextStyle: {
-          fontSize: 18,
-          color: '#053061',
-          bold: true,
-          italic: false
-          }
-        }
-      };
-      var chart = new google.visualization.LineChart(document.getElementById('pie_chart'));
-      chart.draw(data, options);
-    }
+<script>
+  var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 4,
+          center: {lat: -28, lng: 137}
+        });
+
+        // NOTE: This uses cross-domain XHR, and may not work on older browsers.
+        map.data.loadGeoJson(json);
+      }
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap">
 </script>
 @endsection
 
+@section('content')
+
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title"></h5>
+    <br />
+    <div class="container">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Disease Inference</h3>
+        </div>
+        <div class="panel-body" align="center">
+          <style>
+            .embed-container {
+              position: relative;
+              padding-bottom: 78%;
+              height: 0;
+              max-width: 100%;
+            }
+          
+            .embed-container iframe,
+            .embed-container object,
+            .embed-container iframe {
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+            }
+          
+            small {
+              position: absolute;
+              z-index: 40;
+              bottom: 0;
+              margin-bottom: -15px;
+            }
+          </style>
+          <div class="embed-container"><iframe width="900" height="700" frameborder="0" scrolling="no" marginheight="0"
+              marginwidth="0" title="Mumbai Dengue Visualization"
+              src="//www.arcgis.com/apps/Embed/index.html?webmap=c695e2d33de2481ebbbcfba8a06ccb08&extent=72.3768,18.674,73.8133,19.3919&zoom=true&previewImage=false&scale=true&legend=true&disable_scroll=true&theme=light"></iframe>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+@endsection
 
 @section('script')
 <script src="{{ asset('admin/assets/libs/jquery/dist/jquery.min.js') }}"></script>
@@ -93,31 +107,31 @@
         $('#zero_config').DataTable();
 </script>
 <script src="{{ asset('admin/assets/libs/jquery/dist/jquery.min.js') }}"></script>
-    <!-- Bootstrap tether Core JavaScript -->
-    <script src="{{ asset('admin/assets/libs/popper.js/dist/umd/popper.min.js') }}"></script>
-    <script src="{{ asset('admin/assets/libs/bootstrap/dist/js/bootstrap.min.js') }}"></script>
-    <!-- slimscrollbar scrollbar JavaScript -->
-    <script src="{{ asset('admin/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js') }}"></script>
-    <script src="{{ asset('admin/assets/extra-libs/sparkline/sparkline.js') }}"></script>
-    <!--Wave Effects -->
-    <script src="{{ asset('admin/dist/js/waves.js') }}"></script>
-    <!--Menu sidebar -->
-    <script src="{{ asset('admin/dist/js/sidebarmenu.js') }}"></script>
-    <!--Custom JavaScript -->
-    <script src="{{ asset('admin/dist/js/custom.min.js') }}"></script>
-    <!-- This Page JS -->
-    <script src="{{ asset('admin/assets/libs/inputmask/dist/min/jquery.inputmask.bundle.min.js') }}"></script>
-    <script src="{{ asset('admin/dist/js/pages/mask/mask.init.js') }}"></script>
-    <script src="{{ asset('admin/assets/libs/select2/dist/js/select2.full.min.js') }}"></script>
-    <script src="{{ asset('admin/assets/libs/select2/dist/js/select2.min.js') }}"></script>
-    <script src="{{ asset('admin/assets/libs/jquery-asColor/dist/jquery-asColor.min.js') }}"></script>
-    <script src="{{ asset('admin/assets/libs/jquery-asGradient/dist/jquery-asGradient.js') }}"></script>
-    <script src="{{ asset('admin/assets/libs/jquery-asColorPicker/dist/jquery-asColorPicker.min.js') }}"></script>
-    <script src="{{ asset('admin/assets/libs/jquery-minicolors/jquery.minicolors.min.js') }}"></script>
-    <script src="{{ asset('admin/assets/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
-    <script src="{{ asset('admin/assets/libs/quill/dist/quill.min.js') }}"></script>
-    <script>
-        //***********************************//
+<!-- Bootstrap tether Core JavaScript -->
+<script src="{{ asset('admin/assets/libs/popper.js/dist/umd/popper.min.js') }}"></script>
+<script src="{{ asset('admin/assets/libs/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+<!-- slimscrollbar scrollbar JavaScript -->
+<script src="{{ asset('admin/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js') }}"></script>
+<script src="{{ asset('admin/assets/extra-libs/sparkline/sparkline.js') }}"></script>
+<!--Wave Effects -->
+<script src="{{ asset('admin/dist/js/waves.js') }}"></script>
+<!--Menu sidebar -->
+<script src="{{ asset('admin/dist/js/sidebarmenu.js') }}"></script>
+<!--Custom JavaScript -->
+<script src="{{ asset('admin/dist/js/custom.min.js') }}"></script>
+<!-- This Page JS -->
+<script src="{{ asset('admin/assets/libs/inputmask/dist/min/jquery.inputmask.bundle.min.js') }}"></script>
+<script src="{{ asset('admin/dist/js/pages/mask/mask.init.js') }}"></script>
+<script src="{{ asset('admin/assets/libs/select2/dist/js/select2.full.min.js') }}"></script>
+<script src="{{ asset('admin/assets/libs/select2/dist/js/select2.min.js') }}"></script>
+<script src="{{ asset('admin/assets/libs/jquery-asColor/dist/jquery-asColor.min.js') }}"></script>
+<script src="{{ asset('admin/assets/libs/jquery-asGradient/dist/jquery-asGradient.js') }}"></script>
+<script src="{{ asset('admin/assets/libs/jquery-asColorPicker/dist/jquery-asColorPicker.min.js') }}"></script>
+<script src="{{ asset('admin/assets/libs/jquery-minicolors/jquery.minicolors.min.js') }}"></script>
+<script src="{{ asset('admin/assets/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
+<script src="{{ asset('admin/assets/libs/quill/dist/quill.min.js') }}"></script>
+<script>
+  //***********************************//
         // For select 2
         //***********************************//
         $(".select2").select2();
@@ -165,5 +179,5 @@
         var quill = new Quill('#editor', {
             theme: 'snow'
         });
-    </script>
+</script>
 @endsection

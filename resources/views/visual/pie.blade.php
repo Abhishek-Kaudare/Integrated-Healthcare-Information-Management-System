@@ -61,10 +61,33 @@
           }
         }
       };
-      var chart = new google.visualization.LineChart(document.getElementById('pie_chart'));
+      var chart = new google.visualization.PieChart(document.getElementById('pie_chart'));
       chart.draw(data, options);
     }
 </script>
+@endsection
+@section('content')
+
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title"></h5>
+    <br />
+    <div class="container">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Disease Inference</h3>
+        </div>
+        <div class="panel-body" align="center">
+          <div id="pie_chart">
+            
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
 @endsection
 
 
@@ -93,31 +116,31 @@
         $('#zero_config').DataTable();
 </script>
 <script src="{{ asset('admin/assets/libs/jquery/dist/jquery.min.js') }}"></script>
-    <!-- Bootstrap tether Core JavaScript -->
-    <script src="{{ asset('admin/assets/libs/popper.js/dist/umd/popper.min.js') }}"></script>
-    <script src="{{ asset('admin/assets/libs/bootstrap/dist/js/bootstrap.min.js') }}"></script>
-    <!-- slimscrollbar scrollbar JavaScript -->
-    <script src="{{ asset('admin/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js') }}"></script>
-    <script src="{{ asset('admin/assets/extra-libs/sparkline/sparkline.js') }}"></script>
-    <!--Wave Effects -->
-    <script src="{{ asset('admin/dist/js/waves.js') }}"></script>
-    <!--Menu sidebar -->
-    <script src="{{ asset('admin/dist/js/sidebarmenu.js') }}"></script>
-    <!--Custom JavaScript -->
-    <script src="{{ asset('admin/dist/js/custom.min.js') }}"></script>
-    <!-- This Page JS -->
-    <script src="{{ asset('admin/assets/libs/inputmask/dist/min/jquery.inputmask.bundle.min.js') }}"></script>
-    <script src="{{ asset('admin/dist/js/pages/mask/mask.init.js') }}"></script>
-    <script src="{{ asset('admin/assets/libs/select2/dist/js/select2.full.min.js') }}"></script>
-    <script src="{{ asset('admin/assets/libs/select2/dist/js/select2.min.js') }}"></script>
-    <script src="{{ asset('admin/assets/libs/jquery-asColor/dist/jquery-asColor.min.js') }}"></script>
-    <script src="{{ asset('admin/assets/libs/jquery-asGradient/dist/jquery-asGradient.js') }}"></script>
-    <script src="{{ asset('admin/assets/libs/jquery-asColorPicker/dist/jquery-asColorPicker.min.js') }}"></script>
-    <script src="{{ asset('admin/assets/libs/jquery-minicolors/jquery.minicolors.min.js') }}"></script>
-    <script src="{{ asset('admin/assets/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
-    <script src="{{ asset('admin/assets/libs/quill/dist/quill.min.js') }}"></script>
-    <script>
-        //***********************************//
+<!-- Bootstrap tether Core JavaScript -->
+<script src="{{ asset('admin/assets/libs/popper.js/dist/umd/popper.min.js') }}"></script>
+<script src="{{ asset('admin/assets/libs/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+<!-- slimscrollbar scrollbar JavaScript -->
+<script src="{{ asset('admin/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js') }}"></script>
+<script src="{{ asset('admin/assets/extra-libs/sparkline/sparkline.js') }}"></script>
+<!--Wave Effects -->
+<script src="{{ asset('admin/dist/js/waves.js') }}"></script>
+<!--Menu sidebar -->
+<script src="{{ asset('admin/dist/js/sidebarmenu.js') }}"></script>
+<!--Custom JavaScript -->
+<script src="{{ asset('admin/dist/js/custom.min.js') }}"></script>
+<!-- This Page JS -->
+<script src="{{ asset('admin/assets/libs/inputmask/dist/min/jquery.inputmask.bundle.min.js') }}"></script>
+<script src="{{ asset('admin/dist/js/pages/mask/mask.init.js') }}"></script>
+<script src="{{ asset('admin/assets/libs/select2/dist/js/select2.full.min.js') }}"></script>
+<script src="{{ asset('admin/assets/libs/select2/dist/js/select2.min.js') }}"></script>
+<script src="{{ asset('admin/assets/libs/jquery-asColor/dist/jquery-asColor.min.js') }}"></script>
+<script src="{{ asset('admin/assets/libs/jquery-asGradient/dist/jquery-asGradient.js') }}"></script>
+<script src="{{ asset('admin/assets/libs/jquery-asColorPicker/dist/jquery-asColorPicker.min.js') }}"></script>
+<script src="{{ asset('admin/assets/libs/jquery-minicolors/jquery.minicolors.min.js') }}"></script>
+<script src="{{ asset('admin/assets/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
+<script src="{{ asset('admin/assets/libs/quill/dist/quill.min.js') }}"></script>
+<script>
+  //***********************************//
         // For select 2
         //***********************************//
         $(".select2").select2();
@@ -165,5 +188,5 @@
         var quill = new Quill('#editor', {
             theme: 'snow'
         });
-    </script>
+</script>
 @endsection
