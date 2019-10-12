@@ -40,7 +40,7 @@ Route::post('/ibloodbank/{typeid}','API\Android@ibloodbank');
 Route::post('/ipharmacy/{typeid}','API\Android@ipharmacy');
 Route::post('/idoctor/{typeid}','API\Android@idoctor');
 
-Route::post('/specialitydr/{typeid}','API\Android@speciality');
+Route::post('/specialitydr','API\Android@speciality');
 
 Route::post('/bedavail/{typeid}','API\Android@bedavail');
 Route::post('/mriavail/{typeid}','API\Android@mriavail');
@@ -53,7 +53,7 @@ Route::post('/senddrreview/{hosid}/{email}/{review}/{stars}','API\Android@senddr
 Route::post('/getreviewdr/{hosid}','API\Android@getreviewdr');
 
 
-Route::post('/docfilter/{lang}/{spec}','API\Android@docfilter');
+Route::post('/docfilter','API\Android@docfilter');
 Route::post('/hospitalfilter/{hostype}/{spec}/{lat}/{long}','API\Android@hospitalfilter');
 
 Route::post('/medavail/{name}/{lat}/{long}','API\Android@medavail');
@@ -62,3 +62,5 @@ Route::post('/medavail/{name}/{lat}/{long}','API\Android@medavail');
 Route::post('/docavail/{hosid}/{docid}','API\Android@docavail');
 
 Route::post('/allhosspec','API\Android@allhosspec');
+
+Route::post('/specialityList','API\Android@specialityList');

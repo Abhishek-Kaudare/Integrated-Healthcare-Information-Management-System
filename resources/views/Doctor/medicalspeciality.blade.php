@@ -69,7 +69,7 @@
 
     <div class="card">
         <div class="card-body">
-            <h2 class="card-title"style="margin-left:45%;color:#2255a4;font-weight:bold;font-family:Sans">Add Blood </h2></br>
+            <h2 class="card-title"style="margin-left:45%;color:#2255a4;font-weight:bold;font-family:Sans">Add Specialization </h2></br>
             <div class="form-group row">
                 <!-- <label class="col-md-3 m-t-15">Single Select</label> -->
                 <div class="col-md-9">
@@ -96,7 +96,7 @@
     </div>
         <div class="border-top">
             <div class="card-body">
-                <button  Style="margin-left:50%;color: white;font-weight:bold;border-radius: 55px;padding: 10px;" class="btn btn-info">Add Specialization</button>
+                <button  Style="margin-left:45%;color: white;font-weight:bold;border-radius: 55px;padding: 10px;" class="btn btn-info">Add Specialization</button>
             </div>
         </div>
     </form>

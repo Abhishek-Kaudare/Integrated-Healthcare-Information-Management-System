@@ -198,7 +198,10 @@ public function allhosspec(){
     }
         
 
-public function docfilter($lang,$spec){
+public function docfilter(Request $request){
+        $lang = $request->lang;
+        $spec = $request->spec;
+        
         $response = DB::select("SELECT u.*, l.*,lm.*,d.*,ms.*,msm.*
         FROM users u INNER JOIN languages l INNER JOIN languages_dr_mapped lm INNER JOIN doctor d
         JOIN medical_speciality ms JOIN medical_speciality_doctor_mapped msm
@@ -326,7 +329,22 @@ public function docfilter($lang,$spec){
     }
 
 
+    public function specialitydr($docid){
+        //  info about single doctor
+        $response = DB::select("SELECT u.*, l.*,lm.*,d.*,ms.*,msm.*,aaa.*,rad.*
+        FROM users u INNER JOIN languages l INNER JOIN languages_dr_mapped lm INNER JOIN doctor d
+        JOIN medical_speciality ms JOIN medical_speciality_doctor_mapped msm JOIN awards_and_achievement aaa JOIN
+        research_and_publication rad
+        ON d.user_id=u.user_id AND lm.doctor_id=d.doctor_id AND lm.languageid=l.id 
+        AND msm.doctor_id=d.doctor_id AND ms.medical_speciality_id=msm.medical_speciality_id AND
+        d.doctor_id=rad.doctor_id AND d.doctor_id=aaa.doctor_id AND d.doctor_id=$docid
+        ");
+        
 
+
+        return Response::json($data, 200);
+           
+    }
 
     
 
