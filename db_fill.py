@@ -21,19 +21,19 @@ def _mysql_data_enter():
         diseases = ['Dengue', 'Malaria']
         months = ['January', 'February', 'March', 'April', 'May', 'June',
                   'July', 'August', 'September', 'October', 'November', 'December']
-        wards = ['A', 'B', 'C', 'D', 'E', 'F/N', 'F/S', 'G/N', 'G/S', 'H/E', 'H/W', 'K/E',
-                 'K/W', 'L', 'M/E', 'M/W', 'N', 'P/N', 'P/S', 'R/N', 'R/S', 'R/C', 'S', 'T']
+        wards = ['A', 'B', 'C', 'D', 'E', 'FN', 'FS', 'GN', 'GS', 'HE', 'HW', 'KE',
+                 'KW', 'L', 'ME', 'MW', 'N', 'PN', 'PS', 'RN', 'RS', 'RC', 'S', 'T']
         for year in range(2017, 2019):
             for month in months:
                 for ward in wards:
                     for disease in diseases:
-                        if month in ['June', 'July', 'August', 'September'] and ward in ['M/E', 'M/W', 'L', 'F/N']:
+                        if month in ['June', 'July', 'August', 'September'] and ward in ['ME', 'MW', 'L', 'FN']:
                             number = random.randint(700, 2000)
-                        elif month in ['February', 'March', 'April', 'May'] and ward in ['M/E', 'M/W', 'L', 'F/N']:
+                        elif month in ['February', 'March', 'April', 'May'] and ward in ['ME', 'MW', 'L', 'FN']:
                             number = random.randint(100, 300)
-                        elif month in ['October', 'November'] and ward in ['M/E', 'M/W', 'L', 'F/N']:
+                        elif month in ['October', 'November'] and ward in ['ME', 'MW', 'L', 'FN']:
                             number = random.randint(500, 1000)
-                        elif ward in ['M/E', 'M/W', 'L', 'F/N']:
+                        elif ward in ['ME', 'MW', 'L', 'FN']:
                             number = random.randint(300, 500)
                         elif month in ['June', 'July', 'August', 'September']:
                             number = random.randint(500, 1000)
