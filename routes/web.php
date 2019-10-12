@@ -10,14 +10,14 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/analytics/disease/{year}/{disease}', 'analyticsController@diseaseMonth');
-Route::get('/analytics/disease/{disease}', 'analyticsController@diseaseYear');
-Route::get('/analytics/disease/{year}/{disease}/{region}', 'analyticsController@diseaseLocMonth');
-Route::get('/analytics/diseaseYear/{disease}/{region}', 'analyticsController@diseaseLocYear');
+Route::get('/analytics/diseaseMonth/{type}/{year}/{disease}', 'analyticsController@diseaseMonth');
+Route::get('/analytics/diseaseYear/{type}/{disease}', 'analyticsController@diseaseYear');
+Route::get('/analytics/diseaseRegMonth/{type}/{year}/{disease}/{region}', 'analyticsController@diseaseLocMonth');
+Route::get('/analytics/diseaseRegYear/{type}/{disease}/{region}', 'analyticsController@diseaseLocYear');
 Route::get('/analytics/diseaseMap/{year}/{disease}', 'analyticsController@diseaseYearMap');
 
 
-Route::get('/data', 'analyticsController@ajax');
+// Route::get('/data', 'analyticsController@ajax');
 Route::view('/demo', 'demo.dashboard');
 Route::group(['middleware' => 'web'], function () {
 Auth::routes();

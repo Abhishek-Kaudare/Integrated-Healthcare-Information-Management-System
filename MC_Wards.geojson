@@ -8,7 +8,8 @@
   "features": [
     {
       "type": "Feature",
-      "properties": { "gid": 1, "name": "A" },
+      "properties": { "gid": 1, "name": "A" , "count": 4973},
+
       "geometry": {
         "type": "MultiPolygon",
         "coordinates": [
@@ -1888,7 +1889,7 @@
     },
     {
       "type": "Feature",
-      "properties": { "gid": 2, "name": "B" },
+      "properties": { "gid": 2, "name": "B" , "count": 5052},
       "geometry": {
         "type": "MultiPolygon",
         "coordinates": [
@@ -2371,7 +2372,7 @@
     },
     {
       "type": "Feature",
-      "properties": { "gid": 3, "name": "C" },
+      "properties": { "gid": 3, "name": "C" , "count": 4081},
       "geometry": {
         "type": "MultiPolygon",
         "coordinates": [
@@ -2930,7 +2931,7 @@
     },
     {
       "type": "Feature",
-      "properties": { "gid": 4, "name": "D" },
+      "properties": { "gid": 4, "name": "D" , "count": 4321},
       "geometry": {
         "type": "MultiPolygon",
         "coordinates": [
@@ -3778,7 +3779,7 @@
     },
     {
       "type": "Feature",
-      "properties": { "gid": 5, "name": "E" },
+      "properties": { "gid": 5, "name": "E" , "count": 4402},
       "geometry": {
         "type": "MultiPolygon",
         "coordinates": [
@@ -4656,7 +4657,7 @@
     },
     {
       "type": "Feature",
-      "properties": { "gid": 6, "name": "FS" },
+      "properties": { "gid": 6, "name": "FS" , "count": 4679},
       "geometry": {
         "type": "MultiPolygon",
         "coordinates": [
@@ -5332,7 +5333,7 @@
     },
     {
       "type": "Feature",
-      "properties": { "gid": 7, "name": "GS" },
+      "properties": { "gid": 7, "name": "GS" , "count": 4577},
       "geometry": {
         "type": "MultiPolygon",
         "coordinates": [
@@ -5956,7 +5957,7 @@
     },
     {
       "type": "Feature",
-      "properties": { "gid": 8, "name": "FN" },
+      "properties": { "gid": 8, "name": "FN" , "count": 8695},
       "geometry": {
         "type": "MultiPolygon",
         "coordinates": [
@@ -7171,7 +7172,7 @@
     },
     {
       "type": "Feature",
-      "properties": { "gid": 9, "name": "GN" },
+      "properties": { "gid": 9, "name": "GN", "count": 4218},
       "geometry": {
         "type": "MultiPolygon",
         "coordinates": [
@@ -7715,7 +7716,7 @@
     },
     {
       "type": "Feature",
-      "properties": { "gid": 10, "name": "N" },
+      "properties": { "gid": 10, "name": "N", "count": 4679},
       "geometry": {
         "type": "MultiPolygon",
         "coordinates": [
@@ -8659,7 +8660,7 @@
     },
     {
       "type": "Feature",
-      "properties": { "gid": 11, "name": "RC" },
+      "properties": { "gid": 11, "name": "RC", "count": 4658},
       "geometry": {
         "type": "MultiPolygon",
         "coordinates": [
@@ -9698,7 +9699,7 @@
     },
     {
       "type": "Feature",
-      "properties": { "gid": 12, "name": "S" },
+      "properties": { "gid": 12, "name": "S", "count": 4999},
       "geometry": {
         "type": "MultiPolygon",
         "coordinates": [
@@ -10740,7 +10741,7 @@
     },
     {
       "type": "Feature",
-      "properties": { "gid": 13, "name": "T" },
+      "properties": { "gid": 13, "name": "T", "count": 5045},
       "geometry": {
         "type": "MultiPolygon",
         "coordinates": [
@@ -11865,7 +11866,7 @@
     },
     {
       "type": "Feature",
-      "properties": { "gid": 14, "name": "KW" },
+      "properties": { "gid": 14, "name": "KW", "count": 4144},
       "geometry": {
         "type": "MultiPolygon",
         "coordinates": [
@@ -12745,7 +12746,7 @@
     },
     {
       "type": "Feature",
-      "properties": { "gid": 15, "name": "RN" },
+      "properties": { "gid": 15, "name": "RN", "count": 0},
       "geometry": {
         "type": "MultiPolygon",
         "coordinates": [
@@ -13398,7 +13399,7 @@
     },
     {
       "type": "Feature",
-      "properties": { "gid": 16, "name": "ME" },
+      "properties": { "gid": 16, "name": "ME", "count": 4590},
       "geometry": {
         "type": "MultiPolygon",
         "coordinates": [
@@ -14159,7 +14160,7 @@
     },
     {
       "type": "Feature",
-      "properties": { "gid": 17, "name": "MW" },
+      "properties": { "gid": 17, "name": "MW", "count": 8795},
       "geometry": {
         "type": "MultiPolygon",
         "coordinates": [
@@ -15377,7 +15378,7 @@
     },
     {
       "type": "Feature",
-      "properties": { "gid": 18, "name": "HE" },
+      "properties": { "gid": 18, "name": "HE", "count": 4460},
       "geometry": {
         "type": "MultiPolygon",
         "coordinates": [
@@ -15988,7 +15989,7 @@
     },
     {
       "type": "Feature",
-      "properties": { "gid": 19, "name": "KE" },
+      "properties": { "gid": 19, "name": "KE", "count": 4535},
       "geometry": {
         "type": "MultiPolygon",
         "coordinates": [
@@ -17033,7 +17034,7 @@
     },
     {
       "type": "Feature",
-      "properties": { "gid": 20, "name": "PS" },
+      "properties": { "gid": 20, "name": "PS", "count": 4275},
       "geometry": {
         "type": "MultiPolygon",
         "coordinates": [
@@ -18040,7 +18041,7 @@
     },
     {
       "type": "Feature",
-      "properties": { "gid": 21, "name": "PN" },
+      "properties": { "gid": 21, "name": "PN", "count": 4933},
       "geometry": {
         "type": "MultiPolygon",
         "coordinates": [
@@ -19996,7 +19997,7 @@
     },
     {
       "type": "Feature",
-      "properties": { "gid": 22, "name": "RS" },
+      "properties": { "gid": 22, "name": "RS", "count": 4688},
       "geometry": {
         "type": "MultiPolygon",
         "coordinates": [
@@ -21238,7 +21239,7 @@
     },
     {
       "type": "Feature",
-      "properties": { "gid": 23, "name": "HW" },
+      "properties": { "gid": 23, "name": "HW", "count": 4483},
       "geometry": {
         "type": "MultiPolygon",
         "coordinates": [
@@ -21930,7 +21931,7 @@
     },
     {
       "type": "Feature",
-      "properties": { "gid": 24, "name": "L" },
+      "properties": { "gid": 24, "name": "L", "count": 7343},
       "geometry": {
         "type": "MultiPolygon",
         "coordinates": [
