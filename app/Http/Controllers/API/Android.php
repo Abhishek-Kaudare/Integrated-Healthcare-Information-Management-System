@@ -191,7 +191,11 @@ public function allhosspec(){
     }
 
 
-    public function hospitalfilter($hostype,$spec,$lat,$long){
+    public function hospitalfilter(Request $req){
+        $hostype = $req->hostype;
+        $spec = $req->spec;
+        $lat = $req->lat;
+        $long = $req->long;
         
         $response = DB::select("SELECT s.*,shm.*,h.*,ht.*,htm.*
         FROM  specialization_of_hospital s INNER JOIN
