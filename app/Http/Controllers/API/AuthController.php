@@ -15,6 +15,7 @@ use Config;
 use Response;
 use Carbon;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -64,27 +65,47 @@ class AuthController extends Controller
 
 
     public function login(Request $request){
-
-        $client = new Client();
-                $response = $client->request('POST', 'http://manipal.com/oauth/token', [
-                    'form_params' => [
-                        'grant_type' => 'password',
-                        'client_id' => '19',
-                        'client_secret' => '6Vl5t3Ok235azZjSbYs0v6fBbtulCllT4wfyqQ6Y',
-                        'username' => $request->username,
-                        'password' => $request->password,
-                        
-                    ],
-                    'headers' =>[
-                'Accept' => 'application/json',
-                'Content-Type' => 'application/x-www-form-urlencoded',
-            ]
-
-                ]);
-            $data = [[
+        if(User::where('email', '=', $request->email)->count() > 0)
+            {   
+                $user = User::where('email', $request->email)->first();                
+                if(Hash::check($request->password, $user->password)){
+                     $data = [[
             "message"=> "SUCCESS",            
         ]];
+        
+        }else{
+                $data = [[
+            "message"=> "WRONG PSWD"            
+            ]];
+        }
+    }
+        else{
+            $data = [[
+            "message"=> "NO EMAIL"            
+            ]];
+        }
         return Response::json($data, 200);
+        
+        // $client = new Client();
+        //         $response = $client->request('POST', 'http://manipal.com/oauth/token', [
+        //             'form_params' => [
+        //                 'grant_type' => 'password',
+        //                 'client_id' => '19',
+        //                 'client_secret' => '6Vl5t3Ok235azZjSbYs0v6fBbtulCllT4wfyqQ6Y',
+        //                 'username' => $request->username,
+        //                 'password' => $request->password,
+                        
+        //             ],
+        //             'headers' =>[
+        //         'Accept' => 'application/json',
+        //         'Content-Type' => 'application/x-www-form-urlencoded',
+        //     ]
+
+        //         ]);
+        //     $data = [[
+        //     "message"=> "SUCCESS",            
+        // ]];
+        // return Response::json($data, 200);
 
     }
 
@@ -92,24 +113,46 @@ class AuthController extends Controller
     
     public function log(Request $request){
 
-        $client = new Client();
-                $response = $client->request('POST', 'http://manipal.com/oauth/token', [
-                    'form_params' => [
-                        'grant_type' => 'password',
-                        'client_id' => '8',
-                        'client_secret' => 'zvVnTf1pT0U5dP6gnpMdeDjhc6uPMuomOuuWsC8D',
-                        'username' => $request->username,
-                        'password' => $request->password,
-                        
-                    ],
-                    'headers' =>[
-                'Accept' => 'application/json',
-                'Content-Type' => 'application/x-www-form-urlencoded',
-            ]
 
-                ]);
+        if(User::where('email', '=', $request->email)->count() > 0)
+            {   
+                $user = User::where('email', $request->email)->first();                
+                if(Hash::check($request->password, $user->password)){
+                     $data = [[
+            "message"=> "SUCCESS",            
+        ]];
+        
+        }else{
+                $data = [[
+            "message"=> "WRONG PSWD"            
+            ]];
+        }
+    }
+        else{
+            $data = [[
+            "message"=> "NO EMAIL"            
+            ]];
+        }
+        return Response::json($data, 200);
+        
+        // $client = new Client();
+        //         $response = $client->request('POST', 'http://manipal.com/oauth/token', [
+        //             'form_params' => [
+        //                 'grant_type' => 'password',
+        //                 'client_id' => '8',
+        //                 'client_secret' => 'zvVnTf1pT0U5dP6gnpMdeDjhc6uPMuomOuuWsC8D',
+        //                 'username' => $request->username,
+        //                 'password' => $request->password,
+                        
+        //             ],
+        //             'headers' =>[
+        //         'Accept' => 'application/json',
+        //         'Content-Type' => 'application/x-www-form-urlencoded',
+        //     ]
+
+        //         ]);
             
-        return response(['data' => json_decode((string) $response->getBody()->getContents(),true)]);
+        // return response(['data' => json_decode((string) $response->getBody()->getContents(),true)]);
 
 
     }

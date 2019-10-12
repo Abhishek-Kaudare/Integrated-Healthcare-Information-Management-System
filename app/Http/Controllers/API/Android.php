@@ -79,8 +79,21 @@ class Android extends Controller
         $data = array_merge($data,array($medical_speciality_name));
         $data = array_merge($data,array($response[0]));
         
-       
 
+        // $a = array('awards');
+        
+        // $c = array_combine($a, $b);
+
+        json_encode($awards);
+        dd($awards);
+
+        $object = new stdClass();
+        $object->awards = $awards;
+        $object->languages = $languages;
+        // $myArray[] = $object;
+        dd($object);
+        
+        
         return Response::json($data, 200);
         
     }
@@ -420,6 +433,14 @@ public function docfilter(Request $request){
 
         return Response::json($data, 200);
            
+    }
+
+    public function specialityList(){
+
+        $data = DB::select("SELECT * from medical_speciality");
+
+        return Response::json($data, 200);
+
     }
 
     
