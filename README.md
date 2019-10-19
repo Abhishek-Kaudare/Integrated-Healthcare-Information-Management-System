@@ -55,7 +55,7 @@ Currently, there are tons of problems faced by common people during critical hea
 
 # Team : Bug Slayers
 
-![picture alt](https://github.com/Abhishek-Kaudare/Manipal_Website/tree/master/Website/images/Logo.jpg "Team Logo")
+![Team Logo](https://github.com/Abhishek-Kaudare/Manipal_Website/tree/master/Website/images/Logo.jpg)
 
 ### Team Members
 
